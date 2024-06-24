@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://uo7thjprrimb"]
+
+[ext_resource type="Script" path="res://distractions/basketball/ball/ball.gd" id="1_5vdw0"]
+[ext_resource type="PackedScene" uid="uid://bbhbh4gb8t1b1" path="res://distractions/basketball/ball/basketball_FBX.fbx" id="1_itwhf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wfp4j"]
+
+[node name="Ball" type="RigidBody3D"]
+script = ExtResource("1_5vdw0")
+
+[node name="ball" parent="." instance=ExtResource("1_itwhf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_wfp4j")

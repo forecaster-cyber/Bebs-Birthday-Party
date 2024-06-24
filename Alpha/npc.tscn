@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj44dvpiorjv0"]
+
+[ext_resource type="Script" path="res://npc.gd" id="1_lckfr"]
+[ext_resource type="PackedScene" uid="uid://bkc20x4kcb1av" path="res://talk_system.tscn" id="2_aqxcf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_183qv"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ulkec"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_v0kpp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7owiw"]
+
+[node name="NPC" type="Node3D"]
+script = ExtResource("1_lckfr")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_183qv")
+
+[node name="r_eye" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.264704, 0, 0, 0, 0.264704, 0, 0, 0, 0.264704, 0.416136, 0.440598, 0.0889176)
+mesh = SubResource("SphereMesh_ulkec")
+
+[node name="l_eye" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.264704, 0, 0, 0, 0.264704, 0, 0, 0, 0.264704, 0.401121, 0.440598, -0.161071)
+mesh = SubResource("SphereMesh_ulkec")
+
+[node name="mouth" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-0.000778419, 0.10372, 0, -0.10372, -0.000778419, 0, 0, 0, 0.103723, 0.50717, 0.17295, -0.024581)
+mesh = SubResource("TorusMesh_v0kpp")
+
+[node name="npc_collision" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="npc_collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.749185, 0, 0)
+shape = SubResource("BoxShape3D_7owiw")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(0.100032, 0, 0.994984, 0, 1, 0, -0.994984, 0, 0.100032, 0.716009, 0.837172, 0)
+visible = false
+billboard = 2
+text = "Press E To Talk!"
+
+[node name="talk_system" parent="." instance=ExtResource("2_aqxcf")]
+visible = false
+
+[node name="npc_cam" type="Camera3D" parent="."]
+transform = Transform3D(0.0303641, 0, 0.999539, 0, 1, 0, -0.999539, 0, 0.0303641, 1.74046, 0, 0)
+
+[connection signal="num_of_questions_remaining" from="." to="talk_system" method="_on_npc_num_of_questions_remaining"]
+[connection signal="q_choices" from="." to="talk_system" method="_on_npc_q_choices"]
+[connection signal="q_prob" from="." to="talk_system" method="_on_npc_q_prob"]
+[connection signal="area_shape_entered" from="npc_collision" to="." method="_on_npc_collision_area_shape_entered"]
+[connection signal="area_shape_exited" from="npc_collision" to="." method="_on_npc_collision_area_shape_exited"]
+[connection signal="update_prob" from="talk_system" to="." method="_on_talk_system_update_prob"]
