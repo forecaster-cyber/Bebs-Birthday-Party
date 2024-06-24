@@ -15,9 +15,10 @@ func _process(delta):
 	var player_forward = -player.global_transform.basis.z
 	var dot_product = player_to_enemy.dot(player_forward)
 	if dot_product<0:
-		$sound_fx.volume_db = -30
+		$sound_fx.volume_db = -10
 		
 	else:
-		$sound_fx.volume_db = dot_product/10
+		$sound_fx.volume_db = (100/dot_product)
+	print($sound_fx.volume_db)
 	#print($sound_fx.volume_db)
 	

@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bv0sm14pp2gto"
+path.s3tc="res://.godot/imported/Yellow Closet 3D Model_10.png-3c0d5ee7fb0c5e1f1a6d7c7e0c34fa6f.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={}
+
+[deps]
+
+source_file="res://bday party models/Yellow Closet 3D Model/Yellow Closet 3D Model_10.png"
+dest_files=["res://.godot/imported/Yellow Closet 3D Model_10.png-3c0d5ee7fb0c5e1f1a6d7c7e0c34fa6f.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

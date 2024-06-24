@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://g8plnhsw7ko6"]
 
 [ext_resource type="Script" path="res://looking_at.gd" id="1_abhy4"]
-[ext_resource type="AudioStream" uid="uid://bowab1s740n34" path="res://sound_effects/laughing_temp.mp3" id="2_4j5o3"]
+[ext_resource type="AudioStream" uid="uid://cjv5ia6c07xtr" path="res://sound_effects/Adolf Hitler_ Speech at Krupp Factory in Germany (1935)  British Pathé.mp3" id="2_mrocr"]
 
 [node name="looking_at" type="Node3D"]
 script = ExtResource("1_abhy4")
@@ -9,6 +9,6 @@ script = ExtResource("1_abhy4")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="sound_fx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_4j5o3")
-volume_db = -30.0
+stream = ExtResource("2_mrocr")
+volume_db = 2.0
 autoplay = true

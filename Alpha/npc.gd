@@ -2,6 +2,7 @@ extends Node3D
 @export var player: Node3D
 var player_close = false
 @export var questions_path: String
+@export var can_talk: bool
 # Called when the node enters the scene tree for the first time.
 var options_prob = [33,33,33]
 var num_of_q = 0
@@ -19,7 +20,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(Input.is_action_just_pressed("interact") && player_close):
+	if(Input.is_action_just_pressed("interact") && player_close && can_talk):
 		#print(options_prob)
 		#var q1 = weightedRandomIndex(options_prob)
 		#var q2 = weightedRandomIndex(options_prob)
@@ -28,6 +29,7 @@ func _process(delta):
 		#q_prob.emit(options_prob)
 		#print(q1,q2,q3)
 		$talk_system.visible = true
+		player.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		#var player_cam_translation = player.get_node("head/cam").position
 		#$npc_cam.position = player_cam_translation
@@ -37,8 +39,9 @@ func _process(delta):
 
 
 func _on_npc_collision_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	$Label3D.visible = true
-	player_close = true
+	if (can_talk):
+		$Label3D.visible = true
+		player_close = true
 
 
 func _on_npc_collision_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):

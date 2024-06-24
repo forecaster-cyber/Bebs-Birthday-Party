@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjv5ia6c07xtr"
+path="res://.godot/imported/Adolf Hitler_ Speech at Krupp Factory in Germany (1935)  British Pathé.mp3-0a5516b823158412d7d4a69ecba1d840.mp3str"
+
+[deps]
+
+source_file="res://sound_effects/Adolf Hitler_ Speech at Krupp Factory in Germany (1935)  British Pathé.mp3"
+dest_files=["res://.godot/imported/Adolf Hitler_ Speech at Krupp Factory in Germany (1935)  British Pathé.mp3-0a5516b823158412d7d4a69ecba1d840.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

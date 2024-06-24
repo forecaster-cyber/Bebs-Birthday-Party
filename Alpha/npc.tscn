@@ -1,13 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj44dvpiorjv0"]
+[gd_scene load_steps=11 format=3 uid="uid://bj44dvpiorjv0"]
 
 [ext_resource type="Script" path="res://npc.gd" id="1_lckfr"]
 [ext_resource type="PackedScene" uid="uid://bkc20x4kcb1av" path="res://talk_system.tscn" id="2_aqxcf"]
+[ext_resource type="Texture2D" uid="uid://beyspk22f18gr" path="res://eye texture Background Removed.png" id="2_fwk1u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8b8l1"]
+albedo_color = Color(0.631373, 0.415686, 0.168627, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_183qv"]
+material = SubResource("StandardMaterial3D_8b8l1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rnv36"]
+albedo_texture = ExtResource("2_fwk1u")
+uv1_scale = Vector3(1.605, 1.535, 1.585)
+uv1_offset = Vector3(0.07, -0.25, 2.08165e-12)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ulkec"]
+material = SubResource("StandardMaterial3D_rnv36")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_munn4"]
+albedo_color = Color(0.811765, 0.345098, 0.266667, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_v0kpp"]
+material = SubResource("StandardMaterial3D_munn4")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7owiw"]
 
@@ -18,11 +33,11 @@ script = ExtResource("1_lckfr")
 mesh = SubResource("CapsuleMesh_183qv")
 
 [node name="r_eye" type="MeshInstance3D" parent="Body"]
-transform = Transform3D(0.264704, 0, 0, 0, 0.264704, 0, 0, 0, 0.264704, 0.416136, 0.440598, 0.0889176)
+transform = Transform3D(0.261303, 0, -0.0422984, 0, 0.264704, 0, 0.0422984, 0, 0.261303, 0.425649, 0.440598, 0.0854789)
 mesh = SubResource("SphereMesh_ulkec")
 
 [node name="l_eye" type="MeshInstance3D" parent="Body"]
-transform = Transform3D(0.264704, 0, 0, 0, 0.264704, 0, 0, 0, 0.264704, 0.401121, 0.440598, -0.161071)
+transform = Transform3D(0.264627, 0, 0.00638878, 0, 0.264704, 0, -0.00638878, 0, 0.264627, 0.401121, 0.440598, -0.144458)
 mesh = SubResource("SphereMesh_ulkec")
 
 [node name="mouth" type="MeshInstance3D" parent="Body"]

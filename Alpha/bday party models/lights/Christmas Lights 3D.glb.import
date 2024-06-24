@@ -1,0 +1,34 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://c32gvgbi2v2a0"
+path="res://.godot/imported/Christmas Lights 3D.glb-759a8b758f3d4c02ea5aabec63df270f.scn"
+
+[deps]
+
+source_file="res://bday party models/lights/Christmas Lights 3D.glb"
+dest_files=["res://.godot/imported/Christmas Lights 3D.glb-759a8b758f3d4c02ea5aabec63df270f.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={}
+gltf/naming_version=1
+gltf/embedded_image_handling=1
