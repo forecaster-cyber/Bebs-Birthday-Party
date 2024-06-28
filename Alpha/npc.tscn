@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bj44dvpiorjv0"]
+[gd_scene load_steps=14 format=3 uid="uid://bj44dvpiorjv0"]
 
 [ext_resource type="Script" path="res://npc.gd" id="1_lckfr"]
 [ext_resource type="PackedScene" uid="uid://bkc20x4kcb1av" path="res://talk_system.tscn" id="2_aqxcf"]
@@ -26,6 +26,68 @@ material = SubResource("StandardMaterial3D_munn4")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7owiw"]
 
+[sub_resource type="Animation" id="Animation_fofvo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/mouth:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.103723, 0.103723, 0.103723)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l2jfl"]
+resource_name = "talking"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/mouth:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.126272, 0.242707),
+"transitions": PackedFloat32Array(1, 1, 2.21914),
+"update": 0,
+"values": [Vector3(0.103723, 0.103723, 0.103723), Vector3(0.00743654, 0.103, 0.103723), Vector3(0.103723, 0.103723, 0.103723)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.175761),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.07177, 0.840887, 1.15752)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7k8hx"]
+_data = {
+"RESET": SubResource("Animation_fofvo"),
+"talking": SubResource("Animation_l2jfl")
+}
+
 [node name="NPC" type="Node3D"]
 script = ExtResource("1_lckfr")
 
@@ -41,7 +103,7 @@ transform = Transform3D(0.264627, 0, 0.00638878, 0, 0.264704, 0, -0.00638878, 0,
 mesh = SubResource("SphereMesh_ulkec")
 
 [node name="mouth" type="MeshInstance3D" parent="Body"]
-transform = Transform3D(-0.000778419, 0.10372, 0, -0.10372, -0.000778419, 0, 0, 0, 0.103723, 0.50717, 0.17295, -0.024581)
+transform = Transform3D(-0.00077842, 0.10372, 0, -0.10372, -0.00077842, 0, 0, 0, 0.103723, 0.50717, 0.17295, -0.024581)
 mesh = SubResource("TorusMesh_v0kpp")
 
 [node name="npc_collision" type="Area3D" parent="."]
@@ -61,6 +123,11 @@ visible = false
 
 [node name="npc_cam" type="Camera3D" parent="."]
 transform = Transform3D(0.0303641, 0, 0.999539, 0, 1, 0, -0.999539, 0, 0.0303641, 1.74046, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7k8hx")
+}
 
 [connection signal="num_of_questions_remaining" from="." to="talk_system" method="_on_npc_num_of_questions_remaining"]
 [connection signal="q_choices" from="." to="talk_system" method="_on_npc_q_choices"]

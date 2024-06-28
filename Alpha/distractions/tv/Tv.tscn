@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://mtju4cg167jt"]
+
+[ext_resource type="Script" path="res://distractions/tv/Tv.gd" id="1_8m7pa"]
+[ext_resource type="PackedScene" uid="uid://di50en7ycqx3u" path="res://distractions/tv/Sketchfab model.glb" id="1_twfvw"]
+[ext_resource type="VideoStream" path="res://distractions/tv/Spamtopian Waitress.ogv" id="2_v0ems"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_u5hox"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cr8r8"]
+size = Vector3(1.3808, 1, 2.20718)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_58bb3"]
+
+[node name="Tv" type="RigidBody3D"]
+script = ExtResource("1_8m7pa")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_twfvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279157, 0, 0.65819)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.246385, 0, 0, 0, 0.144489, 0, 0, 0, 0.0974112, 0.278651, 0.447642, 0.71812)
+texture = SubResource("ViewportTexture_u5hox")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("2_v0ems")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.269812, -0.152307, 0.843763)
+shape = SubResource("BoxShape3D_cr8r8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.260609, 0.410496, 0.143771)
+shape = SubResource("BoxShape3D_58bb3")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

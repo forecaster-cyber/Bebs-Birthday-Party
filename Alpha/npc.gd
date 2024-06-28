@@ -4,17 +4,29 @@ var player_close = false
 @export var questions_path: String
 @export var can_talk: bool
 # Called when the node enters the scene tree for the first time.
+var rng = RandomNumberGenerator.new()
+var random_talk_speed = rng.randf_range(0.0,0.2)
+var red = rng.randf_range(0.0,1.0)
+var green = rng.randf_range(0.0,1.0)
+var blue = rng.randf_range(0.0,1.0)
 var options_prob = [33,33,33]
 var num_of_q = 0
+
 signal q_choices(q1,q2,q3)
 signal q_prob(q_prob_arr)
 signal num_of_questions_remaining(num_of_questions)
 func _ready():
+	var material = $Body.get_active_material(0)
+	material.albedo_color = Color(red, green, blue)
+	$Body.set_surface_override_material(0, material)
 	$talk_system.questions = questions_path
 	var dataFile = FileAccess.open(str(questions_path), FileAccess.READ)
 	var parsed_json = JSON.parse_string(dataFile.get_as_text())
 	num_of_q = parsed_json["questions"].size()
 	num_of_questions_remaining.emit(num_of_q)
+	if (!can_talk):
+		$AnimationPlayer.play("talking")
+		$AnimationPlayer.speed_scale -= random_talk_speed
 	
 	
 

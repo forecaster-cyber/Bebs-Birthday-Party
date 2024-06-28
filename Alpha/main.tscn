@@ -3,11 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b0jmja8u6w1le" path="res://player.tscn" id="1_gw058"]
 [ext_resource type="PackedScene" uid="uid://g8plnhsw7ko6" path="res://looking_at.tscn" id="2_i4msr"]
 [ext_resource type="PackedScene" uid="uid://bj44dvpiorjv0" path="res://npc.tscn" id="3_j8hae"]
-[ext_resource type="PackedScene" uid="uid://iihfdnlxa4x7" path="res://distractions/interactable/interact.tscn" id="4_6s55b"]
-[ext_resource type="AudioStream" uid="uid://cjv5ia6c07xtr" path="res://sound_effects/Adolf Hitler_ Speech at Krupp Factory in Germany (1935)  British Pathé.mp3" id="4_t0l8u"]
-[ext_resource type="PackedScene" uid="uid://c5murct1karw5" path="res://distractions/cubes/cube.tscn" id="4_yo52o"]
-[ext_resource type="PackedScene" uid="uid://uo7thjprrimb" path="res://distractions/basketball/ball/ball.tscn" id="6_n3od1"]
-[ext_resource type="PackedScene" uid="uid://c2pvtis4rx71j" path="res://distractions/basketball/hoop/Sketchfab_2023_04_20_12_19_55.blend" id="7_saerw"]
+[ext_resource type="AudioStream" uid="uid://vuay52velbyg" path="res://sound_effects/Untitled.mp3" id="4_4jp2m"]
 [ext_resource type="ArrayMesh" uid="uid://dug3i0jfhuae0" path="res://bday party models/chair/Cheap Chair/Cheap Chair.obj" id="8_pbjgi"]
 [ext_resource type="PackedScene" uid="uid://briuaooe87wy5" path="res://bday party models/FNAF Party Tables v2/source/Tables.fbx" id="9_cujrc"]
 [ext_resource type="PackedScene" uid="uid://b2mdax67ua2is" path="res://bday party models/Baby Boy Closet/Baby Boy Closet.glb" id="10_mb6mf"]
@@ -17,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dj4ap1p4a0pq" path="res://bday party models/shelf/Simple TV Shelf 210cm.glb" id="14_6ag75"]
 [ext_resource type="PackedScene" uid="uid://c32gvgbi2v2a0" path="res://bday party models/lights/Christmas Lights 3D.glb" id="15_8625m"]
 [ext_resource type="PackedScene" uid="uid://drtray8slbqp8" path="res://bday party models/sign/Happy Birthday Sign.glb" id="16_0dsmk"]
+[ext_resource type="AudioStream" uid="uid://blk0vf7i48q6" path="res://sound_effects/Skibidi Fortnite Sped Up Female.mp3" id="18_tbrtm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dpdt8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -38,20 +35,6 @@ material = SubResource("StandardMaterial3D_i578l")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1di0b"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0m1c2"]
-albedo_color = Color(0, 0.705882, 0.737255, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_opqkq"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3udiy"]
-size = Vector3(2.5907, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_74efs"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_bmico"]
-height = 0.131
-radius = 0.285
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ku33p"]
 load_path = "res://.godot/imported/rug texture.png-05c9ed10c51477abc9cfded751f520cc.s3tc.ctex"
 
@@ -72,6 +55,30 @@ uv1_offset = Vector3(0.02, 1.065, -0.115)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_smfbu"]
 material = SubResource("StandardMaterial3D_m4ugk")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k5dw2"]
+size = Vector3(22.6855, 7.11924, 1.83839)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0pqyg"]
+size = Vector3(24.5424, 8.26825, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pxb1j"]
+size = Vector3(1, 7.82123, 13.4202)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_356l6"]
+size = Vector3(1.02637, 8.16931, 13.7543)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_68gpf"]
+size = Vector3(7.82086, 0.659668, 2.41284)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gt1s3"]
+size = Vector3(2.82397, 4.89954, 1.5675)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mhffj"]
+size = Vector3(2.99414, 5.25964, 1.49133)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wvubl"]
+size = Vector3(1.04004, 1.69562, 6.52899)
 
 [node name="Room" type="Node3D"]
 
@@ -133,112 +140,27 @@ skeleton = NodePath("../../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.53797, 0, 0)
 
 [node name="NPC" parent="laughing" node_paths=PackedStringArray("player") instance=ExtResource("3_j8hae")]
-transform = Transform3D(-0.801932, 0, -0.597415, 0, 1, 0, 0.597415, 0, -0.801932, 12.0647, 1.496, 4.17159)
+transform = Transform3D(0.822323, 0, -0.569021, 0, 1, 0, 0.569021, 0, 0.822323, 12.4789, 1.496, 4.77145)
 player = NodePath("../../player")
 questions_path = "res://group_qs/laughing.json"
-can_talk = true
 
 [node name="NPC2" parent="laughing" node_paths=PackedStringArray("player") instance=ExtResource("3_j8hae")]
-transform = Transform3D(-0.984059, 0, 0.177841, 0, 1, 0, -0.177841, 0, -0.984059, 14.107, 1.496, 6.58004)
+transform = Transform3D(-0.394198, 0, 0.919025, 0, 1, 0, -0.919025, 0, -0.394198, 13.5827, 1.496, 6.10281)
+player = NodePath("../../player")
+questions_path = "res://group_qs/laughing.json"
+
+[node name="NPC3" parent="laughing" node_paths=PackedStringArray("player") instance=ExtResource("3_j8hae")]
+transform = Transform3D(-0.94707, 0, -0.321026, 0, 1, 0, 0.321026, 0, -0.94707, 14.1455, 1.496, 4.86454)
 player = NodePath("../../player")
 questions_path = "res://group_qs/laughing.json"
 
 [node name="looking_at" parent="laughing" node_paths=PackedStringArray("player") instance=ExtResource("2_i4msr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.601, 1.10541, 5.21059)
 player = NodePath("../../player")
-sound_fx = ExtResource("4_t0l8u")
-
-[node name="table" type="StaticBody3D" parent="."]
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="table"]
-transform = Transform3D(7.6245, 0, 0, 0, 0.207832, 0, 0, 0, 2.34822, 2.36762, 1.25457, 0)
-material_override = SubResource("StandardMaterial3D_0m1c2")
-mesh = SubResource("BoxMesh_opqkq")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="table"]
-transform = Transform3D(2.96801, 0, 0, 0, 0.207832, 0, 0, 0, 2.34822, 2.3606, 1.25457, 0)
-shape = SubResource("BoxShape3D_3udiy")
-
-[node name="cubes" type="Node3D" parent="."]
-visible = false
-
-[node name="Cube2" parent="cubes" instance=ExtResource("4_yo52o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.44129, 1.70194, 0)
-
-[node name="interact" parent="cubes/Cube2" node_paths=PackedStringArray("player_hand", "object") instance=ExtResource("4_6s55b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0454588, -0.0915151, 0)
-player_hand = NodePath("../../../player/hand")
-object = NodePath("..")
-
-[node name="Cube3" parent="cubes" instance=ExtResource("4_yo52o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05703, 1.70194, 0)
-number = 3
-
-[node name="interact" parent="cubes/Cube3" node_paths=PackedStringArray("player_hand", "object") instance=ExtResource("4_6s55b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0454588, -0.0915151, 0)
-player_hand = NodePath("../../../player/hand")
-object = NodePath("..")
-
-[node name="Ball" parent="." instance=ExtResource("6_n3od1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.700481, 1.77619, 0.159993)
-visible = false
-
-[node name="interact" parent="Ball" node_paths=PackedStringArray("player_hand", "object") instance=ExtResource("4_6s55b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0247192, -0.0904123, 0.0186322)
-player_hand = NodePath("../../player/hand")
-object = NodePath("..")
-
-[node name="hoop" type="Node" parent="."]
-
-[node name="hoop" parent="hoop" instance=ExtResource("7_saerw")]
-transform = Transform3D(-0.258043, 0, 2.36602, 0, 1.38129, 0, -2.54436, 0, -0.239956, -3.55228, 0.506758, -7.66302)
-visible = false
-
-[node name="backboard" type="StaticBody3D" parent="hoop/hoop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.687904, 2.69461, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hoop/hoop/backboard"]
-shape = SubResource("BoxShape3D_74efs")
-
-[node name="net_area" type="Area3D" parent="hoop/hoop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47824, 2.26202, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hoop/hoop/net_area"]
-shape = SubResource("CylinderShape3D_bmico")
-
-[node name="score" type="Label3D" parent="hoop/hoop"]
-transform = Transform3D(-0.00535812, 0, -0.999986, 0, 1, 0, 0.999986, 0, -0.00535812, -1.18433, 2.69102, 0)
-text = "0"
+sound_fx = ExtResource("4_4jp2m")
+min_sound = -3
 
 [node name="party" type="Node3D" parent="."]
-
-[node name="chairs" type="Node" parent="party"]
-
-[node name="chair" type="MeshInstance3D" parent="party/chairs"]
-transform = Transform3D(0.109179, 0, 0.994022, 0, 1, 0, -0.994022, 0, 0.109179, -2.84255, 0.57734, 4.27931)
-mesh = ExtResource("8_pbjgi")
-skeleton = NodePath("../../..")
-
-[node name="chair2" type="MeshInstance3D" parent="party/chairs"]
-transform = Transform3D(-0.239499, 0, 0.970897, 0, 1, 0, -0.970897, 0, -0.239499, 1.28723, 0.57734, 4.27931)
-mesh = ExtResource("8_pbjgi")
-skeleton = NodePath("../../..")
-
-[node name="chair3" type="MeshInstance3D" parent="party/chairs"]
-transform = Transform3D(-0.0192498, 0, 0.999815, 0, 1, 0, -0.999815, 0, -0.0192497, -0.559842, 0.57734, 4.27931)
-mesh = ExtResource("8_pbjgi")
-skeleton = NodePath("../../..")
-
-[node name="chair4" type="MeshInstance3D" parent="party/chairs"]
-transform = Transform3D(-0.00661479, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066148, 0.38944, 0.57734, -0.120255)
-mesh = ExtResource("8_pbjgi")
-skeleton = NodePath("../../..")
-
-[node name="chair5" type="MeshInstance3D" parent="party/chairs"]
-transform = Transform3D(-0.00661479, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066148, -2.82584, 0.57734, -0.120255)
-mesh = ExtResource("8_pbjgi")
-skeleton = NodePath("../../..")
 
 [node name="table2" parent="party" instance=ExtResource("9_cujrc")]
 transform = Transform3D(1.1236, 0, 0, 0, 0.955449, 0, 0, 0, 0.580199, -0.924547, 1.55137, 2.19117)
@@ -288,10 +210,38 @@ transform = Transform3D(-0.127324, 0.0719688, 0.570503, 0.186605, 0.348444, -0.0
 [node name="Sketchfab_Scene" parent="party/lights3" instance=ExtResource("15_8625m")]
 transform = Transform3D(7.45096, 0, 0, 0, 7.45096, 0, 0, 0, 7.45096, 10.0274, 14.8884, 51.8876)
 
+[node name="bday_sign" parent="party" instance=ExtResource("16_0dsmk")]
+transform = Transform3D(-2.1044, 1.68485e-17, 0.161186, -0.00334468, 2.11011, -0.0436672, -0.161151, -0.0437951, -2.10394, 10.342, 3.91474, 3.53395)
+
+[node name="chair" type="MeshInstance3D" parent="party"]
+transform = Transform3D(0.109179, 0, 0.994022, 0, 1, 0, -0.994022, 0, 0.109179, -2.84255, 0.57734, 4.27931)
+mesh = ExtResource("8_pbjgi")
+skeleton = NodePath("../..")
+
+[node name="chair2" type="MeshInstance3D" parent="party"]
+transform = Transform3D(-0.239499, 0, 0.970897, 0, 1, 0, -0.970897, 0, -0.239499, 1.28723, 0.57734, 4.27931)
+mesh = ExtResource("8_pbjgi")
+skeleton = NodePath("../..")
+
+[node name="chair3" type="MeshInstance3D" parent="party"]
+transform = Transform3D(-0.0192498, 0, 0.999815, 0, 1, 0, -0.999815, 0, -0.0192497, -0.559842, 0.57734, 4.27931)
+mesh = ExtResource("8_pbjgi")
+skeleton = NodePath("../..")
+
+[node name="chair4" type="MeshInstance3D" parent="party"]
+transform = Transform3D(-0.00661479, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066148, 0.38944, 0.57734, -0.120255)
+mesh = ExtResource("8_pbjgi")
+skeleton = NodePath("../..")
+
+[node name="chair5" type="MeshInstance3D" parent="party"]
+transform = Transform3D(-0.00661479, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066148, -2.82584, 0.57734, -0.120255)
+mesh = ExtResource("8_pbjgi")
+skeleton = NodePath("../..")
+
 [node name="lights" type="Node3D" parent="."]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, 0.045206, 0.998978, 0, -0.998978, 0.045206, -0.842831, 9.99898, 0.41732)
+transform = Transform3D(1, 0, 0, 0, 0.045206, 0.998978, 0, -0.998978, 0.045206, -0.842831, 7.10148, 0.41732)
 light_color = Color(0.729412, 0.615686, 0.227451, 1)
 light_energy = 11.182
 spot_range = 24.2158
@@ -321,5 +271,65 @@ light_color = Color(0.756863, 0.439216, 1, 1)
 light_energy = 3.0
 omni_range = 10.6155
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("16_0dsmk")]
-transform = Transform3D(-2.1044, 1.68485e-17, 0.161186, -0.00334468, 2.11011, -0.0436672, -0.161151, -0.0437951, -2.10394, 10.342, 3.91474, 3.53395)
+[node name="bday_music" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971644, 3.05729, 5.05415)
+stream = ExtResource("18_tbrtm")
+autoplay = true
+
+[node name="distractions" type="Node" parent="."]
+
+[node name="collisions" type="Node" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="collisions"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382829, 4.18946, -4.17869)
+shape = SubResource("BoxShape3D_k5dw2")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.3153)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.427628, 3.63412, -0.99286)
+shape = SubResource("BoxShape3D_0pqyg")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5985, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2128, 3.41061, 3.19861)
+shape = SubResource("BoxShape3D_pxb1j")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8341, 0, 2.82708)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10931, 3.58466, 0.179382)
+shape = SubResource("BoxShape3D_356l6")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="collisions"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06168, 1.4967, 2.16085)
+shape = SubResource("BoxShape3D_68gpf")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.41869, 0, -2.29248)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D6"]
+transform = Transform3D(0.912627, 0, 0.408792, 0, 1, 0, -0.408792, 0, 0.912627, 0.464804, 3.01346, 0.102719)
+shape = SubResource("BoxShape3D_gt1s3")
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.06447, 0, -1.60134)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D7"]
+transform = Transform3D(0.845271, 0, -0.534338, 0, 1, 0, 0.534338, 0, 0.845271, -0.16924, 3.24848, 0.530107)
+shape = SubResource("BoxShape3D_mhffj")
+
+[node name="StaticBody3D8" type="StaticBody3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9878, 0, 6.78508)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.347402, 0.347809, 0.572113)
+shape = SubResource("BoxShape3D_wvubl")

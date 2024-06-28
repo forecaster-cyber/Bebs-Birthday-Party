@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmv635oxg1tnw"
+path="res://.godot/imported/Audience Laughing.ogg-34272024e0a6b003b22be228f62a1142.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound_effects/Audience Laughing.ogg"
+dest_files=["res://.godot/imported/Audience Laughing.ogg-34272024e0a6b003b22be228f62a1142.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

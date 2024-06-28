@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://blk0vf7i48q6"
+path="res://.godot/imported/Skibidi Fortnite Sped Up Female.mp3-89e2f51ba4c7c3ef3ff0972bb78b5dc7.mp3str"
+
+[deps]
+
+source_file="res://sound_effects/Skibidi Fortnite Sped Up Female.mp3"
+dest_files=["res://.godot/imported/Skibidi Fortnite Sped Up Female.mp3-89e2f51ba4c7c3ef3ff0972bb78b5dc7.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

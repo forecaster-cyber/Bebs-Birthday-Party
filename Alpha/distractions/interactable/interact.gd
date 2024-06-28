@@ -5,6 +5,7 @@ var player_close = false
 var picked_up = false
 @export var player_hand: Node3D
 @export var object: Node3D
+@export var can_pick_up: bool
 var last_pos: Vector3
 func _ready():
 	last_pos = object.global_position
@@ -14,7 +15,7 @@ func _ready():
 func _process(delta):
 	
 	#pick up
-	if(Input.is_action_just_pressed("interact") && player_close && !picked_up):
+	if(Input.is_action_just_pressed("interact") && player_close && !picked_up && can_pick_up):
 		object.freeze = true
 		last_pos = object.global_position
 		object.global_position = player_hand.global_position
@@ -27,7 +28,7 @@ func _process(delta):
 		object.freeze = false
 		print("dropped")
 		picked_up = false
-	elif(Input.is_action_just_pressed("activate") && player_close && picked_up):
+	elif(Input.is_action_just_pressed("activate") && player_close && (picked_up || !can_pick_up)):
 		object.reparent(get_tree().get_current_scene())
 		object.freeze = false
 		object.action()
