@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bmvtwxxltnlg5"
+path="res://.godot/imported/newest laugh.mp3-3eae4b1864826fa0f41db29ad6124c82.mp3str"
+
+[deps]
+
+source_file="res://sound_effects/newest laugh.mp3"
+dest_files=["res://.godot/imported/newest laugh.mp3-3eae4b1864826fa0f41db29ad6124c82.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

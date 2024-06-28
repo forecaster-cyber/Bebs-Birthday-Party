@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://dpsknhaiwvaok"]
+[gd_scene load_steps=38 format=3 uid="uid://dpsknhaiwvaok"]
 
 [ext_resource type="PackedScene" uid="uid://b0jmja8u6w1le" path="res://player.tscn" id="1_gw058"]
 [ext_resource type="PackedScene" uid="uid://g8plnhsw7ko6" path="res://looking_at.tscn" id="2_i4msr"]
 [ext_resource type="PackedScene" uid="uid://bj44dvpiorjv0" path="res://npc.tscn" id="3_j8hae"]
-[ext_resource type="AudioStream" uid="uid://vuay52velbyg" path="res://sound_effects/Untitled.mp3" id="4_4jp2m"]
+[ext_resource type="AudioStream" uid="uid://bd6cdortdkh4a" path="res://sound_effects/new laugh.mp3" id="3_rgqp7"]
+[ext_resource type="AudioStream" uid="uid://bmvtwxxltnlg5" path="res://sound_effects/newest laugh.mp3" id="5_e4kl8"]
 [ext_resource type="ArrayMesh" uid="uid://dug3i0jfhuae0" path="res://bday party models/chair/Cheap Chair/Cheap Chair.obj" id="8_pbjgi"]
 [ext_resource type="PackedScene" uid="uid://briuaooe87wy5" path="res://bday party models/FNAF Party Tables v2/source/Tables.fbx" id="9_cujrc"]
 [ext_resource type="PackedScene" uid="uid://b2mdax67ua2is" path="res://bday party models/Baby Boy Closet/Baby Boy Closet.glb" id="10_mb6mf"]
@@ -13,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dj4ap1p4a0pq" path="res://bday party models/shelf/Simple TV Shelf 210cm.glb" id="14_6ag75"]
 [ext_resource type="PackedScene" uid="uid://c32gvgbi2v2a0" path="res://bday party models/lights/Christmas Lights 3D.glb" id="15_8625m"]
 [ext_resource type="PackedScene" uid="uid://drtray8slbqp8" path="res://bday party models/sign/Happy Birthday Sign.glb" id="16_0dsmk"]
+[ext_resource type="PackedScene" uid="uid://c5murct1karw5" path="res://distractions/radio/radio.tscn" id="16_rxa2u"]
+[ext_resource type="PackedScene" uid="uid://iihfdnlxa4x7" path="res://distractions/interactable/interact.tscn" id="17_iw7px"]
 [ext_resource type="AudioStream" uid="uid://blk0vf7i48q6" path="res://sound_effects/Skibidi Fortnite Sped Up Female.mp3" id="18_tbrtm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dpdt8"]
@@ -69,7 +72,7 @@ size = Vector3(1, 7.82123, 13.4202)
 size = Vector3(1.02637, 8.16931, 13.7543)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_68gpf"]
-size = Vector3(7.82086, 0.659668, 2.41284)
+size = Vector3(7.82086, 0.587219, 2.41284)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gt1s3"]
 size = Vector3(2.82397, 4.89954, 1.5675)
@@ -78,7 +81,10 @@ size = Vector3(2.82397, 4.89954, 1.5675)
 size = Vector3(2.99414, 5.25964, 1.49133)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wvubl"]
-size = Vector3(1.04004, 1.69562, 6.52899)
+size = Vector3(1.04004, 0.996926, 6.52899)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1je5"]
+size = Vector3(1, 0.313843, 6.74878)
 
 [node name="Room" type="Node3D"]
 
@@ -154,11 +160,20 @@ transform = Transform3D(-0.94707, 0, -0.321026, 0, 1, 0, 0.321026, 0, -0.94707, 
 player = NodePath("../../player")
 questions_path = "res://group_qs/laughing.json"
 
-[node name="looking_at" parent="laughing" node_paths=PackedStringArray("player") instance=ExtResource("2_i4msr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.601, 1.10541, 5.21059)
+[node name="looking_at" parent="laughing" node_paths=PackedStringArray("player", "bday_music") instance=ExtResource("2_i4msr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3613, 1.29025, 5.09985)
 player = NodePath("../../player")
-sound_fx = ExtResource("4_4jp2m")
-min_sound = -3
+sound_fx = ExtResource("3_rgqp7")
+bday_music = NodePath("../../distractions/Cube/bday_music")
+max_sound = -10
+
+[node name="laughter" type="AudioStreamPlayer3D" parent="laughing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3597, 1.53265, 4.91157)
+stream = ExtResource("5_e4kl8")
+volume_db = 50.0
+max_db = 6.0
+autoplay = true
+max_distance = 15.0
 
 [node name="party" type="Node3D" parent="."]
 
@@ -271,12 +286,22 @@ light_color = Color(0.756863, 0.439216, 1, 1)
 light_energy = 3.0
 omni_range = 10.6155
 
-[node name="bday_music" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971644, 3.05729, 5.05415)
+[node name="distractions" type="Node" parent="."]
+
+[node name="Cube" parent="distractions" node_paths=PackedStringArray("bday_music") instance=ExtResource("16_rxa2u")]
+transform = Transform3D(0.996121, 0, 0.0879903, 0, 1, 0, -0.0879903, 0, 0.996121, -3.78433, 2.46215, 2.61979)
+bday_music = NodePath("bday_music")
+
+[node name="bday_music" type="AudioStreamPlayer3D" parent="distractions/Cube"]
+transform = Transform3D(1, 0, -8.3593e-10, 0, 1, 0, -8.77901e-10, 0, 1, 0.413405, 0.211818, -0.0882325)
 stream = ExtResource("18_tbrtm")
+volume_db = -50.0
 autoplay = true
 
-[node name="distractions" type="Node" parent="."]
+[node name="interact" parent="distractions/Cube" node_paths=PackedStringArray("player_hand", "object") instance=ExtResource("17_iw7px")]
+transform = Transform3D(1, 0, -2.63819e-10, 0, 1, 0, -9.59357e-11, 0, 1, -0.0312614, -0.107643, 0.0624466)
+player_hand = NodePath("../../../player/hand")
+object = NodePath("..")
 
 [node name="collisions" type="Node" parent="."]
 
@@ -310,7 +335,7 @@ shape = SubResource("BoxShape3D_356l6")
 [node name="StaticBody3D5" type="StaticBody3D" parent="collisions"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06168, 1.4967, 2.16085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06168, 1.53437, 2.16085)
 shape = SubResource("BoxShape3D_68gpf")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="collisions"]
@@ -331,5 +356,12 @@ shape = SubResource("BoxShape3D_mhffj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9878, 0, 6.78508)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.347402, 0.347809, 0.572113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.347402, 0.884014, 0.572113)
 shape = SubResource("BoxShape3D_wvubl")
+
+[node name="StaticBody3D9" type="StaticBody3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6621, 2.00116, 7.3812)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101746, 0.0311279)
+shape = SubResource("BoxShape3D_m1je5")

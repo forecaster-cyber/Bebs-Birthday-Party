@@ -16,11 +16,13 @@ func _process(delta):
 	
 	#pick up
 	if(Input.is_action_just_pressed("interact") && player_close && !picked_up && can_pick_up):
+		print("picked up")
 		object.freeze = true
 		last_pos = object.global_position
 		object.global_position = player_hand.global_position
 		object.reparent(player_hand)
 		picked_up = true
+		print(str(picked_up) + str("123"))
 		
 	#drop
 	elif(Input.is_action_just_pressed("interact") && player_close && picked_up):
@@ -29,11 +31,9 @@ func _process(delta):
 		print("dropped")
 		picked_up = false
 	elif(Input.is_action_just_pressed("activate") && player_close && (picked_up || !can_pick_up)):
-		object.reparent(get_tree().get_current_scene())
-		object.freeze = false
 		object.action()
-		print("dropped")
-		picked_up = false
+		print("action")
+
 
 
 

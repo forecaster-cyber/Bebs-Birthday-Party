@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5murct1karw5"]
+
+[ext_resource type="Script" path="res://distractions/radio/cube.gd" id="1_me7fs"]
+[ext_resource type="PackedScene" uid="uid://bmdeeat5f15uk" path="res://distractions/radio/Old Radio.glb" id="2_xvynu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_12guv"]
+size = Vector3(1.76117, 2.07568, 1)
+
+[node name="Radio" type="RigidBody3D"]
+script = ExtResource("1_me7fs")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.67219, 0, 0, 0, 0.67219, 0, 0, 0, 0.67219, 0.0788748, 0.281293, 0.168417)
+shape = SubResource("BoxShape3D_12guv")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_xvynu")]
+transform = Transform3D(0.0168618, 0, -0.337049, 0, 0.337471, 0, 0.337049, 0, 0.0168618, 0.0325158, 0.0649455, 0.161903)

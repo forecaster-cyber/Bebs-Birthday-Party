@@ -20,10 +20,10 @@ mesh = SubResource("CapsuleMesh_ntbec")
 shape = SubResource("ConcavePolygonShape3D_q21jn")
 
 [node name="head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.560549, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783329, 0)
 
 [node name="cam" type="Camera3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0998055, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.420841, 0)
 
 [node name="looking_at" type="Area3D" parent="."]
 
