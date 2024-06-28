@@ -6,6 +6,7 @@ var parsed_json
 var q_choices_array = [33,33,33]
 var q_prob
 var q_remaning =[4,3,3]
+var initial_num_q = 0
 signal update_prob(prob_arr)
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,10 +32,15 @@ func _on_first_mouse_entered():
 
 func _on_first_pressed():
 	$dialog_sqr/text.text = parsed_json["questions"][q_remaning-1]["r"]
+	#initial_num_q+=1
 	#q_prob[q_choices_array[0]] -= 10
 	#q_prob[q_choices_array[1]] += 5
 	#q_prob[q_choices_array[2]] += 5
-	q_remaning = q_remaning -1
+	if( q_remaning -1 < 0):
+		q_remaning =initial_num_q
+		#initial_num_q = 0
+	else:
+		q_remaning = q_remaning -1
 	#update_prob.emit(q_prob)
 	
 

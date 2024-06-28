@@ -6,10 +6,14 @@ var picked_up = false
 @export var player_hand: Node3D
 @export var object: Node3D
 @export var can_pick_up: bool
+@export var instructions_text: String = "Press E to Grab!"
+@export var actions_text: String = "Press Left Mouse to interact!"
 var last_pos: Vector3
 func _ready():
 	last_pos = object.global_position
-
+	
+	$poof_effect.hide()
+	$instructions.text = instructions_text
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -23,6 +27,7 @@ func _process(delta):
 		object.reparent(player_hand)
 		picked_up = true
 		print(str(picked_up) + str("123"))
+		$instructions.text = actions_text
 		
 	#drop
 	elif(Input.is_action_just_pressed("interact") && player_close && picked_up):
@@ -42,6 +47,7 @@ func _process(delta):
 func _on_area_3d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	if(area.name == "looking_at"):
 		player_close = true
+		$instructions.visible = true
 	elif(area.name == "floor_area"):
 		print("sus!")
 		$poof_effect.visible = true
@@ -54,6 +60,7 @@ func _on_area_3d_area_shape_entered(area_rid, area, area_shape_index, local_shap
 func _on_area_3d_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	if(area.name == "looking_at"):
 		player_close = false
+		$instructions.visible = false
 
 
 func respawn():

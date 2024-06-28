@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvth4d81f6jsf"]
+
+[ext_resource type="Texture2D" uid="uid://dyjedjleu4os5" path="res://distractions/water gun/mark.png" id="1_lu7wm"]
+
+[node name="Mark" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.203022, 0, 0, 0, 0.203022, 0, 0, 0, 0.203022, 0, 0, 0)
+texture = ExtResource("1_lu7wm")

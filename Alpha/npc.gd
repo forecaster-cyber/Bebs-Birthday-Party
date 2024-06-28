@@ -24,6 +24,7 @@ func _ready():
 	var parsed_json = JSON.parse_string(dataFile.get_as_text())
 	num_of_q = parsed_json["questions"].size()
 	num_of_questions_remaining.emit(num_of_q)
+	$talk_system.initial_num_q = num_of_q
 	if (!can_talk):
 		$AnimationPlayer.play("talking")
 		$AnimationPlayer.speed_scale -= random_talk_speed

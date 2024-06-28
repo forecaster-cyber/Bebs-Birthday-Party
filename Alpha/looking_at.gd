@@ -4,7 +4,7 @@ extends Node3D
 @export var sound_fx: AudioStreamMP3
 @export var bday_music: AudioStreamPlayer3D
 @export var min_sound: int = -10
-@export var max_sound: int = 100
+@export var max_sound: int = -10
 var a = Vector2()
 func _ready():
 	$sound_fx.stream = sound_fx

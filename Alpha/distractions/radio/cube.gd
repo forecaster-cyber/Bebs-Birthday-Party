@@ -16,6 +16,8 @@ func action():
 	if(playing):
 		bday_music.stop() 
 		playing = false
+		$AnimationPlayer.stop()
 	else:
 		bday_music.play()
 		playing = true
+		$AnimationPlayer.play("playing")
