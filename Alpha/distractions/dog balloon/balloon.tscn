@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxf2vfv7i6g8a"]
+
+[ext_resource type="PackedScene" uid="uid://ccy8cjy57il5s" path="res://distractions/dog balloon/Dog Balloon 3D.glb" id="1_8x2jr"]
+[ext_resource type="Script" path="res://distractions/dog balloon/balloon.gd" id="1_m7hbx"]
+[ext_resource type="AudioStream" uid="uid://chems3cyb78t0" path="res://distractions/dog balloon/zapsplat_foley_balloon_air_release_deflate_from_valve_hiss_squeak_005_38142.mp3" id="2_jeodq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a7mjy"]
+
+[sub_resource type="Animation" id="Animation_215q0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_Scene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.100062, 0.245552, -0.410855)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_Scene:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sketchfab_Scene:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.354837, 0.354837, 0.354837)]
+}
+
+[sub_resource type="Animation" id="Animation_s3lby"]
+resource_name = "balloon"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_Scene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.100062, 0.245552, -0.410855), Vector3(-0.100062, 0.245552, -0.206328), Vector3(-0.100062, 0.245552, -0.410855)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_Scene:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.402316, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sketchfab_Scene:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.354837, 0.354837, 0.354837), Vector3(0.261821, 0.261821, 0.261821), Vector3(0.354837, 0.354837, 0.354837)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eqasr"]
+_data = {
+"RESET": SubResource("Animation_215q0"),
+"balloon": SubResource("Animation_s3lby")
+}
+
+[node name="Balloon" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.40703)
+gravity_scale = 0.05
+script = ExtResource("1_m7hbx")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_8x2jr")]
+transform = Transform3D(0.354837, 0, 0, 0, 0.354837, 0, 0, 0, 0.354837, -0.100062, 0.245552, -0.410855)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.00691142, -0.999976, 0, 0.999976, 0.00691142, 0, 0, 0, 1, 0.015444, 0.122217, -0.41431)
+shape = SubResource("CapsuleShape3D_a7mjy")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jeodq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eqasr")
+}

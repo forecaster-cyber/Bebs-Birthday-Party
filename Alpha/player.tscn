@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0jmja8u6w1le"]
+[gd_scene load_steps=9 format=3 uid="uid://b0jmja8u6w1le"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ww2mb"]
 
@@ -9,6 +9,46 @@ data = PackedVector3Array(0, 1, 0, 0, 1, 0, 0, 0.9924, -0.0868, 0, 1, 0, -0.0085
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_wt7u5"]
 length = 1.47024
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_axbjw"]
+radius = 0.28895
+height = 0.75694
+
+[sub_resource type="Animation" id="Animation_sduud"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("push/CollisionShape3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jnggf"]
+resource_name = "push"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("push/CollisionShape3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1.65997, 1.00736), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7g3de"]
+_data = {
+"RESET": SubResource("Animation_sduud"),
+"push": SubResource("Animation_jnggf")
+}
 
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_ww2mb")
@@ -30,3 +70,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.420841, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="looking_at"]
 transform = Transform3D(-1, 0, 5.23647e-05, 0, 1, 0, -5.23647e-05, 0, -1, 0, 0, 0)
 shape = SubResource("SeparationRayShape3D_wt7u5")
+
+[node name="push" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="push"]
+transform = Transform3D(1, 0, 0, 0, -0.0111524, 0.999938, 0, -0.999938, -0.0111524, 0, 0, -1.19025)
+shape = SubResource("CapsuleShape3D_axbjw")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7g3de")
+}

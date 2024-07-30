@@ -1,6 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://dpsknhaiwvaok"]
+[gd_scene load_steps=45 format=3 uid="uid://dpsknhaiwvaok"]
 
 [ext_resource type="PackedScene" uid="uid://b0jmja8u6w1le" path="res://player.tscn" id="1_gw058"]
+[ext_resource type="Script" path="res://main.gd" id="1_nqkhb"]
 [ext_resource type="PackedScene" uid="uid://g8plnhsw7ko6" path="res://looking_at.tscn" id="2_i4msr"]
 [ext_resource type="PackedScene" uid="uid://bj44dvpiorjv0" path="res://npc.tscn" id="3_j8hae"]
 [ext_resource type="AudioStream" uid="uid://bd6cdortdkh4a" path="res://sound_effects/new laugh.mp3" id="3_rgqp7"]
@@ -13,11 +14,15 @@
 [ext_resource type="PackedScene" uid="uid://dv8li6yrta7gg" path="res://bday party models/cake/cake.glb" id="13_ck3fu"]
 [ext_resource type="PackedScene" uid="uid://dj4ap1p4a0pq" path="res://bday party models/shelf/Simple TV Shelf 210cm.glb" id="14_6ag75"]
 [ext_resource type="PackedScene" uid="uid://c32gvgbi2v2a0" path="res://bday party models/lights/Christmas Lights 3D.glb" id="15_8625m"]
+[ext_resource type="PackedScene" uid="uid://bktnx4qrh6bop" path="res://bday party models/table 2/wooden_table.glb" id="15_prd1t"]
 [ext_resource type="PackedScene" uid="uid://drtray8slbqp8" path="res://bday party models/sign/Happy Birthday Sign.glb" id="16_0dsmk"]
 [ext_resource type="PackedScene" uid="uid://c5murct1karw5" path="res://distractions/radio/radio.tscn" id="16_rxa2u"]
+[ext_resource type="AudioStream" uid="uid://c17iqxbkrixn5" path="res://sound_effects/Everybody-Wants-To-Rule-The-World.ogg" id="17_ipclt"]
 [ext_resource type="PackedScene" uid="uid://iihfdnlxa4x7" path="res://distractions/interactable/interact.tscn" id="17_iw7px"]
 [ext_resource type="PackedScene" uid="uid://7l6rm1rdklsc" path="res://distractions/water gun/gun.tscn" id="18_g7bia"]
-[ext_resource type="AudioStream" uid="uid://blk0vf7i48q6" path="res://sound_effects/Skibidi Fortnite Sped Up Female.mp3" id="18_tbrtm"]
+[ext_resource type="PackedScene" uid="uid://cxf2vfv7i6g8a" path="res://distractions/dog balloon/balloon.tscn" id="20_ixt4l"]
+[ext_resource type="AudioStream" uid="uid://cbd7yxpq5itki" path="res://sound_effects/human_group_children_x6_uk_aged_3_to_8_fake_crying.mp3" id="21_2k0ky"]
+[ext_resource type="PackedScene" uid="uid://nb434uaehnad" path="res://distractions/gift/gift.tscn" id="21_txk8d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dpdt8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -85,9 +90,12 @@ size = Vector3(2.99414, 5.25964, 1.49133)
 size = Vector3(1.04004, 0.996926, 6.52899)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m1je5"]
-size = Vector3(1, 0.313843, 6.74878)
+size = Vector3(1, 0.0434876, 6.74878)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24wsr"]
 
 [node name="Room" type="Node3D"]
+script = ExtResource("1_nqkhb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -161,11 +169,12 @@ transform = Transform3D(-0.94707, 0, -0.321026, 0, 1, 0, 0.321026, 0, -0.94707, 
 player = NodePath("../../player")
 questions_path = "res://group_qs/laughing.json"
 
-[node name="looking_at" parent="laughing" node_paths=PackedStringArray("player", "bday_music") instance=ExtResource("2_i4msr")]
+[node name="looking_at" parent="laughing" node_paths=PackedStringArray("player", "bday_music", "others_dot") instance=ExtResource("2_i4msr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3613, 1.29025, 5.09985)
 player = NodePath("../../player")
 sound_fx = ExtResource("3_rgqp7")
 bday_music = NodePath("../../distractions/Radio/bday_music")
+others_dot = NodePath("../../CRYING/looking_at")
 
 [node name="laughter" type="AudioStreamPlayer3D" parent="laughing"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3597, 1.53265, 4.91157)
@@ -204,7 +213,7 @@ mesh = SubResource("CylinderMesh_smfbu")
 transform = Transform3D(0.797205, 0, 0, 0, 0.797205, 0, 0, 0, 0.797205, -0.688503, 2.90223, 2.12171)
 
 [node name="shelf" parent="party" instance=ExtResource("14_6ag75")]
-transform = Transform3D(0.0116311, 0, 2.55761, 0, 4.19121, 0, -2.74245, 0, 0.0108469, -10.6684, 0.501732, 6.92631)
+transform = Transform3D(0.0116311, 0, 2.55761, 0, 3.3195, 0, -2.74245, 0, 0.0108469, -10.6684, 0.501732, 6.92631)
 
 [node name="lights" type="Node3D" parent="party"]
 transform = Transform3D(0.133232, 0.124437, 0.545259, -0.0295369, 0.5613, -0.120881, -0.558497, 1.25107e-09, 0.136467, -5.21903, 5.91202, -2.1655)
@@ -253,6 +262,9 @@ transform = Transform3D(-0.00661479, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066
 mesh = ExtResource("8_pbjgi")
 skeleton = NodePath("../..")
 
+[node name="table_2" parent="party" instance=ExtResource("15_prd1t")]
+transform = Transform3D(3.10939, 0, 0, 0, 3.10939, 0, 0, 0, 3.10939, -0.94187, 0.553334, 7.13254)
+
 [node name="lights" type="Node3D" parent="."]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="lights"]
@@ -294,7 +306,7 @@ bday_music = NodePath("bday_music")
 
 [node name="bday_music" type="AudioStreamPlayer3D" parent="distractions/Radio"]
 transform = Transform3D(1, 0, -8.3593e-10, 0, 1, 0, -8.77901e-10, 0, 1, 0.413405, 0.211818, -0.0882325)
-stream = ExtResource("18_tbrtm")
+stream = ExtResource("17_ipclt")
 volume_db = -50.0
 autoplay = true
 
@@ -309,6 +321,25 @@ transform = Transform3D(0.110706, 0, 0.993853, 0, 1, 0, -0.993853, 0, 0.110706, 
 
 [node name="interact" parent="distractions/Gun" node_paths=PackedStringArray("player_hand", "object") instance=ExtResource("17_iw7px")]
 transform = Transform3D(0.110706, 0, -0.993853, 0, 1, 0, 0.993853, 0, 0.110706, -0.0417914, -0.19035, 0.0878339)
+player_hand = NodePath("../../../player/hand")
+object = NodePath("..")
+can_pick_up = true
+actions_text = "Press Left Mouse to shoot!"
+
+[node name="Balloon" parent="distractions" instance=ExtResource("20_ixt4l")]
+transform = Transform3D(0.0546539, 0, 0.998505, 0, 1, 0, -0.998505, 0, 0.0546539, -0.460447, 2.06508, 7.23678)
+
+[node name="interact" parent="distractions/Balloon" node_paths=PackedStringArray("player_hand", "object") instance=ExtResource("17_iw7px")]
+transform = Transform3D(1, 0, 5.70086e-11, 0, 1, 0, 6.25766e-11, 0, 1, 0.0408735, -0.190483, -0.45419)
+player_hand = NodePath("../../../player/hand")
+object = NodePath("..")
+instructions_text = "Press Left Mouse to interact!"
+
+[node name="Gift" parent="distractions" instance=ExtResource("21_txk8d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6915, 2.3864, 8.65325)
+
+[node name="interact" parent="distractions/Gift" node_paths=PackedStringArray("player_hand", "object") instance=ExtResource("17_iw7px")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.406045, -0.208717, 0.0828581)
 player_hand = NodePath("../../../player/hand")
 object = NodePath("..")
 can_pick_up = true
@@ -366,12 +397,40 @@ shape = SubResource("BoxShape3D_mhffj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9878, 0, 6.78508)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.347402, 0.884014, 0.572113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.347402, 0.71184, 0.572113)
 shape = SubResource("BoxShape3D_wvubl")
 
 [node name="StaticBody3D9" type="StaticBody3D" parent="collisions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6621, 2.00116, 7.3812)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101746, 0.0311279)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.131752, 0.0311279)
 shape = SubResource("BoxShape3D_m1je5")
+
+[node name="StaticBody3D10" type="StaticBody3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21326, 0, 3.46112)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18375, 1.01803, 3.62118)
+shape = SubResource("BoxShape3D_24wsr")
+
+[node name="CRYING" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_j8hae")]
+transform = Transform3D(0.58976, 0, -0.807578, 0, 1, 0, 0.807578, 0, 0.58976, -9.05532, 1.56611, -1.51068)
+player = NodePath("../player")
+questions_path = "res://group_qs/crying.json"
+can_talk = true
+
+[node name="looking_at" parent="CRYING" node_paths=PackedStringArray("player", "bday_music", "others_dot") instance=ExtResource("2_i4msr")]
+transform = Transform3D(1, 0, -3.72312e-10, 0, 1, 0, -3.72312e-10, 0, 1, 0.272348, 0, 0.0860186)
+player = NodePath("../../player")
+sound_fx = ExtResource("21_2k0ky")
+bday_music = NodePath("../../distractions/Radio/bday_music")
+others_dot = NodePath("../../laughing/looking_at")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CRYING"]
+stream = ExtResource("21_2k0ky")
+volume_db = 30.0
+autoplay = true
+max_distance = 15.0
+
+[connection signal="lock_rotation" from="CRYING" to="player" method="_on_crying_lock_rotation"]

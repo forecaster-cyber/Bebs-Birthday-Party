@@ -3,11 +3,11 @@ extends Control
 var questions
 var dataFile
 var parsed_json
-var q_choices_array = [33,33,33]
-var q_prob
+#var q_choices_array = [33,33,33]
+#var q_prob
 var q_remaning =[4,3,3]
 var initial_num_q = 0
-signal update_prob(prob_arr)
+#signal update_prob(prob_arr)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(questions)
@@ -22,8 +22,8 @@ func _process(delta):
 func _on_first_mouse_entered():
 	dataFile = FileAccess.open(str(questions), FileAccess.READ)
 	parsed_json = JSON.parse_string(dataFile.get_as_text())
-	$AnimationPlayer.play("go_down")
-	$dialog_sqr/text.text = parsed_json["questions"][q_remaning-1]["q"]
+	#$AnimationPlayer.play("go_down")
+	$dialog_sqr/text.text = parsed_json["questions"][initial_num_q]["q"]
 	print(q_remaning)
 	print(q_remaning-1)
 
@@ -31,16 +31,15 @@ func _on_first_mouse_entered():
 
 
 func _on_first_pressed():
-	$dialog_sqr/text.text = parsed_json["questions"][q_remaning-1]["r"]
-	#initial_num_q+=1
+	$dialog_sqr/text.text = parsed_json["questions"][initial_num_q]["r"]
+	initial_num_q+=1
 	#q_prob[q_choices_array[0]] -= 10
 	#q_prob[q_choices_array[1]] += 5
 	#q_prob[q_choices_array[2]] += 5
-	if( q_remaning -1 < 0):
-		q_remaning =initial_num_q
+	if( initial_num_q == q_remaning):
+		initial_num_q= 0
 		#initial_num_q = 0
-	else:
-		q_remaning = q_remaning -1
+	
 	#update_prob.emit(q_prob)
 	
 

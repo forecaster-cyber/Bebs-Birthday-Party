@@ -19,5 +19,5 @@ func action():
 		$RayCast3D.get_collider().add_child(instance)
 		instance.global_position = $RayCast3D.get_collision_point()
 		
-	#play audio!
+	$AudioStreamPlayer.play()
 

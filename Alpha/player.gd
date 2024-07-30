@@ -8,7 +8,7 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var look_rot: Vector2
-
+var can_rot = true
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
@@ -34,9 +34,19 @@ func _physics_process(delta):
 	move_and_slide()
 	#head.rotation_degrees.x = look_rot.x
 	rotation_degrees.y = look_rot.y
+	if(Input.is_action_just_pressed("push")):
+		$push/CollisionShape3D.disabled = false
+		$AnimationPlayer.play("push")
+		await get_tree().create_timer(0.5).timeout
+		
+		$push/CollisionShape3D.disabled = true
 	
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && can_rot:
 		look_rot.y -= (event.relative.x*0.25)
 		look_rot.x -= (event.relative.y*0.25)
 		look_rot.x = clamp(look_rot.x, -80, 90)
+
+
+func _on_crying_lock_rotation(lock):
+	can_rot = lock

@@ -11,9 +11,10 @@ var green = rng.randf_range(0.0,1.0)
 var blue = rng.randf_range(0.0,1.0)
 var options_prob = [33,33,33]
 var num_of_q = 0
+signal lock_rotation(lock)
 
-signal q_choices(q1,q2,q3)
-signal q_prob(q_prob_arr)
+#signal q_choices(q1,q2,q3)
+#signal q_prob(q_prob_arr)
 signal num_of_questions_remaining(num_of_questions)
 func _ready():
 	var material = $Body.get_active_material(0)
@@ -24,10 +25,12 @@ func _ready():
 	var parsed_json = JSON.parse_string(dataFile.get_as_text())
 	num_of_q = parsed_json["questions"].size()
 	num_of_questions_remaining.emit(num_of_q)
-	$talk_system.initial_num_q = num_of_q
+	#$talk_system.initial_num_q = num_of_q
 	if (!can_talk):
 		$AnimationPlayer.play("talking")
 		$AnimationPlayer.speed_scale -= random_talk_speed
+	else:
+		$AnimationPlayer.play("crying")
 	
 	
 
@@ -44,6 +47,7 @@ func _process(delta):
 		$talk_system.visible = true
 		player.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		lock_rotation.emit(false)
 		#var player_cam_translation = player.get_node("head/cam").position
 		#$npc_cam.position = player_cam_translation
 		$npc_cam.set_current(true)
@@ -62,6 +66,7 @@ func _on_npc_collision_area_shape_exited(area_rid, area, area_shape_index, local
 	player_close = false 
 	$talk_system.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	lock_rotation.emit(true)
 	$npc_cam.set_current(false)
 
 #func weightedRandomIndex(weights: Array) -> int:
