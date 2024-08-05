@@ -56,18 +56,20 @@ func _process(delta):
 
 
 func _on_npc_collision_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	if (can_talk):
-		$Label3D.visible = true
-		player_close = true
+	if(area.name == "looking_at"):
+		if (can_talk):
+			$Label3D.visible = true
+			player_close = true
 
 
 func _on_npc_collision_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	$Label3D.visible = false
-	player_close = false 
-	$talk_system.visible = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	lock_rotation.emit(true)
-	$npc_cam.set_current(false)
+	if(area.name == "looking_at"):
+		$Label3D.visible = false
+		player_close = false 
+		$talk_system.visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		lock_rotation.emit(true)
+		$npc_cam.set_current(false)
 
 #func weightedRandomIndex(weights: Array) -> int:
 #	var totalWeight = 0

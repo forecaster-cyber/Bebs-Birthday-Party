@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dpsknhaiwvaok"]
+[gd_scene load_steps=47 format=3 uid="uid://dpsknhaiwvaok"]
 
 [ext_resource type="PackedScene" uid="uid://b0jmja8u6w1le" path="res://player.tscn" id="1_gw058"]
 [ext_resource type="Script" path="res://main.gd" id="1_nqkhb"]
@@ -43,6 +43,12 @@ albedo_color = Color(0.67451, 0.819608, 0.866667, 1)
 material = SubResource("StandardMaterial3D_i578l")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1di0b"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_35fpu"]
+radius = 3.55325
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k42jd"]
+radius = 3.40924
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ku33p"]
 load_path = "res://.godot/imported/rug texture.png-05c9ed10c51477abc9cfded751f520cc.s3tc.ctex"
@@ -183,6 +189,37 @@ volume_db = 50.0
 max_db = 6.0
 autoplay = true
 max_distance = 15.0
+
+[node name="laughing_listening" type="Area3D" parent="laughing"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="laughing/laughing_listening"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6587, 0.54803, 4.5741)
+shape = SubResource("SphereShape3D_35fpu")
+
+[node name="CRYING" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_j8hae")]
+transform = Transform3D(0.58976, 0, -0.807578, 0, 1, 0, 0.807578, 0, 0.58976, -9.05532, 1.56611, -1.51068)
+player = NodePath("../player")
+questions_path = "res://group_qs/crying.json"
+can_talk = true
+
+[node name="looking_at" parent="CRYING" node_paths=PackedStringArray("player", "bday_music", "others_dot") instance=ExtResource("2_i4msr")]
+transform = Transform3D(1, 0, -3.72312e-10, 0, 1, 0, -3.72312e-10, 0, 1, 0.272348, 0, 0.0860186)
+player = NodePath("../../player")
+sound_fx = ExtResource("21_2k0ky")
+bday_music = NodePath("../../distractions/Radio/bday_music")
+others_dot = NodePath("../../laughing/looking_at")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CRYING"]
+stream = ExtResource("21_2k0ky")
+volume_db = 30.0
+autoplay = true
+max_distance = 15.0
+
+[node name="crying_listening" type="Area3D" parent="CRYING"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CRYING/crying_listening"]
+transform = Transform3D(1, 0, 2.93498e-08, 0, 1, 0, -8.16513e-09, 0, 1, 0, -0.557404, 0)
+shape = SubResource("SphereShape3D_k42jd")
 
 [node name="party" type="Node3D" parent="."]
 
@@ -414,23 +451,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21326, 0, 3.46112)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18375, 1.01803, 3.62118)
 shape = SubResource("BoxShape3D_24wsr")
 
-[node name="CRYING" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_j8hae")]
-transform = Transform3D(0.58976, 0, -0.807578, 0, 1, 0, 0.807578, 0, 0.58976, -9.05532, 1.56611, -1.51068)
-player = NodePath("../player")
-questions_path = "res://group_qs/crying.json"
-can_talk = true
+[node name="timers" type="Node" parent="."]
 
-[node name="looking_at" parent="CRYING" node_paths=PackedStringArray("player", "bday_music", "others_dot") instance=ExtResource("2_i4msr")]
-transform = Transform3D(1, 0, -3.72312e-10, 0, 1, 0, -3.72312e-10, 0, 1, 0.272348, 0, 0.0860186)
-player = NodePath("../../player")
-sound_fx = ExtResource("21_2k0ky")
-bday_music = NodePath("../../distractions/Radio/bday_music")
-others_dot = NodePath("../../laughing/looking_at")
+[node name="crying" type="Label" parent="timers"]
+offset_right = 40.0
+offset_bottom = 23.0
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CRYING"]
-stream = ExtResource("21_2k0ky")
-volume_db = 30.0
-autoplay = true
-max_distance = 15.0
+[node name="endgame" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
 
+[connection signal="body_entered" from="laughing/laughing_listening" to="." method="_on_laughing_listening_body_entered"]
+[connection signal="body_exited" from="laughing/laughing_listening" to="." method="_on_laughing_listening_body_exited"]
 [connection signal="lock_rotation" from="CRYING" to="player" method="_on_crying_lock_rotation"]
+[connection signal="body_entered" from="CRYING/crying_listening" to="." method="_on_crying_listening_body_entered"]
+[connection signal="body_exited" from="CRYING/crying_listening" to="." method="_on_crying_listening_body_exited"]
+[connection signal="timeout" from="endgame" to="." method="_on_endgame_timeout"]

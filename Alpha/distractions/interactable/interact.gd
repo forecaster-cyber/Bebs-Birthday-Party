@@ -20,6 +20,9 @@ func _process(delta):
 	
 	#pick up
 	if(Input.is_action_just_pressed("interact") && player_close && !picked_up && can_pick_up):
+		if(player_hand.get_parent().first_pick == false):
+			player_hand.get_parent().first_pick = true
+			Globals.first_interaction = str(object.name)
 		print("picked up")
 		object.freeze = true
 		last_pos = object.global_position
@@ -36,6 +39,9 @@ func _process(delta):
 		print("dropped")
 		picked_up = false
 	elif(Input.is_action_just_pressed("activate") && player_close && (picked_up || !can_pick_up)):
+		if(player_hand.get_parent().first_pick == false):
+			player_hand.get_parent().first_pick = true
+			Globals.first_interaction = str(object.name)
 		object.action()
 		print("action")
 
