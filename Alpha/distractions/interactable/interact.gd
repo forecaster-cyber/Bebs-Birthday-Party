@@ -23,6 +23,7 @@ func _process(delta):
 		if(player_hand.get_parent().first_pick == false):
 			player_hand.get_parent().first_pick = true
 			Globals.first_interaction = str(object.name)
+		Globals.non_curious_interactions += 1
 		print("picked up")
 		object.freeze = true
 		last_pos = object.global_position
@@ -42,6 +43,7 @@ func _process(delta):
 		if(player_hand.get_parent().first_pick == false):
 			player_hand.get_parent().first_pick = true
 			Globals.first_interaction = str(object.name)
+		Globals.non_curious_interactions += 1
 		object.action()
 		print("action")
 

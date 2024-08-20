@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dpsknhaiwvaok"]
+[gd_scene load_steps=48 format=3 uid="uid://dpsknhaiwvaok"]
 
 [ext_resource type="PackedScene" uid="uid://b0jmja8u6w1le" path="res://player.tscn" id="1_gw058"]
 [ext_resource type="Script" path="res://main.gd" id="1_nqkhb"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cxf2vfv7i6g8a" path="res://distractions/dog balloon/balloon.tscn" id="20_ixt4l"]
 [ext_resource type="AudioStream" uid="uid://cbd7yxpq5itki" path="res://sound_effects/human_group_children_x6_uk_aged_3_to_8_fake_crying.mp3" id="21_2k0ky"]
 [ext_resource type="PackedScene" uid="uid://nb434uaehnad" path="res://distractions/gift/gift.tscn" id="21_txk8d"]
+[ext_resource type="AudioStream" uid="uid://b12ry6njk5o6v" path="res://sound_effects/arguing/bg_arguing/קולות רקע.mp3" id="24_oqsoc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dpdt8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -138,7 +139,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(-1.70931e-06, -1, 7.05507e-15, 39.1045, -4.37114e-08, -7.05507e-15, 1.36392e-14, 3.48787e-16, 20.2275, -9.25155, 10.9023, 0)
 
 [node name="wall" type="MeshInstance3D" parent="walls2/walls"]
-transform = Transform3D(0.475152, 1.11022e-16, -7.43911e-22, -8.52651e-13, 1, -4.0334e-20, -2.47831e-21, -3.99959e-25, 1.1875, -0.0547844, 2.45967, -5.47191e-18)
+transform = Transform3D(0.475152, 2.22045e-16, -7.51381e-22, -7.95808e-13, 1, -4.12354e-20, -2.49015e-21, -3.99959e-25, 1.1875, -0.0547844, 2.45967, -5.47191e-18)
 mesh = SubResource("BoxMesh_m8v3l")
 skeleton = NodePath("../../..")
 
@@ -188,7 +189,7 @@ stream = ExtResource("5_e4kl8")
 volume_db = 50.0
 max_db = 6.0
 autoplay = true
-max_distance = 15.0
+max_distance = 10.0
 
 [node name="laughing_listening" type="Area3D" parent="laughing"]
 
@@ -460,6 +461,32 @@ offset_bottom = 23.0
 [node name="endgame" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="arguing" type="Node3D" parent="."]
+transform = Transform3D(-0.970072, 0, 0.242819, 0, 1, 0, -0.242819, 0, -0.970071, 2.19801, 0, -4.91366)
+
+[node name="arg1" parent="arguing" node_paths=PackedStringArray("player") instance=ExtResource("3_j8hae")]
+transform = Transform3D(0.982067, 0, -0.18853, 0, 1, 0, 0.18853, 0, 0.982067, -2.12629, 1.49527, -2.66974)
+player = NodePath("../../player")
+questions_path = "res://group_qs/crying.json"
+
+[node name="arg2" parent="arguing" node_paths=PackedStringArray("player") instance=ExtResource("3_j8hae")]
+transform = Transform3D(-0.995987, 0, -0.0895027, 0, 1, 0, 0.0895027, 0, -0.995987, 0.583208, 1.50462, -2.89474)
+player = NodePath("../../player")
+questions_path = "res://group_qs/crying.json"
+
+[node name="looking_at" parent="arguing" node_paths=PackedStringArray("player", "bday_music", "others_dot") instance=ExtResource("2_i4msr")]
+transform = Transform3D(1, 0, -1.09978e-09, 0, 1, 0, 7.02486e-09, 0, 1, -0.770259, 1.36569, -3.07722)
+player = NodePath("../../player")
+sound_fx = ExtResource("24_oqsoc")
+bday_music = NodePath("../../distractions/Radio/bday_music")
+others_dot = NodePath("../../CRYING/looking_at")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="arguing"]
+stream = ExtResource("24_oqsoc")
+volume_db = -10.0
+autoplay = true
+max_distance = 15.0
 
 [connection signal="body_entered" from="laughing/laughing_listening" to="." method="_on_laughing_listening_body_entered"]
 [connection signal="body_exited" from="laughing/laughing_listening" to="." method="_on_laughing_listening_body_exited"]

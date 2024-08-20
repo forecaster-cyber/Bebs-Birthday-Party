@@ -14,3 +14,5 @@ var t_looking_fighting = 0
 var t_idle = 0
 var first_interaction = ""
 var t_talking_crying = 0
+var id = ""
+var logs = []

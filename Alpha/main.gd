@@ -31,8 +31,10 @@ func _process(delta):
 	#need to think about better definition
 	if(($player.is_idle == true)):
 		Globals.t_idle += delta
-		
-	$timers/crying.text = str(Globals.t_idle)
+	if($CRYING.player_is_talking == true):
+		Globals.t_talking_crying+=delta
+	
+	$timers/crying.text = str(Globals.first_interaction)
 		
 
 func insert_data():
@@ -49,7 +51,7 @@ func insert_data():
 	"first_interaction": Globals.first_interaction,
 	"t_talking_crying": Globals.t_talking_crying
 	}
-	await collection.add("Shira_lanir3", data)
+	await collection.add(Globals.id, data)
 	print("added")
 
 #listening to crying time

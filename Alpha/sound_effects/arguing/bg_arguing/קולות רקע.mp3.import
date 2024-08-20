@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b12ry6njk5o6v"
+path="res://.godot/imported/קולות רקע.mp3-37351488152cf09898078b4b1b21cca7.mp3str"
+
+[deps]
+
+source_file="res://sound_effects/arguing/bg_arguing/קולות רקע.mp3"
+dest_files=["res://.godot/imported/קולות רקע.mp3-37351488152cf09898078b4b1b21cca7.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

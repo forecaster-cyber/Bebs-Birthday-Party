@@ -29,12 +29,13 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		Globals.distance_travelled += abs(self.position.x) + abs(self.position.z)
 		is_idle = false
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		is_idle = true
-
+	
 	move_and_slide()
 	#head.rotation_degrees.x = look_rot.x
 	rotation_degrees.y = look_rot.y

@@ -31,6 +31,7 @@ func _on_first_mouse_entered():
 
 
 func _on_first_pressed():
+	Globals.q_asked += 1
 	$dialog_sqr/text.text = parsed_json["questions"][initial_num_q]["r"]
 	initial_num_q+=1
 	#q_prob[q_choices_array[0]] -= 10

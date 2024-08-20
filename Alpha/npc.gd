@@ -11,6 +11,7 @@ var green = rng.randf_range(0.0,1.0)
 var blue = rng.randf_range(0.0,1.0)
 var options_prob = [33,33,33]
 var num_of_q = 0
+var player_is_talking = false
 signal lock_rotation(lock)
 
 #signal q_choices(q1,q2,q3)
@@ -48,6 +49,7 @@ func _process(delta):
 		player.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		lock_rotation.emit(false)
+		player_is_talking = true
 		#var player_cam_translation = player.get_node("head/cam").position
 		#$npc_cam.position = player_cam_translation
 		$npc_cam.set_current(true)

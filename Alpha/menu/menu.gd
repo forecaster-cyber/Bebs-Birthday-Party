@@ -13,6 +13,7 @@ func _process(delta):
 
 
 func _on_button_pressed():
+	Globals.id = $TextEdit.text
 	var email = "forecaster1310@gmail.com"
 	var password = "Serg131021"
 	Firebase.Auth.login_with_email_and_password(email, password)

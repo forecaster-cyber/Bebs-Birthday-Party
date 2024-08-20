@@ -33,4 +33,15 @@ grow_horizontal = 2
 text = "Beb's Birthday Party"
 metadata/_edit_use_anchors_ = true
 
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.908951
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+placeholder_text = "please input id."
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
