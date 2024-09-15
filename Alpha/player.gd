@@ -11,6 +11,9 @@ var look_rot: Vector2
 var can_rot = true
 var is_idle = false
 var first_pick = false
+var red = 1.0
+var green = 1.0
+var blue = 1.0
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
@@ -58,3 +61,7 @@ func _input(event):
 
 func _on_crying_lock_rotation(lock):
 	can_rot = lock
+
+
+func _on_robot_lock_rotation(lock):
+	can_rot = lock 

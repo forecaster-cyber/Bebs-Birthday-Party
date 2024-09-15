@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://iihfdnlxa4x7"]
+[gd_scene load_steps=8 format=3 uid="uid://iihfdnlxa4x7"]
 
 [ext_resource type="Script" path="res://distractions/interactable/interact.gd" id="1_cp12p"]
 [ext_resource type="Texture2D" uid="uid://bkji2lnbqx7du" path="res://distractions/interactable/poof.png" id="2_cfa2n"]
+[ext_resource type="Texture2D" uid="uid://w7hde61qakkj" path="res://E.png" id="3_5baco"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pte1w"]
 radius = 0.943173
@@ -60,10 +61,11 @@ libraries = {
 "": SubResource("AnimationLibrary_yx1vc")
 }
 
-[node name="instructions" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09312, 0)
+[node name="instructions" type="Sprite3D" parent="."]
+transform = Transform3D(0.149393, 0, 0, 0, 0.149393, 0, 0, 0, 0.149393, 0, 1.09312, 0)
 visible = false
 billboard = 1
+texture = ExtResource("3_5baco")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_shape_entered" from="Area3D" to="." method="_on_area_3d_area_shape_entered"]

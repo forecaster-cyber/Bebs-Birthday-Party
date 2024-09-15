@@ -1,9 +1,10 @@
-[gd_scene load_steps=93 format=3 uid="uid://bj44dvpiorjv0"]
+[gd_scene load_steps=96 format=3 uid="uid://bj44dvpiorjv0"]
 
 [ext_resource type="Script" path="res://npc.gd" id="1_lckfr"]
 [ext_resource type="PackedScene" uid="uid://bkc20x4kcb1av" path="res://talk_system.tscn" id="2_aqxcf"]
 [ext_resource type="Texture2D" uid="uid://beyspk22f18gr" path="res://eye texture Background Removed.png" id="2_fwk1u"]
 [ext_resource type="Texture2D" uid="uid://bm6gsmon8pi2r" path="res://art/Cartoon Mouth Face.png" id="3_c1nle"]
+[ext_resource type="PackedScene" uid="uid://dy3xaa2c516lq" path="res://distractions/Party Cone.glb" id="5_45e0c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8b8l1"]
 albedo_color = Color(0.631373, 0.415686, 0.168627, 1)
@@ -622,6 +623,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Body:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_3xlg7"]
 resource_name = "crying"
@@ -675,6 +700,48 @@ tracks/3/keys = {
 "values": [Vector3(0.00982929, 0.0220463, -0.419329)]
 }
 
+[sub_resource type="Animation" id="Animation_s8dpo"]
+resource_name = "dis1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 0.366021),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.44564, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.52108, 0.342361, 1.97183), Vector3(1.25845, 0.746994, 1.30197), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xfew3"]
+resource_name = "dis2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -3.03035, 0), Vector3(3.48787e-16, -6.28319, 3.48787e-16)]
+}
+
 [sub_resource type="Animation" id="Animation_l2jfl"]
 resource_name = "talking"
 length = 0.3
@@ -720,6 +787,8 @@ tracks/2/keys = {
 _data = {
 "RESET": SubResource("Animation_fofvo"),
 "crying": SubResource("Animation_3xlg7"),
+"dis1": SubResource("Animation_s8dpo"),
+"dis2": SubResource("Animation_xfew3"),
 "talking": SubResource("Animation_l2jfl")
 }
 
@@ -761,6 +830,9 @@ autoplay = "laughing"
 frame = 10
 frame_progress = 0.996411
 
+[node name="hat" parent="Body" instance=ExtResource("5_45e0c")]
+transform = Transform3D(0.0428913, 0, 0, 0, 0.0428913, 0, 0, 0, 0.0428913, -0.0491575, 0.905443, 0.0813386)
+
 [node name="npc_collision" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="npc_collision"]
@@ -771,7 +843,7 @@ shape = SubResource("BoxShape3D_7owiw")
 transform = Transform3D(0.100032, 0, 0.994984, 0, 1, 0, -0.994984, 0, 0.100032, 0.716009, 0.837172, 0)
 visible = false
 billboard = 2
-text = "Press E To Talk!"
+text = "E"
 
 [node name="talk_system" parent="." instance=ExtResource("2_aqxcf")]
 visible = false
@@ -792,3 +864,5 @@ shape = SubResource("CapsuleShape3D_sbeon")
 [connection signal="num_of_questions_remaining" from="." to="talk_system" method="_on_npc_num_of_questions_remaining"]
 [connection signal="area_shape_entered" from="npc_collision" to="." method="_on_npc_collision_area_shape_entered"]
 [connection signal="area_shape_exited" from="npc_collision" to="." method="_on_npc_collision_area_shape_exited"]
+[connection signal="play_distraction" from="talk_system" to="." method="_on_talk_system_play_distraction"]
+[connection signal="play_mouth_anim_self" from="talk_system" to="." method="_on_talk_system_play_mouth_anim_self"]

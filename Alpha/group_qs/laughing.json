@@ -1,17 +1,84 @@
 {
 	"questions": [
 		{
-			"q": "I heard you laughing from the other side of the room! What balloon made you laugh this hard?",
-			"r": "The clown made this hilarious balloon giraffe that had me in stitches!"
+			"q": "אני רציתי לשחק עם הצעצוע הזה אבל הוא לא מתחלק",
+			"r": "אני כן מתחלק, תפסתי את הצעצוע ראשון ועכשיו התור שלי",
+			"qAud": "res://group_qs/fighting/boy1/1.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-04.mp3"
 		},
 		{
-			"q": "Do you usually enjoy laughing at parties?",
-			"r": "Absolutely! I love laughing and having a great time at parties."
+			"q": "אתה חייב להתחלק לא אכפת לי שתפסת אותו ראשון",
+			"r": "אני אתחלק כשאני רוצה. זה התור שלי עכשיו",
+			"qAud": "res://group_qs/fighting/boy1/2.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-03.mp3"
 		},
 		{
-			"q": "How often do you go to birthday parties?",
-			"r": "I don't go to parties often, but when I do, l make sure to have a great time!"
-		}
+			"q": "אבל המסיבה כמעט נגמרה ואתה משחק בו מאז שהגענו",
+			"r": "תפסתי אותו ראשון! תהיה יותר מהיר פעם הבאה",
+			"qAud": "res://group_qs/fighting/boy1/3.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-12.mp3"
+		},
+		{
+			"q": "לא תפסת אותו ראשון. לקחת אותו ממני",
+			"r": "לא נכון יא שקרן. אף אחד לא שיחק בו אז לקחתי אותו",
+			"qAud": "res://group_qs/fighting/boy1/4.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-11.mp3"
+		},
+		{
+			"q": "אני שיחקתי בו! פשוט השארתי אותו בצד לכמה שניות",
+			"r": "זה לא הצעצוע שלך. אם אתה משאיר אותו בצד אני יכול לשחק בו",
+			"qAud": "res://group_qs/fighting/boy1/5.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-10.mp3"
+		},
+		{
+			"q": "בסדר שיחקת בו עכשיו התור שלי",
+			"r": "אין תורות. לך תשחק בצעצוע אחר",
+			"qAud": "res://group_qs/fighting/boy1/6.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-09.mp3"
+		},
+		{
+			"q": "מזה הצעצוע היחיד שאני רוצה לשחק בו",
+			"r": "זה לא אשמתי שזה הצעצוע הכי מגניב",
+			"qAud": "res://group_qs/fighting/boy1/7.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-08.mp3"
+		},
+		{
+			"q": "זה כן אשמתך אתה לא מתחלק",
+			"r": "זה לא צעצוע שעושים איתו תורות. אם אני אתן לך אותו אני לא אוכל לשחק",
+			"qAud": "res://group_qs/fighting/boy1/8.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-07.mp3"
+		},
+		{
+			"q": "אבל שיחקת איתו כל הזמן הזה תן לאחרים לנסות גם",
+			"r": "בסדר אם אני אתן לך אותו אתה תחזיר לי?",
+			"qAud": "res://group_qs/fighting/boy1/9.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-06.mp3"
+		},
+		{
+			"q": "לא. למה שאני אחזיר לך אותו המסיבה כמעט נגמרה",
+			"r": "אז אני לא אתן לך אותו אם אתה לא תחזיר לי",
+			"qAud": "res://group_qs/fighting/boy1/10.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-05.mp3"
+		},
+		{
+			"q": "זה.לא.הוגן!!!",
+			"r": "הוגן שמוגן שטויות במיץ עגבניות",
+			"qAud": "res://group_qs/fighting/boy1/11.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-02.mp3"
+		},
+		{
+			"q": "אני אגיד אותך",
+			"r": "אם תגיד אותי אני אחביא את הצעצוע",
+			"qAud": "res://group_qs/fighting/boy1/12.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-13.mp3"
+		},
+		{
+			"q": "תן לי אותו כבר!!",
+			"r": "תעזוב אותי!!",
+			"qAud": "res://group_qs/fighting/boy1/13.mp3",
+			"rAud": "res://group_qs/fighting/boy2/-01.mp3"
+		},
+		
 	],
 	
 }

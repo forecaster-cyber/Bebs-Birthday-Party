@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://c86k5y6p0u0p5"]
+
+[ext_resource type="Script" path="res://robot.gd" id="1_mw4hw"]
+[ext_resource type="PackedScene" uid="uid://bxjlp6s0hpvyx" path="res://distractions/robot/Toy Robot Lowpoly.glb" id="2_2e2ct"]
+[ext_resource type="PackedScene" uid="uid://bkc20x4kcb1av" path="res://talk_system.tscn" id="3_km4ph"]
+[ext_resource type="Texture2D" uid="uid://w7hde61qakkj" path="res://E.png" id="4_itge7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d8upe"]
+radius = 5.97572
+
+[sub_resource type="Animation" id="Animation_tlw6h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_Scene:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_Scene:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0774153, -1.19209e-07, -0.212992)]
+}
+
+[sub_resource type="Animation" id="Animation_hveb6"]
+resource_name = "dis3"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_Scene:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.417762), Vector3(0, 0, 0.229965), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_Scene:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0774153, -1.19209e-07, -0.212992), Vector3(-0.0774153, 2.01732, -0.212992), Vector3(-0.0774153, -1.19209e-07, -0.212992)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqma4"]
+_data = {
+"RESET": SubResource("Animation_tlw6h"),
+"dis3": SubResource("Animation_hveb6")
+}
+
+[node name="robot" type="Node3D"]
+script = ExtResource("1_mw4hw")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_2e2ct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0774153, -1.19209e-07, -0.212992)
+
+[node name="talk_system" parent="." instance=ExtResource("3_km4ph")]
+visible = false
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6453, -0.186822)
+shape = SubResource("SphereShape3D_d8upe")
+
+[node name="Label3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.0245662, 0, 0.244351, 0, 0.245582, 0, -0.244351, 0, 0.0245662, -0.12562, 3.35566, 0)
+visible = false
+billboard = 2
+texture = ExtResource("4_itge7")
+
+[node name="npc_cam" type="Camera3D" parent="."]
+transform = Transform3D(0.998967, 1.38924e-09, -0.0454327, 0.00838235, 0.982832, 0.18431, 0.0446528, -0.1845, 0.981818, -0.0268378, 2.93264, 6.97345)
+fov = 84.9418
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lqma4")
+}
+
+[connection signal="play_distraction" from="talk_system" to="." method="_on_talk_system_play_distraction"]
+[connection signal="play_mouth_anim_other" from="talk_system" to="." method="_on_talk_system_play_mouth_anim_other"]
+[connection signal="play_mouth_anim_self" from="talk_system" to="." method="_on_talk_system_play_mouth_anim_self"]
+[connection signal="area_shape_entered" from="Area3D" to="." method="_on_area_3d_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area3D" to="." method="_on_area_3d_area_shape_exited"]

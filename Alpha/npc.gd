@@ -3,25 +3,31 @@ extends Node3D
 var player_close = false
 @export var questions_path: String
 @export var can_talk: bool
+@export var npc: Node3D
+
 # Called when the node enters the scene tree for the first time.
 var rng = RandomNumberGenerator.new()
 var random_talk_speed = rng.randf_range(0.0,0.2)
-var red = rng.randf_range(0.0,1.0)
-var green = rng.randf_range(0.0,1.0)
-var blue = rng.randf_range(0.0,1.0)
-var options_prob = [33,33,33]
+var red = rng.randf_range(0.5,1.0)
+var green = rng.randf_range(0.4,1.0)
+var blue = rng.randf_range(0.3,1.0)
 var num_of_q = 0
 var player_is_talking = false
 signal lock_rotation(lock)
+var talking_now = false
 
 #signal q_choices(q1,q2,q3)
 #signal q_prob(q_prob_arr)
 signal num_of_questions_remaining(num_of_questions)
 func _ready():
-	var material = $Body.get_active_material(0)
+	
+	
+	var material = $Body.get_active_material(0).duplicate()
 	material.albedo_color = Color(red, green, blue)
 	$Body.set_surface_override_material(0, material)
 	$talk_system.questions = questions_path
+	$talk_system.npc = self
+	$talk_system.other_npc = player
 	var dataFile = FileAccess.open(str(questions_path), FileAccess.READ)
 	var parsed_json = JSON.parse_string(dataFile.get_as_text())
 	num_of_q = parsed_json["questions"].size()
@@ -30,13 +36,19 @@ func _ready():
 	if (!can_talk):
 		$AnimationPlayer.play("talking")
 		$AnimationPlayer.speed_scale -= random_talk_speed
+		talking_now = true
 	else:
 		$AnimationPlayer.play("crying")
+		$Body/AnimatedSprite3D.stop()
 	
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(!talking_now):
+		$Body/AnimatedSprite3D.stop()
+	else:
+		$Body/AnimatedSprite3D.play()
 	if(Input.is_action_just_pressed("interact") && player_close && can_talk):
 		#print(options_prob)
 		#var q1 = weightedRandomIndex(options_prob)
@@ -72,6 +84,7 @@ func _on_npc_collision_area_shape_exited(area_rid, area, area_shape_index, local
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		lock_rotation.emit(true)
 		$npc_cam.set_current(false)
+		player.visible = true
 
 #func weightedRandomIndex(weights: Array) -> int:
 #	var totalWeight = 0
@@ -96,4 +109,23 @@ func _on_npc_collision_area_shape_exited(area_rid, area, area_shape_index, local
 #	q_choices.emit(q1,q2,q3)
 #	q_prob.emit(options_prob)
 #	print(options_prob)
+	
+
+
+
+
+
+func _on_talk_system_play_mouth_anim_self(talking):
+	talking_now = talking # Replace with function body.
+
+
+func _on_talk_system_play_distraction():
+	var random = rng.randf_range(0,1.0)
+	if(random > 0.5):
+		$AnimationPlayer.speed_scale = random*2
+		$AnimationPlayer.play("dis1")
+		
+	else:
+		$AnimationPlayer.speed_scale = random*4
+		$AnimationPlayer.play("dis2")
 	

@@ -7,6 +7,8 @@ var is_listening_crying = false
 var crying_temp_listening_time = 0
 var laughing_temp_looking_time = 0
 var crying_temp_looking_time = 0
+var arguing = true
+var laughing_con_seconds = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -15,6 +17,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(!arguing):
+		$arguing/AudioStreamPlayer3D.stop()
+	else:
+		$arguing/AudioStreamPlayer3D.play()
 	#t_listening_laughing
 	if (is_listening_laughing == true&& ($laughing/looking_at.looking_at_me)):
 		Globals.t_listening_laughing += delta
@@ -75,7 +81,9 @@ func _on_crying_listening_body_exited(body):
 func _on_laughing_listening_body_entered(body):
 	if(body.name == "player"):
 		print("oh yes crying")
-		is_listening_laughing = true 
+		is_listening_laughing = true
+		$laughing/conv.play(laughing_con_seconds) 
+		$laughing/laughter.volume_db = -50
 
 
 func _on_laughing_listening_body_exited(body):
@@ -83,8 +91,16 @@ func _on_laughing_listening_body_exited(body):
 		is_listening_laughing = false
 		#Globals.t_listening_laughing += laughing_temp_listening_time
 		laughing_temp_listening_time = 0
+		laughing_con_seconds = $laughing/conv.get_playback_position() 
+		$laughing/conv.stop()
+		$laughing/laughter.volume_db = 50 
 ####
 
 
 func _on_endgame_timeout():
 	await insert_data() 
+	$Ending.visible = true
+
+
+func _on_robot_continute_arg(continute):
+	arguing = continute

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dpsknhaiwvaok"]
+[gd_scene load_steps=50 format=3 uid="uid://dpsknhaiwvaok"]
 
 [ext_resource type="PackedScene" uid="uid://b0jmja8u6w1le" path="res://player.tscn" id="1_gw058"]
 [ext_resource type="Script" path="res://main.gd" id="1_nqkhb"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bj44dvpiorjv0" path="res://npc.tscn" id="3_j8hae"]
 [ext_resource type="AudioStream" uid="uid://bd6cdortdkh4a" path="res://sound_effects/new laugh.mp3" id="3_rgqp7"]
 [ext_resource type="AudioStream" uid="uid://bmvtwxxltnlg5" path="res://sound_effects/newest laugh.mp3" id="5_e4kl8"]
+[ext_resource type="AudioStream" uid="uid://c4ev8f1sjnswx" path="res://group_qs/full.mp3" id="7_0paqd"]
 [ext_resource type="ArrayMesh" uid="uid://dug3i0jfhuae0" path="res://bday party models/chair/Cheap Chair/Cheap Chair.obj" id="8_pbjgi"]
 [ext_resource type="PackedScene" uid="uid://briuaooe87wy5" path="res://bday party models/FNAF Party Tables v2/source/Tables.fbx" id="9_cujrc"]
 [ext_resource type="PackedScene" uid="uid://b2mdax67ua2is" path="res://bday party models/Baby Boy Closet/Baby Boy Closet.glb" id="10_mb6mf"]
@@ -24,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://cbd7yxpq5itki" path="res://sound_effects/human_group_children_x6_uk_aged_3_to_8_fake_crying.mp3" id="21_2k0ky"]
 [ext_resource type="PackedScene" uid="uid://nb434uaehnad" path="res://distractions/gift/gift.tscn" id="21_txk8d"]
 [ext_resource type="AudioStream" uid="uid://b12ry6njk5o6v" path="res://sound_effects/arguing/bg_arguing/קולות רקע.mp3" id="24_oqsoc"]
+[ext_resource type="PackedScene" uid="uid://c86k5y6p0u0p5" path="res://distractions/robot/robot.tscn" id="25_ch1tq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dpdt8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -197,6 +199,9 @@ max_distance = 10.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6587, 0.54803, 4.5741)
 shape = SubResource("SphereShape3D_35fpu")
 
+[node name="conv" type="AudioStreamPlayer" parent="laughing"]
+stream = ExtResource("7_0paqd")
+
 [node name="CRYING" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_j8hae")]
 transform = Transform3D(0.58976, 0, -0.807578, 0, 1, 0, 0.807578, 0, 0.58976, -9.05532, 1.56611, -1.51068)
 player = NodePath("../player")
@@ -210,16 +215,10 @@ sound_fx = ExtResource("21_2k0ky")
 bday_music = NodePath("../../distractions/Radio/bday_music")
 others_dot = NodePath("../../laughing/looking_at")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CRYING"]
-stream = ExtResource("21_2k0ky")
-volume_db = 30.0
-autoplay = true
-max_distance = 15.0
-
 [node name="crying_listening" type="Area3D" parent="CRYING"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CRYING/crying_listening"]
-transform = Transform3D(1, 0, 2.93498e-08, 0, 1, 0, -8.16513e-09, 0, 1, 0, -0.557404, 0)
+transform = Transform3D(1, 0, 2.93498e-08, 0, 1, 0, -2.42156e-08, 0, 1, 0, -0.557404, 0)
 shape = SubResource("SphereShape3D_k42jd")
 
 [node name="party" type="Node3D" parent="."]
@@ -362,6 +361,7 @@ transform = Transform3D(0.110706, 0, -0.993853, 0, 1, 0, 0.993853, 0, 0.110706, 
 player_hand = NodePath("../../../player/hand")
 object = NodePath("..")
 can_pick_up = true
+instructions_text = "E"
 actions_text = "Press Left Mouse to shoot!"
 
 [node name="Balloon" parent="distractions" instance=ExtResource("20_ixt4l")]
@@ -381,6 +381,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.406045, -0.208717, 0.082858
 player_hand = NodePath("../../../player/hand")
 object = NodePath("..")
 can_pick_up = true
+instructions_text = "E"
 
 [node name="collisions" type="Node" parent="."]
 
@@ -459,14 +460,14 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="endgame" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 180.0
 autostart = true
 
 [node name="arguing" type="Node3D" parent="."]
 transform = Transform3D(-0.970072, 0, 0.242819, 0, 1, 0, -0.242819, 0, -0.970071, 2.19801, 0, -4.91366)
 
 [node name="arg1" parent="arguing" node_paths=PackedStringArray("player") instance=ExtResource("3_j8hae")]
-transform = Transform3D(0.982067, 0, -0.18853, 0, 1, 0, 0.18853, 0, 0.982067, -2.12629, 1.49527, -2.66974)
+transform = Transform3D(0.954407, 0, 0.298507, 0, 1, 0, -0.298507, 0, 0.954407, -2.12629, 1.49527, -2.66974)
 player = NodePath("../../player")
 questions_path = "res://group_qs/crying.json"
 
@@ -486,7 +487,57 @@ others_dot = NodePath("../../CRYING/looking_at")
 stream = ExtResource("24_oqsoc")
 volume_db = -10.0
 autoplay = true
-max_distance = 15.0
+max_distance = 12.0
+
+[node name="robot" parent="arguing" node_paths=PackedStringArray("player", "npc", "other_npc") instance=ExtResource("25_ch1tq")]
+transform = Transform3D(-0.238323, 0, -0.0596548, 0, 0.245676, 0, 0.0596548, 0, -0.238323, -0.93392, 0.892175, -2.86062)
+player = NodePath("../../player")
+questions_path = "res://group_qs/laughing.json"
+can_talk = true
+npc = NodePath("../arg1")
+other_npc = NodePath("../arg2")
+
+[node name="Ending" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+
+[node name="Panel" type="Panel" parent="Ending"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="LinkButton" parent="Ending"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.342882
+anchor_top = 0.401235
+anchor_right = 0.560764
+anchor_bottom = 0.575617
+offset_bottom = -1.90735e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "המשך לשאלון"
+text_direction = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Ending"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -323.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "המשחק נגמר. אנא המשך לשאלון האינטרנטי!"
 
 [connection signal="body_entered" from="laughing/laughing_listening" to="." method="_on_laughing_listening_body_entered"]
 [connection signal="body_exited" from="laughing/laughing_listening" to="." method="_on_laughing_listening_body_exited"]
@@ -494,3 +545,5 @@ max_distance = 15.0
 [connection signal="body_entered" from="CRYING/crying_listening" to="." method="_on_crying_listening_body_entered"]
 [connection signal="body_exited" from="CRYING/crying_listening" to="." method="_on_crying_listening_body_exited"]
 [connection signal="timeout" from="endgame" to="." method="_on_endgame_timeout"]
+[connection signal="continute_arg" from="arguing/robot" to="." method="_on_robot_continute_arg"]
+[connection signal="lock_rotation" from="arguing/robot" to="player" method="_on_robot_lock_rotation"]

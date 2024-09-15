@@ -13,7 +13,10 @@ func _ready():
 	last_pos = object.global_position
 	
 	$poof_effect.hide()
-	$instructions.text = instructions_text
+	if(!can_pick_up):
+		$instructions.texture = load("res://mouse.png")
+	#$instructions.text = instructions_text
+	#$instructions.texture = load("res://mouse.png")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -31,7 +34,8 @@ func _process(delta):
 		object.reparent(player_hand)
 		picked_up = true
 		print(str(picked_up) + str("123"))
-		$instructions.text = actions_text
+		#$instructions.text = actions_text
+		$instructions.texture = load("res://mouse.png")
 		
 	#drop
 	elif(Input.is_action_just_pressed("interact") && player_close && picked_up):
@@ -39,7 +43,9 @@ func _process(delta):
 		object.freeze = false
 		print("dropped")
 		picked_up = false
+		$instructions.texture = load("res://E.png")
 	elif(Input.is_action_just_pressed("activate") && player_close && (picked_up || !can_pick_up)):
+		
 		if(player_hand.get_parent().first_pick == false):
 			player_hand.get_parent().first_pick = true
 			Globals.first_interaction = str(object.name)

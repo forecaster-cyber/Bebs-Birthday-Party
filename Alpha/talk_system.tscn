@@ -22,7 +22,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "?"
+theme_override_font_sizes/font_size = 20
+text = "🗣️"
 metadata/_edit_use_anchors_ = true
 
 [node name="second" type="Button" parent="."]
@@ -31,10 +32,11 @@ anchor_left = 0.00347222
 anchor_top = 0.716049
 anchor_right = 0.501736
 anchor_bottom = 1.0
-text = "UwU"
+text = "⭐️"
 metadata/_edit_use_anchors_ = true
 
 [node name="dialog_sqr" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.351562
@@ -56,11 +58,15 @@ anchor_right = 1.0
 anchor_bottom = 0.651316
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.67451, 0.67451, 0.67451, 1)
 theme_override_font_sizes/font_size = 25
 autowrap_mode = 3
+text_direction = 2
+language = "he"
 metadata/_edit_use_anchors_ = true
 
 [node name="dialog_sound" type="AudioStreamPlayer" parent="."]
 
 [connection signal="mouse_entered" from="first" to="." method="_on_first_mouse_entered"]
 [connection signal="pressed" from="first" to="." method="_on_first_pressed"]
+[connection signal="pressed" from="second" to="." method="_on_second_pressed"]
