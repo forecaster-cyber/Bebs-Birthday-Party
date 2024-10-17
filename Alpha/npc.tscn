@@ -864,5 +864,6 @@ shape = SubResource("CapsuleShape3D_sbeon")
 [connection signal="num_of_questions_remaining" from="." to="talk_system" method="_on_npc_num_of_questions_remaining"]
 [connection signal="area_shape_entered" from="npc_collision" to="." method="_on_npc_collision_area_shape_entered"]
 [connection signal="area_shape_exited" from="npc_collision" to="." method="_on_npc_collision_area_shape_exited"]
+[connection signal="log_interaction" from="talk_system" to="." method="_on_talk_system_log_interaction"]
 [connection signal="play_distraction" from="talk_system" to="." method="_on_talk_system_play_distraction"]
 [connection signal="play_mouth_anim_self" from="talk_system" to="." method="_on_talk_system_play_mouth_anim_self"]

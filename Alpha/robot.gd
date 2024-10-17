@@ -14,6 +14,7 @@ var other_npc_talking = false
 var rng = RandomNumberGenerator.new()
 signal num_of_questions_remaining(num_of_questions)
 signal continute_arg(continute)
+@export var timer: Timer
 func _ready():
 	$talk_system.questions = questions_path
 	$talk_system.npc = npc
@@ -53,6 +54,7 @@ func _process(delta):
 		#$npc_cam.position = player_cam_translation
 		$npc_cam.set_current(true)
 		continute_arg.emit(false)
+		Globals.logs.append("{" + "'begin_talk_Arguing" + "': " + str(180-timer.time_left)+"}")
 
 
 
@@ -76,7 +78,7 @@ func _on_area_3d_area_shape_exited(area_rid, area, area_shape_index, local_shape
 		lock_rotation.emit(true)
 		$npc_cam.set_current(false)
 		continute_arg.emit(true)
-		
+		Globals.logs.append("{" + "'exit_talk_Arguing" + "': " + str(180-timer.time_left)+"}")
 
 
 func _on_talk_system_play_mouth_anim_other(talking):
@@ -96,3 +98,7 @@ func _on_talk_system_play_distraction():
 	else:
 		$AnimationPlayer.speed_scale = random*4
 		$AnimationPlayer.play("dis3")
+
+
+func _on_talk_system_log_interaction(kind):
+	Globals.logs.append(kind + str(180-timer.time_left)+"}")

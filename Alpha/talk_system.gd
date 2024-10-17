@@ -12,6 +12,7 @@ var other_npc: Node3D
 signal play_mouth_anim_self(talking)
 signal play_mouth_anim_other(talking)
 signal play_distraction()
+signal log_interaction(kind)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(questions)
@@ -30,6 +31,7 @@ func _on_first_pressed():
 	$first.visible = false
 	$second.visible = false
 	Globals.q_asked += 1
+	log_interaction.emit("{" + "'ask_question" + "': ")
 	dataFile = FileAccess.open(str(questions), FileAccess.READ)
 	parsed_json = JSON.parse_string(dataFile.get_as_text())
 	play_mouth_anim_other.emit(true)
@@ -94,3 +96,4 @@ func _on_npc_num_of_questions_remaining(num_of_questions):
 
 func _on_second_pressed():
 	play_distraction.emit()
+	log_interaction.emit("{" + "'trigger_distraction" + "': ")

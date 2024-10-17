@@ -4,6 +4,7 @@ var player_close = false
 @export var questions_path: String
 @export var can_talk: bool
 @export var npc: Node3D
+@export var timer: Timer
 
 # Called when the node enters the scene tree for the first time.
 var rng = RandomNumberGenerator.new()
@@ -65,6 +66,8 @@ func _process(delta):
 		#var player_cam_translation = player.get_node("head/cam").position
 		#$npc_cam.position = player_cam_translation
 		$npc_cam.set_current(true)
+		if(self.name == "CRYING"):
+			Globals.logs.append("{" + "'begin_talk_Beb" + "': " + str(180-timer.time_left)+"}")
 
 
 
@@ -85,6 +88,8 @@ func _on_npc_collision_area_shape_exited(area_rid, area, area_shape_index, local
 		lock_rotation.emit(true)
 		$npc_cam.set_current(false)
 		player.visible = true
+		if(self.name == "CRYING"):
+			Globals.logs.append("{" + "'exit_talk_Beb" + "': " + str(180-timer.time_left)+"}")
 
 #func weightedRandomIndex(weights: Array) -> int:
 #	var totalWeight = 0
@@ -129,3 +134,7 @@ func _on_talk_system_play_distraction():
 		$AnimationPlayer.speed_scale = random*4
 		$AnimationPlayer.play("dis2")
 	
+
+
+func _on_talk_system_log_interaction(kind):
+	Globals.logs.append(kind + str(180-timer.time_left)+"}")

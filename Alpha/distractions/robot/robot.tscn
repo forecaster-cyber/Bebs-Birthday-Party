@@ -99,6 +99,7 @@ libraries = {
 "": SubResource("AnimationLibrary_lqma4")
 }
 
+[connection signal="log_interaction" from="talk_system" to="." method="_on_talk_system_log_interaction"]
 [connection signal="play_distraction" from="talk_system" to="." method="_on_talk_system_play_distraction"]
 [connection signal="play_mouth_anim_other" from="talk_system" to="." method="_on_talk_system_play_mouth_anim_other"]
 [connection signal="play_mouth_anim_self" from="talk_system" to="." method="_on_talk_system_play_mouth_anim_self"]

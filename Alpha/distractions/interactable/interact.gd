@@ -9,6 +9,7 @@ var picked_up = false
 @export var instructions_text: String = "Press E to Grab!"
 @export var actions_text: String = "Press Left Mouse to interact!"
 var last_pos: Vector3
+@export var timer: Timer
 func _ready():
 	last_pos = object.global_position
 	
@@ -27,6 +28,7 @@ func _process(delta):
 			player_hand.get_parent().first_pick = true
 			Globals.first_interaction = str(object.name)
 		Globals.non_curious_interactions += 1
+		Globals.logs.append("{" + "'grab_" + str(object.name) + "': " + str(180-timer.time_left)+"}")
 		print("picked up")
 		object.freeze = true
 		last_pos = object.global_position
@@ -39,6 +41,7 @@ func _process(delta):
 		
 	#drop
 	elif(Input.is_action_just_pressed("interact") && player_close && picked_up):
+		Globals.logs.append("{" + "'drop_" + str(object.name) + "': " + str(180-timer.time_left)+"}")
 		object.reparent(get_tree().get_current_scene())
 		object.freeze = false
 		print("dropped")
@@ -50,6 +53,7 @@ func _process(delta):
 			player_hand.get_parent().first_pick = true
 			Globals.first_interaction = str(object.name)
 		Globals.non_curious_interactions += 1
+		Globals.logs.append("{" + "'activate_" + str(object.name) + "': " + str(180-timer.time_left)+"}")
 		object.action()
 		print("action")
 

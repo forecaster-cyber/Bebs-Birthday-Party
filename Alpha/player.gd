@@ -48,6 +48,7 @@ func _physics_process(delta):
 		await get_tree().create_timer(0.5).timeout
 		
 		$push/CollisionShape3D.disabled = true
+		print("DATA!!!!!: " + str(Globals.logs))
 	
 func _input(event):
 	if event is InputEventMouseMotion && can_rot:

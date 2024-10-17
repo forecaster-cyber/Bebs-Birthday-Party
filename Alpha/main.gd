@@ -9,18 +9,19 @@ var laughing_temp_looking_time = 0
 var crying_temp_looking_time = 0
 var arguing = true
 var laughing_con_seconds = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$arguing/bg_arguing_sound_fx.play()
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(!arguing):
-		$arguing/AudioStreamPlayer3D.stop()
-	else:
-		$arguing/AudioStreamPlayer3D.play()
+	#if(!arguing):
+	#	$arguing/bg_arguing_sound_fx.stop()
+	#else:
+	#	$arguing/bg_arguing_sound_fx.play()
 	#t_listening_laughing
 	if (is_listening_laughing == true&& ($laughing/looking_at.looking_at_me)):
 		Globals.t_listening_laughing += delta
@@ -46,6 +47,7 @@ func _process(delta):
 func insert_data():
 	var collection: FirestoreCollection = Firebase.Firestore.collection("experiment")
 	var data: Dictionary = {
+	"logs": Globals.logs,
 	"q_asked": Globals.q_asked,
 	"t_listening_laughing": Globals.t_listening_laughing,
 	"t_listening_crying": Globals.t_listening_crying,
@@ -66,6 +68,7 @@ func _on_crying_listening_body_entered(body):
 	if(body.name == "player"):
 		print("oh yes crying")
 		is_listening_crying = true 
+		Globals.logs.append("{" + "'begin_listen_Beb" + "': " + str(180-$endgame.time_left)+"}")
 
 
 func _on_crying_listening_body_exited(body):
@@ -73,6 +76,7 @@ func _on_crying_listening_body_exited(body):
 		is_listening_crying = false
 		#Globals.t_listening_crying += crying_temp_listening_time
 		crying_temp_listening_time = 0
+		Globals.logs.append("{" + "'exit_listen_Beb" + "': " + str(180-$endgame.time_left)+"}")
 #####
 
 
@@ -84,6 +88,7 @@ func _on_laughing_listening_body_entered(body):
 		is_listening_laughing = true
 		$laughing/conv.play(laughing_con_seconds) 
 		$laughing/laughter.volume_db = -50
+		Globals.logs.append("{" + "'begin_listen_Girls" + "': " + str(180-$endgame.time_left)+"}")
 
 
 func _on_laughing_listening_body_exited(body):
@@ -93,7 +98,8 @@ func _on_laughing_listening_body_exited(body):
 		laughing_temp_listening_time = 0
 		laughing_con_seconds = $laughing/conv.get_playback_position() 
 		$laughing/conv.stop()
-		$laughing/laughter.volume_db = 50 
+		$laughing/laughter.volume_db = 50
+		Globals.logs.append("{" + "'exit_listen_Girls" + "': " + str(180-$endgame.time_left)+"}") 
 ####
 
 
@@ -103,4 +109,14 @@ func _on_endgame_timeout():
 
 
 func _on_robot_continute_arg(continute):
-	arguing = continute
+	$arguing/bg_arguing_sound_fx.playing = continute
+
+
+func _on_arguing_listening_body_entered(body):
+	if(body.name == "player"):
+		Globals.logs.append("{" + "'begin_listen_Arguing" + "': " + str(180-$endgame.time_left)+"}")
+
+
+func _on_arguing_listening_body_exited(body):
+	if(body.name == "player"):
+		Globals.logs.append("{" + "'exit_listen_Arguing" + "': " + str(180-$endgame.time_left)+"}")
