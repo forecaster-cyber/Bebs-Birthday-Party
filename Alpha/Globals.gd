@@ -16,3 +16,4 @@ var first_interaction = ""
 var t_talking_crying = 0
 var id = ""
 var logs = []
+var isTalking = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://dpsknhaiwvaok"]
+[gd_scene load_steps=56 format=3 uid="uid://dpsknhaiwvaok"]
 
 [ext_resource type="PackedScene" uid="uid://b0jmja8u6w1le" path="res://player.tscn" id="1_gw058"]
 [ext_resource type="Script" path="res://main.gd" id="1_nqkhb"]
@@ -26,6 +26,9 @@
 [ext_resource type="PackedScene" uid="uid://nb434uaehnad" path="res://distractions/gift/gift.tscn" id="21_txk8d"]
 [ext_resource type="AudioStream" uid="uid://b12ry6njk5o6v" path="res://sound_effects/arguing/bg_arguing/קולות רקע.mp3" id="24_oqsoc"]
 [ext_resource type="PackedScene" uid="uid://c86k5y6p0u0p5" path="res://distractions/robot/robot.tscn" id="25_ch1tq"]
+[ext_resource type="FontFile" uid="uid://bxcnmly2qqkel" path="res://group_qs/OpenSans-VariableFont_wdth,wght.ttf" id="27_4ued5"]
+[ext_resource type="Texture2D" uid="uid://c3c8xlceunlwe" path="res://tutorial/Red Door Cartoon Illustration Background Removed.png" id="27_tkhpd"]
+[ext_resource type="Texture2D" uid="uid://cbg137sipluvp" path="res://group_qs/exit.png" id="29_sfbf8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dpdt8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -48,7 +51,7 @@ material = SubResource("StandardMaterial3D_i578l")
 [sub_resource type="BoxShape3D" id="BoxShape3D_1di0b"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_35fpu"]
-radius = 3.55325
+radius = 2.92957
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k42jd"]
 radius = 3.40924
@@ -73,6 +76,14 @@ uv1_offset = Vector3(0.02, 1.065, -0.115)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_smfbu"]
 material = SubResource("StandardMaterial3D_m4ugk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gc86"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.32549, 0.254902, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7sro5"]
+material = SubResource("StandardMaterial3D_4gc86")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k5dw2"]
 size = Vector3(22.6855, 7.11924, 1.83839)
@@ -354,45 +365,68 @@ stream = ExtResource("17_ipclt")
 volume_db = -50.0
 autoplay = true
 
-[node name="interact" parent="distractions/Radio" node_paths=PackedStringArray("player_hand", "object", "timer") instance=ExtResource("17_iw7px")]
+[node name="interact" parent="distractions/Radio" node_paths=PackedStringArray("player_hand", "object", "aura", "timer") instance=ExtResource("17_iw7px")]
 transform = Transform3D(1, 0, -2.63819e-10, 0, 1, 0, -9.59357e-11, 0, 1, -0.0312614, -0.107643, 0.0624466)
 player_hand = NodePath("../../../player/hand")
 object = NodePath("..")
+aura = NodePath("../aura4")
 instructions_text = "Press Mouse to interact!"
 timer = NodePath("../../../endgame")
+
+[node name="aura4" type="MeshInstance3D" parent="distractions/Radio"]
+transform = Transform3D(0.269745, 0, 1.3373, 0, 1.36423, 0, -1.3373, 0, 0.269744, 0.07476, 0.0327141, 0.164249)
+mesh = SubResource("SphereMesh_7sro5")
+skeleton = NodePath("../../Gun")
 
 [node name="Gun" parent="distractions" instance=ExtResource("18_g7bia")]
 transform = Transform3D(0.110706, 0, 0.993853, 0, 1, 0, -0.993853, 0, 0.110706, 1.9422, 2.38147, 2.61629)
 
-[node name="interact" parent="distractions/Gun" node_paths=PackedStringArray("player_hand", "object", "timer") instance=ExtResource("17_iw7px")]
+[node name="interact" parent="distractions/Gun" node_paths=PackedStringArray("player_hand", "object", "aura", "timer") instance=ExtResource("17_iw7px")]
 transform = Transform3D(0.110706, 0, -0.993853, 0, 1, 0, 0.993853, 0, 0.110706, -0.0417914, -0.19035, 0.0878339)
 player_hand = NodePath("../../../player/hand")
 object = NodePath("..")
+aura = NodePath("../aura")
 can_pick_up = true
 instructions_text = "E"
 actions_text = "Press Left Mouse to shoot!"
 timer = NodePath("../../../endgame")
 
+[node name="aura" type="MeshInstance3D" parent="distractions/Gun"]
+transform = Transform3D(1.36423, 0, 7.9825e-09, 0, 1.36423, 0, -8.26076e-08, 0, 1.36423, 0.190351, 0, 0.109244)
+mesh = SubResource("SphereMesh_7sro5")
+
 [node name="Balloon" parent="distractions" instance=ExtResource("20_ixt4l")]
 transform = Transform3D(0.0546539, 0, 0.998505, 0, 1, 0, -0.998505, 0, 0.0546539, -0.460447, 2.06508, 7.23678)
 
-[node name="interact" parent="distractions/Balloon" node_paths=PackedStringArray("player_hand", "object", "timer") instance=ExtResource("17_iw7px")]
+[node name="interact" parent="distractions/Balloon" node_paths=PackedStringArray("player_hand", "object", "aura", "timer") instance=ExtResource("17_iw7px")]
 transform = Transform3D(1, 0, 5.70086e-11, 0, 1, 0, 6.25766e-11, 0, 1, 0.0408735, -0.190483, -0.45419)
 player_hand = NodePath("../../../player/hand")
 object = NodePath("..")
+aura = NodePath("../aura2")
 instructions_text = "Press Left Mouse to interact!"
 timer = NodePath("../../../endgame")
+
+[node name="aura2" type="MeshInstance3D" parent="distractions/Balloon"]
+transform = Transform3D(1.36207, 0, -0.0767008, 0, 1.36423, 0, 0.0767009, 0, 1.36207, -0.0260906, 0.0694335, -0.418295)
+mesh = SubResource("SphereMesh_7sro5")
+skeleton = NodePath("../../Gun")
 
 [node name="Gift" parent="distractions" instance=ExtResource("21_txk8d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6915, 2.3864, 8.65325)
 
-[node name="interact" parent="distractions/Gift" node_paths=PackedStringArray("player_hand", "object", "timer") instance=ExtResource("17_iw7px")]
+[node name="interact" parent="distractions/Gift" node_paths=PackedStringArray("player_hand", "object", "aura", "timer") instance=ExtResource("17_iw7px")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.406045, -0.208717, 0.0828581)
 player_hand = NodePath("../../../player/hand")
 object = NodePath("..")
+aura = NodePath("../aura3")
 can_pick_up = true
 instructions_text = "E"
 timer = NodePath("../../../endgame")
+
+[node name="aura3" type="MeshInstance3D" parent="distractions/Gift"]
+transform = Transform3D(0.151029, 0, 1.35584, 0, 1.36423, 0, -1.35585, 0, 0.151029, 0.18048, 0.108464, 0.184292)
+mesh = SubResource("SphereMesh_7sro5")
+skeleton = NodePath("../../Gun")
 
 [node name="collisions" type="Node" parent="."]
 
@@ -508,7 +542,7 @@ timer = NodePath("../../endgame")
 [node name="bg_arguing_sound_fx" type="AudioStreamPlayer3D" parent="arguing"]
 transform = Transform3D(1, 0, 2.32611e-07, 0, 1, 0, -5.6465e-09, 0, 1, -0.653564, 1.32981, -2.61101)
 stream = ExtResource("24_oqsoc")
-volume_db = -10.0
+volume_db = -30.0
 autoplay = true
 max_distance = 10.0
 
@@ -547,6 +581,7 @@ offset_bottom = -1.90735e-05
 grow_horizontal = 2
 grow_vertical = 2
 text = "המשך לשאלון"
+uri = "https://tauindeng.eu.qualtrics.com/jfe/form/SV_6m6rYfSPWzZkfPg"
 text_direction = 2
 metadata/_edit_use_anchors_ = true
 
@@ -558,7 +593,26 @@ anchor_right = 1.0
 offset_left = -323.0
 offset_bottom = 23.0
 grow_horizontal = 0
+theme_override_fonts/font = ExtResource("27_4ued5")
 text = "המשחק נגמר. אנא המשך לשאלון האינטרנטי!"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.447543, 0, 0, 0, 0.447543, 0, 0, 0, 0.447543, 0, 1.72071, 9.84062)
+texture = ExtResource("27_tkhpd")
+
+[node name="exit" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="exit"]
+layout_mode = 1
+offset_right = 188.0
+offset_bottom = 177.0
+texture_normal = ExtResource("29_sfbf8")
+ignore_texture_size = true
+stretch_mode = 0
 
 [connection signal="body_entered" from="laughing/laughing_listening" to="." method="_on_laughing_listening_body_entered"]
 [connection signal="body_exited" from="laughing/laughing_listening" to="." method="_on_laughing_listening_body_exited"]
@@ -570,3 +624,4 @@ text = "המשחק נגמר. אנא המשך לשאלון האינטרנטי!"
 [connection signal="lock_rotation" from="arguing/robot" to="player" method="_on_robot_lock_rotation"]
 [connection signal="body_entered" from="arguing/arguing_listening" to="." method="_on_arguing_listening_body_entered"]
 [connection signal="body_exited" from="arguing/arguing_listening" to="." method="_on_arguing_listening_body_exited"]
+[connection signal="pressed" from="exit/TextureButton" to="." method="_on_texture_button_pressed"]

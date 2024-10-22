@@ -42,6 +42,10 @@ func _process(delta):
 		Globals.t_talking_crying+=delta
 	
 	$timers/crying.text = str(Globals.first_interaction)
+	if (Globals.isTalking):
+		$exit.visible = true
+	else:
+		$exit.visible = false
 		
 
 func insert_data():
@@ -88,6 +92,7 @@ func _on_laughing_listening_body_entered(body):
 		is_listening_laughing = true
 		$laughing/conv.play(laughing_con_seconds) 
 		$laughing/laughter.volume_db = -50
+		$distractions/Radio/bday_music.stream_paused = true
 		Globals.logs.append("{" + "'begin_listen_Girls" + "': " + str(180-$endgame.time_left)+"}")
 
 
@@ -99,6 +104,7 @@ func _on_laughing_listening_body_exited(body):
 		laughing_con_seconds = $laughing/conv.get_playback_position() 
 		$laughing/conv.stop()
 		$laughing/laughter.volume_db = 50
+		$distractions/Radio/bday_music.stream_paused = false
 		Globals.logs.append("{" + "'exit_listen_Girls" + "': " + str(180-$endgame.time_left)+"}") 
 ####
 
@@ -106,6 +112,7 @@ func _on_laughing_listening_body_exited(body):
 func _on_endgame_timeout():
 	await insert_data() 
 	$Ending.visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func _on_robot_continute_arg(continute):
@@ -115,8 +122,14 @@ func _on_robot_continute_arg(continute):
 func _on_arguing_listening_body_entered(body):
 	if(body.name == "player"):
 		Globals.logs.append("{" + "'begin_listen_Arguing" + "': " + str(180-$endgame.time_left)+"}")
+		$distractions/Radio/bday_music.stream_paused = true
 
 
 func _on_arguing_listening_body_exited(body):
 	if(body.name == "player"):
 		Globals.logs.append("{" + "'exit_listen_Arguing" + "': " + str(180-$endgame.time_left)+"}")
+		$distractions/Radio/bday_music.stream_paused = false
+
+
+func _on_texture_button_pressed():
+	$player.position = Vector3($player.position.x+ 0,$player.position.y+ 0,$player.position.z+ -1)

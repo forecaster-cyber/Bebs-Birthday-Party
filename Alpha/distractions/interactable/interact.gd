@@ -4,7 +4,9 @@ extends Node
 var player_close = false
 var picked_up = false
 @export var player_hand: Node3D
+@export var logable: bool = true
 @export var object: Node3D
+@export var aura: Node3D
 @export var can_pick_up: bool
 @export var instructions_text: String = "Press E to Grab!"
 @export var actions_text: String = "Press Left Mouse to interact!"
@@ -28,7 +30,10 @@ func _process(delta):
 			player_hand.get_parent().first_pick = true
 			Globals.first_interaction = str(object.name)
 		Globals.non_curious_interactions += 1
-		Globals.logs.append("{" + "'grab_" + str(object.name) + "': " + str(180-timer.time_left)+"}")
+		if logable:
+			Globals.logs.append("{" + "'grab_" + str(object.name) + "': " + str(180-timer.time_left)+"}")
+		else:
+			pass
 		print("picked up")
 		object.freeze = true
 		last_pos = object.global_position
@@ -38,24 +43,33 @@ func _process(delta):
 		print(str(picked_up) + str("123"))
 		#$instructions.text = actions_text
 		$instructions.texture = load("res://mouse.png")
+		aura.visible = false
 		
 	#drop
 	elif(Input.is_action_just_pressed("interact") && player_close && picked_up):
-		Globals.logs.append("{" + "'drop_" + str(object.name) + "': " + str(180-timer.time_left)+"}")
+		if logable:
+			Globals.logs.append("{" + "'drop_" + str(object.name) + "': " + str(180-timer.time_left)+"}")
+		else:
+			pass
 		object.reparent(get_tree().get_current_scene())
 		object.freeze = false
 		print("dropped")
 		picked_up = false
 		$instructions.texture = load("res://E.png")
+		
 	elif(Input.is_action_just_pressed("activate") && player_close && (picked_up || !can_pick_up)):
 		
 		if(player_hand.get_parent().first_pick == false):
 			player_hand.get_parent().first_pick = true
 			Globals.first_interaction = str(object.name)
 		Globals.non_curious_interactions += 1
-		Globals.logs.append("{" + "'activate_" + str(object.name) + "': " + str(180-timer.time_left)+"}")
+		if logable:
+			Globals.logs.append("{" + "'activate_" + str(object.name) + "': " + str(180-timer.time_left)+"}")
+		else:
+			pass
 		object.action()
 		print("action")
+		aura.visible = false
 
 
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0qsbqm6ej4wm"]
+[gd_scene load_steps=3 format=3 uid="uid://d0qsbqm6ej4wm"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_r4dh5"]
+[ext_resource type="FontFile" uid="uid://bxcnmly2qqkel" path="res://group_qs/OpenSans-VariableFont_wdth,wght.ttf" id="2_e28tb"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -20,7 +21,8 @@ anchor_right = 0.617188
 anchor_bottom = 0.592593
 grow_horizontal = 2
 grow_vertical = 2
-text = "Begin"
+theme_override_fonts/font = ExtResource("2_e28tb")
+text = "קדימה למסיבה!"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]
@@ -30,6 +32,7 @@ anchor_left = 0.482639
 anchor_right = 0.517361
 anchor_bottom = 0.0354938
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_e28tb")
 text = "Beb's Birthday Party"
 metadata/_edit_use_anchors_ = true
 
@@ -41,7 +44,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-placeholder_text = "please input id."
+theme_override_fonts/font = ExtResource("2_e28tb")
+placeholder_text = "בבקשה רשמו קוד זהות. ניתן לדעת מה הוא קוד הזהות שלכם לפי תאריך יום הולדתכם. לדוגמה: אם אדם נולד ב21.1.2008, קוד הזהות שלו יהיה 21012008."
 metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 134.0
+offset_right = 1162.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("2_e28tb")
+text = "ברוכים הבאים ליום ההולדת של באב! בעוד מספר רגעים תהיו בכניסה לביתו של באב ואחד מחבריו יפתח לכם את הדלת ותוכלו להתחיל להנות!"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

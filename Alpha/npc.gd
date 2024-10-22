@@ -5,7 +5,7 @@ var player_close = false
 @export var can_talk: bool
 @export var npc: Node3D
 @export var timer: Timer
-
+@export var logable: bool = true
 # Called when the node enters the scene tree for the first time.
 var rng = RandomNumberGenerator.new()
 var random_talk_speed = rng.randf_range(0.0,0.2)
@@ -68,6 +68,7 @@ func _process(delta):
 		$npc_cam.set_current(true)
 		if(self.name == "CRYING"):
 			Globals.logs.append("{" + "'begin_talk_Beb" + "': " + str(180-timer.time_left)+"}")
+		Globals.isTalking = true
 
 
 
@@ -90,6 +91,7 @@ func _on_npc_collision_area_shape_exited(area_rid, area, area_shape_index, local
 		player.visible = true
 		if(self.name == "CRYING"):
 			Globals.logs.append("{" + "'exit_talk_Beb" + "': " + str(180-timer.time_left)+"}")
+		Globals.isTalking = false
 
 #func weightedRandomIndex(weights: Array) -> int:
 #	var totalWeight = 0
@@ -137,4 +139,7 @@ func _on_talk_system_play_distraction():
 
 
 func _on_talk_system_log_interaction(kind):
-	Globals.logs.append(kind + str(180-timer.time_left)+"}")
+	if logable:
+		Globals.logs.append(kind + str(180-timer.time_left)+"}")
+	else:
+		pass

@@ -50,6 +50,7 @@ func _physics_process(delta):
 		$push/CollisionShape3D.disabled = true
 		print("DATA!!!!!: " + str(Globals.logs))
 	
+	
 func _input(event):
 	if event is InputEventMouseMotion && can_rot:
 		look_rot.y -= (event.relative.x*0.25)
@@ -65,4 +66,8 @@ func _on_crying_lock_rotation(lock):
 
 
 func _on_robot_lock_rotation(lock):
+	can_rot = lock 
+
+
+func _on_npc_lock_rotation(lock):
 	can_rot = lock 

@@ -10,6 +10,7 @@ var num_of_q = 0
 var player_is_talking = false
 signal lock_rotation(lock)
 var npc_talking = false
+var was_talking = false
 var other_npc_talking = false
 var rng = RandomNumberGenerator.new()
 signal num_of_questions_remaining(num_of_questions)
@@ -54,7 +55,9 @@ func _process(delta):
 		#$npc_cam.position = player_cam_translation
 		$npc_cam.set_current(true)
 		continute_arg.emit(false)
+		was_talking = true
 		Globals.logs.append("{" + "'begin_talk_Arguing" + "': " + str(180-timer.time_left)+"}")
+		Globals.isTalking = true
 
 
 
@@ -70,7 +73,7 @@ func _on_area_3d_area_shape_entered(area_rid, area, area_shape_index, local_shap
 
 
 func _on_area_3d_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	if(area.name == "looking_at"):
+	if(area.name == "looking_at" && was_talking):
 		$Label3D.visible = false
 		player_close = false 
 		$talk_system.visible = false
@@ -78,7 +81,9 @@ func _on_area_3d_area_shape_exited(area_rid, area, area_shape_index, local_shape
 		lock_rotation.emit(true)
 		$npc_cam.set_current(false)
 		continute_arg.emit(true)
+		was_talking = false
 		Globals.logs.append("{" + "'exit_talk_Arguing" + "': " + str(180-timer.time_left)+"}")
+		Globals.isTalking = false
 
 
 func _on_talk_system_play_mouth_anim_other(talking):

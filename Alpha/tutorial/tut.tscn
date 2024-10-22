@@ -1,0 +1,480 @@
+[gd_scene load_steps=30 format=3 uid="uid://beo6n71do6cr5"]
+
+[ext_resource type="Texture2D" uid="uid://n24gk647gda5" path="res://tutorial/Cartoon Sky Skybox.jpg" id="1_0fbqq"]
+[ext_resource type="Script" path="res://tutorial/tut.gd" id="1_qbexe"]
+[ext_resource type="PackedScene" uid="uid://b0jmja8u6w1le" path="res://player.tscn" id="2_sgr2g"]
+[ext_resource type="Texture2D" uid="uid://c3c8xlceunlwe" path="res://tutorial/Red Door Cartoon Illustration Background Removed.png" id="3_cpbnv"]
+[ext_resource type="PackedScene" uid="uid://bj44dvpiorjv0" path="res://npc.tscn" id="4_x80ut"]
+[ext_resource type="PackedScene" uid="uid://nb434uaehnad" path="res://distractions/gift/gift.tscn" id="5_pup66"]
+[ext_resource type="PackedScene" uid="uid://iihfdnlxa4x7" path="res://distractions/interactable/interact.tscn" id="6_0r8ye"]
+[ext_resource type="Texture2D" uid="uid://cbg137sipluvp" path="res://group_qs/exit.png" id="8_q3g03"]
+[ext_resource type="Texture2D" uid="uid://oagfgwgwxep8" path="res://group_qs/Red arrow sign.png" id="9_tern3"]
+[ext_resource type="FontFile" uid="uid://bxcnmly2qqkel" path="res://group_qs/OpenSans-VariableFont_wdth,wght.ttf" id="10_turox"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ieff4"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_cover = ExtResource("1_0fbqq")
+ground_bottom_color = Color(0.262745, 0.67451, 0.431373, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_dw406"]
+sky_material = SubResource("ProceduralSkyMaterial_ieff4")
+
+[sub_resource type="Environment" id="Environment_550vd"]
+background_mode = 2
+sky = SubResource("Sky_dw406")
+ambient_light_sky_contribution = 0.2
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_g04j1"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_erwss"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t04au"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5mpu"]
+albedo_color = Color(0.827451, 0.141176, 0.219608, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_pbuta"]
+material = SubResource("StandardMaterial3D_t5mpu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8knd"]
+albedo_color = Color(0, 0.533333, 0.176471, 1)
+metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_aa7jg"]
+material = SubResource("StandardMaterial3D_h8knd")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6rfl"]
+size = Vector3(2.32275, 2.9679, 20.8744)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q00ad"]
+size = Vector3(26.6737, 1, 32.5251)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0p5k1"]
+size = Vector3(1.95569, 2.32812, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3nso"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.513726, 0.407843, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lwh5i"]
+material = SubResource("StandardMaterial3D_m3nso")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p337b"]
+radius = 1.12895
+
+[sub_resource type="Animation" id="Animation_ihime"]
+resource_name = "move_npc"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPC:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0991038, 1.48073, -7.19589), Vector3(-0.764167, 1.80509, -7.19589), Vector3(-1.66139, 1.49521, -7.19589)]
+}
+
+[sub_resource type="Animation" id="Animation_nhuco"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPC:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0991038, 1.48073, -7.19589)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xmlgu"]
+_data = {
+"RESET": SubResource("Animation_nhuco"),
+"move_npc": SubResource("Animation_ihime")
+}
+
+[node name="Tut" type="Node3D"]
+script = ExtResource("1_qbexe")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_550vd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0.489222, -0.8371, 0.244799, 0.103274, 0.334307, 0.936789, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.17361, 0, 0, 0, 1, 0, 0, 0, 19.7115, 0, 0, 0)
+mesh = SubResource("BoxMesh_g04j1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_erwss")
+
+[node name="player" parent="." instance=ExtResource("2_sgr2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0970617, 1.50082, 7.40081)
+
+[node name="hand" type="Node3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75061)
+
+[node name="enviorment" type="Node" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(3.03182, 0, 0, 0, 5.96095, 0, 0, 0, 3.03182, 0, 2.00017, -9.34146)
+mesh = SubResource("BoxMesh_t04au")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(3.03866, 0, 0, 0, 2.23295, 0, 0, 0, 2.8612, 0, 6.12677, -9.26112)
+mesh = SubResource("PrismMesh_pbuta")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.619814, 1.57238)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.839246, 2.63963)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.619814, 3.83718)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.839246, 4.90442)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.619814, 5.93402)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.839246, 7.00126)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.619814, 8.19881)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.839246, 9.26606)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.619814, -6.82258)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.839246, -5.75534)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.619814, -4.55779)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.839246, -3.49054)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.619814, -2.46094)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.839246, -1.3937)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.619814, -0.196148)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.839246, 0.871098)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.619814, 1.57238)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.839246, 2.63963)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.619814, 3.83718)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.839246, 4.90442)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.619814, 5.93402)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.839246, 7.00126)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.619814, 8.19881)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.839246, 9.26606)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.619814, -6.82258)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D29" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.839246, -5.75534)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D30" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.619814, -4.55779)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D31" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.839246, -3.49054)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D32" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.619814, -2.46094)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D33" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.839246, -1.3937)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D34" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.619814, -0.196148)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D35" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -4.14966, 0.839246, 0.871098)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D36" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -3.18199, 0.564989, 9.26606)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D37" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -2.03582, 0.705325, 9.26606)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D38" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -1.00418, 0.564989, 9.26606)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D39" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 0.141985, 0.705325, 9.26606)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D40" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -0.300434, 0.564989, 9.26606)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D41" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 0.845735, 0.705325, 9.26606)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D42" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 1.87737, 0.564989, 9.26606)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D43" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.02354, 0.705325, 9.26606)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="Sprite3D" type="Sprite3D" parent="enviorment"]
+transform = Transform3D(0.46988, 0, 0, 0, 0.46988, 0, 0, 0, 0.46988, 0, 1.74454, -7.76513)
+texture = ExtResource("3_cpbnv")
+
+[node name="MeshInstance3D44" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(2.62462, 0, 0, 0, 2.62462, 0, 0, 0, 2.62462, 2.48763, 0.619814, -8.85253)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D45" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, 3.8789, 0.839246, -7.66916)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D46" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(2.90859, 0, 0, 0, 2.90859, 0, 0, 0, 2.90859, -2.85109, 0.619814, -9.01303)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D47" type="MeshInstance3D" parent="enviorment"]
+transform = Transform3D(1.80236, 0, 0, 0, 1.80236, 0, 0, 0, 1.80236, -3.99919, 0.839246, -7.94579)
+mesh = SubResource("SphereMesh_aa7jg")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="enviorment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79379, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enviorment/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488275, 0.983948, -0.309616)
+shape = SubResource("BoxShape3D_e6rfl")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="enviorment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93002, 0.96517, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enviorment/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488275, 0.983948, -0.309616)
+shape = SubResource("BoxShape3D_e6rfl")
+
+[node name="Label3D" type="Label3D" parent="enviorment"]
+transform = Transform3D(0.981571, -0.1911, 0, 0.1911, 0.981571, 0, 0, 0, 1, 0, 3.95602, -7.6332)
+text = "הבית של באב"
+font_size = 72
+
+[node name="floor_area" type="Area3D" parent="enviorment"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enviorment/floor_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.288116, -1.53079, -6.01501)
+shape = SubResource("BoxShape3D_q00ad")
+
+[node name="door" type="Area3D" parent="enviorment"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enviorment/door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0953979, 1.47213, -8.07516)
+shape = SubResource("BoxShape3D_0p5k1")
+
+[node name="NPC" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_x80ut")]
+transform = Transform3D(0.0285846, 0, -0.999591, 0, 1, 0, 0.999591, 0, 0.0285846, -0.0991038, 1.48073, -7.19589)
+player = NodePath("../player")
+questions_path = "res://group_qs/tut.json"
+can_talk = true
+logable = false
+
+[node name="Gift" parent="." instance=ExtResource("5_pup66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34543, 0.851465, 1.66862)
+
+[node name="interact" parent="Gift" node_paths=PackedStringArray("player_hand", "object", "aura") instance=ExtResource("6_0r8ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.214086, 0.113384, 0.145968)
+player_hand = NodePath("../../player/hand")
+logable = false
+object = NodePath("..")
+aura = NodePath("../aura4")
+can_pick_up = true
+
+[node name="aura4" type="MeshInstance3D" parent="Gift"]
+transform = Transform3D(0.400126, 0, 1.98368, 0, 2.02363, 0, -1.98369, 0, 0.400125, 0.07476, 0.0327141, 0.0694301)
+mesh = SubResource("SphereMesh_lwh5i")
+skeleton = NodePath("../../Gun")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.343806, -5.01358)
+shape = SubResource("CylinderShape3D_p337b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xmlgu")
+}
+
+[node name="exit" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="exit"]
+layout_mode = 1
+offset_right = 188.0
+offset_bottom = 177.0
+texture_normal = ExtResource("8_q3g03")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.831159, 0.556035, 0, -0.556035, -0.831159, 0, 0, 0, 1, 0, 2.75282, -4.63715)
+visible = false
+texture = ExtResource("9_tern3")
+
+[node name="instruction" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="instruction"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="inst_text" type="Label" parent="instruction"]
+layout_direction = 2
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_turox")
+theme_override_font_sizes/font_size = 18
+text = "על מנת לזוז, השתמשו בחיצים של המקלדת. על מנת להביט סביבכם, השתמשו בעכבר. התקדמו לעבר החבר של באב ודברו איתו על ידי לחיצה על המקש E"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="body_entered" from="enviorment/door" to="." method="_on_door_body_entered"]
+[connection signal="lock_rotation" from="NPC" to="player" method="_on_npc_lock_rotation"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="pressed" from="exit/TextureButton" to="." method="_on_texture_button_pressed"]
