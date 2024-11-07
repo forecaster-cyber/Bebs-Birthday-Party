@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://iihfdnlxa4x7"]
+[gd_scene load_steps=9 format=3 uid="uid://iihfdnlxa4x7"]
 
 [ext_resource type="Script" path="res://distractions/interactable/interact.gd" id="1_cp12p"]
 [ext_resource type="Texture2D" uid="uid://bkji2lnbqx7du" path="res://distractions/interactable/poof.png" id="2_cfa2n"]
 [ext_resource type="Texture2D" uid="uid://w7hde61qakkj" path="res://E.png" id="3_5baco"]
+[ext_resource type="Texture2D" uid="uid://cbg137sipluvp" path="res://group_qs/exit.png" id="4_0unfe"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pte1w"]
 radius = 0.943173
@@ -67,7 +68,23 @@ visible = false
 billboard = 1
 texture = ExtResource("3_5baco")
 
+[node name="exit" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="exit"]
+layout_mode = 1
+offset_right = 188.0
+offset_bottom = 177.0
+texture_normal = ExtResource("4_0unfe")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_shape_entered" from="Area3D" to="." method="_on_area_3d_area_shape_entered"]
 [connection signal="area_shape_exited" from="Area3D" to="." method="_on_area_3d_area_shape_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="exit/TextureButton" to="." method="_on_texture_button_pressed"]

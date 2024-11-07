@@ -54,7 +54,7 @@ material = SubResource("StandardMaterial3D_i578l")
 radius = 2.92957
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k42jd"]
-radius = 3.40924
+radius = 2.22823
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ku33p"]
 load_path = "res://.godot/imported/rug texture.png-05c9ed10c51477abc9cfded751f520cc.s3tc.ctex"
@@ -98,7 +98,7 @@ size = Vector3(1, 7.82123, 13.4202)
 size = Vector3(1.02637, 8.16931, 13.7543)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_68gpf"]
-size = Vector3(7.82086, 0.587219, 2.41284)
+size = Vector3(8.62625, 0.587219, 2.41284)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gt1s3"]
 size = Vector3(2.82397, 4.89954, 1.5675)
@@ -177,19 +177,19 @@ skeleton = NodePath("../../..")
 [node name="laughing" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.53797, 0, 0)
 
-[node name="NPC" parent="laughing" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
+[node name="g0" parent="laughing" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
 transform = Transform3D(0.822323, 0, -0.569021, 0, 1, 0, 0.569021, 0, 0.822323, 12.4789, 1.496, 4.77145)
 player = NodePath("../../player")
 questions_path = "res://group_qs/laughing.json"
 timer = NodePath("../../endgame")
 
-[node name="NPC2" parent="laughing" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
+[node name="g1" parent="laughing" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
 transform = Transform3D(-0.394198, 0, 0.919025, 0, 1, 0, -0.919025, 0, -0.394198, 13.5827, 1.496, 6.10281)
 player = NodePath("../../player")
 questions_path = "res://group_qs/laughing.json"
 timer = NodePath("../../endgame")
 
-[node name="NPC3" parent="laughing" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
+[node name="g2" parent="laughing" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
 transform = Transform3D(-0.94707, 0, -0.321026, 0, 1, 0, 0.321026, 0, -0.94707, 14.1455, 1.496, 4.86454)
 player = NodePath("../../player")
 questions_path = "res://group_qs/laughing.json"
@@ -220,7 +220,7 @@ shape = SubResource("SphereShape3D_35fpu")
 stream = ExtResource("7_0paqd")
 
 [node name="CRYING" parent="." node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
-transform = Transform3D(0.58976, 0, -0.807578, 0, 1, 0, 0.807578, 0, 0.58976, -9.05532, 1.56611, -1.51068)
+transform = Transform3D(0.58976, 0, -0.807578, 0, 1, 0, 0.807578, 0, 0.58976, -9.05532, 1.56611, 5.72033)
 player = NodePath("../player")
 questions_path = "res://group_qs/crying.json"
 can_talk = true
@@ -242,7 +242,7 @@ shape = SubResource("SphereShape3D_k42jd")
 [node name="party" type="Node3D" parent="."]
 
 [node name="table2" parent="party" instance=ExtResource("9_cujrc")]
-transform = Transform3D(1.1236, 0, 0, 0, 0.955449, 0, 0, 0, 0.580199, -0.924547, 1.55137, 2.19117)
+transform = Transform3D(1.1236, 0, 0, 0, 0.955449, 0, 0, 0, 0.580199, -6.26978, 1.55137, 2.19117)
 
 [node name="closet1" parent="party" instance=ExtResource("10_mb6mf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10292, 2.96272, -3.0868)
@@ -258,14 +258,14 @@ transform = Transform3D(3.38142, 0, 0, 0, 0.00666652, 0, 0, 0, 2.77288, -1.2058,
 mesh = SubResource("CylinderMesh_wawls")
 
 [node name="rug2" type="Node3D" parent="party"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13914, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.34524, -0.13914, 0)
 
 [node name="model" type="MeshInstance3D" parent="party/rug2"]
 transform = Transform3D(5.75472, 0, 0, 0, 0.0164484, 0, 0, 0, 5.31414, -0.872573, 0.743935, 2.24008)
 mesh = SubResource("CylinderMesh_smfbu")
 
 [node name="cake" parent="party" instance=ExtResource("13_ck3fu")]
-transform = Transform3D(0.797205, 0, 0, 0, 0.797205, 0, 0, 0, 0.797205, -0.688503, 2.90223, 2.12171)
+transform = Transform3D(0.797205, 0, 0, 0, 0.797205, 0, 0, 0, 0.797205, -6.03374, 2.90223, 2.12171)
 
 [node name="shelf" parent="party" instance=ExtResource("14_6ag75")]
 transform = Transform3D(0.0116311, 0, 2.55761, 0, 3.3195, 0, -2.74245, 0, 0.0108469, -10.6684, 0.501732, 6.92631)
@@ -293,32 +293,32 @@ transform = Transform3D(7.45096, 0, 0, 0, 7.45096, 0, 0, 0, 7.45096, 10.0274, 14
 transform = Transform3D(-2.1044, 1.68485e-17, 0.161186, -0.00334468, 2.11011, -0.0436672, -0.161151, -0.0437951, -2.10394, 10.342, 3.91474, 3.53395)
 
 [node name="chair" type="MeshInstance3D" parent="party"]
-transform = Transform3D(0.109179, 0, 0.994022, 0, 1, 0, -0.994022, 0, 0.109179, -2.84255, 0.57734, 4.27931)
+transform = Transform3D(0.109179, 0, 0.994022, 0, 1, 0, -0.994022, 0, 0.109179, -8.18779, 0.57734, 4.27931)
 mesh = ExtResource("8_pbjgi")
 skeleton = NodePath("../..")
 
 [node name="chair2" type="MeshInstance3D" parent="party"]
-transform = Transform3D(-0.239499, 0, 0.970897, 0, 1, 0, -0.970897, 0, -0.239499, 1.28723, 0.57734, 4.27931)
+transform = Transform3D(-0.239499, 0, 0.970897, 0, 1, 0, -0.970897, 0, -0.239499, -4.05801, 0.57734, 4.27931)
 mesh = ExtResource("8_pbjgi")
 skeleton = NodePath("../..")
 
 [node name="chair3" type="MeshInstance3D" parent="party"]
-transform = Transform3D(-0.0192498, 0, 0.999815, 0, 1, 0, -0.999815, 0, -0.0192497, -0.559842, 0.57734, 4.27931)
+transform = Transform3D(-0.0192498, 0, 0.999815, 0, 1, 0, -0.999815, 0, -0.0192497, -5.90508, 0.57734, 4.27931)
 mesh = ExtResource("8_pbjgi")
 skeleton = NodePath("../..")
 
 [node name="chair4" type="MeshInstance3D" parent="party"]
-transform = Transform3D(-0.00661479, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066148, 0.38944, 0.57734, -0.120255)
+transform = Transform3D(-0.00661479, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066148, -4.9558, 0.57734, -0.120255)
 mesh = ExtResource("8_pbjgi")
 skeleton = NodePath("../..")
 
 [node name="chair5" type="MeshInstance3D" parent="party"]
-transform = Transform3D(-0.00661479, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066148, -2.82584, 0.57734, -0.120255)
+transform = Transform3D(-0.00661479, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066148, -8.17108, 0.57734, -0.120255)
 mesh = ExtResource("8_pbjgi")
 skeleton = NodePath("../..")
 
 [node name="table_2" parent="party" instance=ExtResource("15_prd1t")]
-transform = Transform3D(3.10939, 0, 0, 0, 3.10939, 0, 0, 0, 3.10939, -0.94187, 0.553334, 7.13254)
+transform = Transform3D(3.10939, 0, 0, 0, 3.10939, 0, 0, 0, 3.10939, 4.68039, 0.553334, 7.88337)
 
 [node name="lights" type="Node3D" parent="."]
 
@@ -356,7 +356,7 @@ omni_range = 10.6155
 [node name="distractions" type="Node" parent="."]
 
 [node name="Radio" parent="distractions" node_paths=PackedStringArray("bday_music") instance=ExtResource("16_rxa2u")]
-transform = Transform3D(0.996121, 0, 0.0879903, 0, 1, 0, -0.0879903, 0, 0.996121, -3.78433, 2.46215, 2.61979)
+transform = Transform3D(0.996121, 0, 0.0879903, 0, 1, 0, -0.0879903, 0, 0.996121, -8.2543, 2.46215, 2.61979)
 bday_music = NodePath("bday_music")
 
 [node name="bday_music" type="AudioStreamPlayer3D" parent="distractions/Radio"]
@@ -379,7 +379,7 @@ mesh = SubResource("SphereMesh_7sro5")
 skeleton = NodePath("../../Gun")
 
 [node name="Gun" parent="distractions" instance=ExtResource("18_g7bia")]
-transform = Transform3D(0.110706, 0, 0.993853, 0, 1, 0, -0.993853, 0, 0.110706, 1.9422, 2.38147, 2.61629)
+transform = Transform3D(0.110706, 0, 0.993853, 0, 1, 0, -0.993853, 0, 0.110706, -3.40304, 2.38147, 2.61629)
 
 [node name="interact" parent="distractions/Gun" node_paths=PackedStringArray("player_hand", "object", "aura", "timer") instance=ExtResource("17_iw7px")]
 transform = Transform3D(0.110706, 0, -0.993853, 0, 1, 0, 0.993853, 0, 0.110706, -0.0417914, -0.19035, 0.0878339)
@@ -396,7 +396,7 @@ transform = Transform3D(1.36423, 0, 7.9825e-09, 0, 1.36423, 0, -8.26076e-08, 0, 
 mesh = SubResource("SphereMesh_7sro5")
 
 [node name="Balloon" parent="distractions" instance=ExtResource("20_ixt4l")]
-transform = Transform3D(0.0546539, 0, 0.998505, 0, 1, 0, -0.998505, 0, 0.0546539, -0.460447, 2.06508, 7.23678)
+transform = Transform3D(0.0546539, 0, 0.998505, 0, 1, 0, -0.998505, 0, 0.0546539, 5.16182, 2.06508, 7.98761)
 
 [node name="interact" parent="distractions/Balloon" node_paths=PackedStringArray("player_hand", "object", "aura", "timer") instance=ExtResource("17_iw7px")]
 transform = Transform3D(1, 0, 5.70086e-11, 0, 1, 0, 6.25766e-11, 0, 1, 0.0408735, -0.190483, -0.45419)
@@ -458,9 +458,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10931, 3.58466, 0.179382)
 shape = SubResource("BoxShape3D_356l6")
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.745149, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06168, 1.53437, 2.16085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23701, 1.53437, 2.16085)
 shape = SubResource("BoxShape3D_68gpf")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="collisions"]
@@ -492,10 +493,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.131752, 0.0311279)
 shape = SubResource("BoxShape3D_m1je5")
 
 [node name="StaticBody3D10" type="StaticBody3D" parent="collisions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21326, 0, 3.46112)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.03236, -0.153732, 4.32535)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/StaticBody3D10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18375, 1.01803, 3.62118)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.35711, 1.01803, 3.53324)
 shape = SubResource("BoxShape3D_24wsr")
 
 [node name="timers" type="Node" parent="."]
@@ -506,6 +507,7 @@ offset_bottom = 23.0
 
 [node name="endgame" type="Timer" parent="."]
 wait_time = 180.0
+one_shot = true
 autostart = true
 
 [node name="arguing" type="Node3D" parent="."]
@@ -580,6 +582,7 @@ anchor_bottom = 0.575617
 offset_bottom = -1.90735e-05
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("27_4ued5")
 text = "המשך לשאלון"
 uri = "https://tauindeng.eu.qualtrics.com/jfe/form/SV_6m6rYfSPWzZkfPg"
 text_direction = 2
@@ -614,6 +617,10 @@ texture_normal = ExtResource("29_sfbf8")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="progress_talker" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="body_entered" from="laughing/laughing_listening" to="." method="_on_laughing_listening_body_entered"]
 [connection signal="body_exited" from="laughing/laughing_listening" to="." method="_on_laughing_listening_body_exited"]
 [connection signal="lock_rotation" from="CRYING" to="player" method="_on_crying_lock_rotation"]
@@ -625,3 +632,4 @@ stretch_mode = 0
 [connection signal="body_entered" from="arguing/arguing_listening" to="." method="_on_arguing_listening_body_entered"]
 [connection signal="body_exited" from="arguing/arguing_listening" to="." method="_on_arguing_listening_body_exited"]
 [connection signal="pressed" from="exit/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="timeout" from="progress_talker" to="." method="_on_progress_talker_timeout"]

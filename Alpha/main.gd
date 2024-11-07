@@ -49,7 +49,7 @@ func _process(delta):
 		
 
 func insert_data():
-	var collection: FirestoreCollection = Firebase.Firestore.collection("experiment")
+	var collection: FirestoreCollection = Firebase.Firestore.collection("t1")
 	var data: Dictionary = {
 	"logs": Globals.logs,
 	"q_asked": Globals.q_asked,
@@ -61,9 +61,11 @@ func insert_data():
 	"t_looking_crying": Globals.t_looking_crying,
 	"t_idle": Globals.t_idle,
 	"first_interaction": Globals.first_interaction,
-	"t_talking_crying": Globals.t_talking_crying
+	"t_talking_crying": Globals.t_talking_crying,
+	"age": Globals.age,
+	"gender": Globals.gender
 	}
-	await collection.add(Globals.id, data)
+	await collection.add(str(Globals.id), data)
 	print("added")
 
 #listening to crying time
@@ -73,12 +75,14 @@ func _on_crying_listening_body_entered(body):
 		print("oh yes crying")
 		is_listening_crying = true 
 		Globals.logs.append("{" + "'begin_listen_Beb" + "': " + str(180-$endgame.time_left)+"}")
+		$distractions/Radio/bday_music.stream_paused = true
 
 
 func _on_crying_listening_body_exited(body):
 	if(body.name == "player"):
 		is_listening_crying = false
 		#Globals.t_listening_crying += crying_temp_listening_time
+		$distractions/Radio/bday_music.stream_paused = false
 		crying_temp_listening_time = 0
 		Globals.logs.append("{" + "'exit_listen_Beb" + "': " + str(180-$endgame.time_left)+"}")
 #####
@@ -93,6 +97,7 @@ func _on_laughing_listening_body_entered(body):
 		$laughing/conv.play(laughing_con_seconds) 
 		$laughing/laughter.volume_db = -50
 		$distractions/Radio/bday_music.stream_paused = true
+		$laughing/laughter.stream_paused = true
 		Globals.logs.append("{" + "'begin_listen_Girls" + "': " + str(180-$endgame.time_left)+"}")
 
 
@@ -105,6 +110,7 @@ func _on_laughing_listening_body_exited(body):
 		$laughing/conv.stop()
 		$laughing/laughter.volume_db = 50
 		$distractions/Radio/bday_music.stream_paused = false
+		$laughing/laughter.stream_paused = false
 		Globals.logs.append("{" + "'exit_listen_Girls" + "': " + str(180-$endgame.time_left)+"}") 
 ####
 
@@ -112,6 +118,11 @@ func _on_laughing_listening_body_exited(body):
 func _on_endgame_timeout():
 	await insert_data() 
 	$Ending.visible = true
+	$distractions/Radio/bday_music.stream_paused = true
+	$laughing/laughter.stream_paused = true
+	$arguing/bg_arguing_sound_fx.stream_paused = true
+	$laughing/conv.stream_paused = true
+	$Ending/Button.uri = "https://tauindeng.eu.qualtrics.com/jfe/form/SV_6m6rYfSPWzZkfPg" + "?PlayerID=" + str(Globals.id)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
@@ -123,13 +134,40 @@ func _on_arguing_listening_body_entered(body):
 	if(body.name == "player"):
 		Globals.logs.append("{" + "'begin_listen_Arguing" + "': " + str(180-$endgame.time_left)+"}")
 		$distractions/Radio/bday_music.stream_paused = true
+		$laughing/laughter.stream_paused = true
 
 
 func _on_arguing_listening_body_exited(body):
 	if(body.name == "player"):
 		Globals.logs.append("{" + "'exit_listen_Arguing" + "': " + str(180-$endgame.time_left)+"}")
 		$distractions/Radio/bday_music.stream_paused = false
+		$laughing/laughter.stream_paused = false
 
 
 func _on_texture_button_pressed():
 	$player.position = Vector3($player.position.x+ 0,$player.position.y+ 0,$player.position.z+ -1)
+
+
+func _on_progress_talker_timeout():
+	print("current  t " + str(Globals.current_talker))
+	Globals.current_talker = (Globals.current_talker + 1) % 3
+
+	# Update the characters' behavior based on `Globals.current_talker`
+	match Globals.current_talker:
+		0:
+			$laughing/g1.stop_stalking()
+			$laughing/g2.stop_stalking()
+			$laughing/g0.start_stalking()
+			print("talking now:::: g0")
+		1:
+			$laughing/g0.stop_stalking()
+			$laughing/g2.stop_stalking()
+			$laughing/g1.start_stalking()
+			print("talking now:::: g1")
+		2:
+			$laughing/g0.stop_stalking()
+			$laughing/g1.stop_stalking()
+			$laughing/g2.start_stalking()
+			print("talking now:::: g2")
+		
+	

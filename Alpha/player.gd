@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 @onready var head = $head
@@ -14,60 +13,61 @@ var first_pick = false
 var red = 1.0
 var green = 1.0
 var blue = 1.0
+
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pass
 	
 func _physics_process(delta):
 	
-		
-		#print(collision.name)
-	# Add the gravity.
-	
-	# Handle jump.
-	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-		Globals.distance_travelled += abs(self.position.x) + abs(self.position.z)
+
+	# Handle rotation based on left/right arrow keys.
+	if Input.is_action_pressed("ui_left"):
+		rotation_degrees.y += SPEED * delta * 10 # Adjust turn speed as needed
+	elif Input.is_action_pressed("ui_right"):
+		rotation_degrees.y -= SPEED * delta * 10
+
+	# Forward/backward movement with up/down arrow keys.
+	var forward_direction = -transform.basis.z.normalized()
+	if Input.is_action_pressed("ui_up"):
+		velocity.x = forward_direction.x * SPEED
+		velocity.z = forward_direction.z * SPEED
+		is_idle = false
+	elif Input.is_action_pressed("ui_down"):
+		velocity.x = -forward_direction.x * SPEED
+		velocity.z = -forward_direction.z * SPEED
 		is_idle = false
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		# Stop immediately when no movement keys are pressed
+		velocity.x = 0
+		velocity.z = 0
 		is_idle = true
 	
+	# Move and slide with the current velocity.
 	move_and_slide()
-	#head.rotation_degrees.x = look_rot.x
-	rotation_degrees.y = look_rot.y
+
 	if(Input.is_action_just_pressed("push")):
 		$push/CollisionShape3D.disabled = false
 		$AnimationPlayer.play("push")
 		await get_tree().create_timer(0.5).timeout
-		
 		$push/CollisionShape3D.disabled = true
 		print("DATA!!!!!: " + str(Globals.logs))
-	
+		print("LEGIT: " + str(Globals.id))
 	
 func _input(event):
-	if event is InputEventMouseMotion && can_rot:
-		look_rot.y -= (event.relative.x*0.25)
-		look_rot.x -= (event.relative.y*0.25)
+	if event is InputEventMouseMotion and can_rot:
+		look_rot.y -= (event.relative.x * 0.25)
+		look_rot.x -= (event.relative.y * 0.25)
 		look_rot.x = clamp(look_rot.x, -80, 90)
 		is_idle = false
 	else:
 		is_idle = true
 
-
 func _on_crying_lock_rotation(lock):
 	can_rot = lock
 
-
 func _on_robot_lock_rotation(lock):
 	can_rot = lock 
-
 
 func _on_npc_lock_rotation(lock):
 	can_rot = lock 

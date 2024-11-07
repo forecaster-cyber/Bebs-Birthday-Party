@@ -48,7 +48,7 @@ func _process(delta):
 		#print(q1,q2,q3)
 		$talk_system.visible = true
 		player.visible = false
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		lock_rotation.emit(false)
 		player_is_talking = true
 		#var player_cam_translation = player.get_node("head/cam").position
@@ -77,13 +77,17 @@ func _on_area_3d_area_shape_exited(area_rid, area, area_shape_index, local_shape
 		$Label3D.visible = false
 		player_close = false 
 		$talk_system.visible = false
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		lock_rotation.emit(true)
 		$npc_cam.set_current(false)
 		continute_arg.emit(true)
 		was_talking = false
 		Globals.logs.append("{" + "'exit_talk_Arguing" + "': " + str(180-timer.time_left)+"}")
 		Globals.isTalking = false
+	elif(area.name == "looking_at"):
+		$Label3D.visible = false
+		player_close = false 
+
 
 
 func _on_talk_system_play_mouth_anim_other(talking):
@@ -96,14 +100,23 @@ func _on_talk_system_play_mouth_anim_self(talking):
 
 func _on_talk_system_play_distraction():
 	var random = rng.randf_range(0,1.0)
-	if(random > 0.5):
+	if(random > 0.5 && random < 0.6) :
 		$AnimationPlayer.speed_scale = random*2
 		$AnimationPlayer.play("dis3")
+		$AudioStreamPlayer.pitch_scale = random*2
+		$AudioStreamPlayer.play()
 		
-	else:
+	elif (random <0.5 ):
 		$AnimationPlayer.speed_scale = random*4
-		$AnimationPlayer.play("dis3")
+		$AnimationPlayer.play("dis4")
+		$AudioStreamPlayer.pitch_scale = random*4
+		$AudioStreamPlayer.play()
+	else:
+		$AnimationPlayer.speed_scale = random*3
+		$AnimationPlayer.play("dis5")
+		$AudioStreamPlayer.pitch_scale = random*3
+		$AudioStreamPlayer.play()
 
 
-func _on_talk_system_log_interaction(kind):
-	Globals.logs.append(kind + str(180-timer.time_left)+"}")
+func _on_talk_system_log_interaction(kind, time):
+	Globals.logs.append(kind + str(180-timer.time_left)+ ",interaction_time: " + str(time) +  "}")

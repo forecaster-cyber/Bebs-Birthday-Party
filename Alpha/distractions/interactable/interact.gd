@@ -31,30 +31,33 @@ func _process(delta):
 			Globals.first_interaction = str(object.name)
 		Globals.non_curious_interactions += 1
 		if logable:
-			Globals.logs.append("{" + "'grab_" + str(object.name) + "': " + str(180-timer.time_left)+"}")
+			Globals.logs.append("{" + "'grab_" + str(object.name) + "': " + str(180-timer.time_left)+", pos: (" + str(player_hand.global_position) + ")}")
 		else:
 			pass
 		print("picked up")
 		object.freeze = true
 		last_pos = object.global_position
 		object.global_position = player_hand.global_position
+		object.global_rotation_degrees = Vector3(player_hand.global_rotation_degrees.x, player_hand.global_rotation_degrees.y+100,player_hand.global_rotation_degrees.z)
 		object.reparent(player_hand)
 		picked_up = true
 		print(str(picked_up) + str("123"))
 		#$instructions.text = actions_text
 		$instructions.texture = load("res://mouse.png")
+		$exit.visible = true
 		aura.visible = false
 		
 	#drop
 	elif(Input.is_action_just_pressed("interact") && player_close && picked_up):
 		if logable:
-			Globals.logs.append("{" + "'drop_" + str(object.name) + "': " + str(180-timer.time_left)+"}")
+			Globals.logs.append("{" + "'drop_" + str(object.name) + "': " + str(180-timer.time_left)+", pos: (" + str(player_hand.global_position) + ")}")
 		else:
 			pass
 		object.reparent(get_tree().get_current_scene())
 		object.freeze = false
 		print("dropped")
 		picked_up = false
+		$exit.visible = false
 		$instructions.texture = load("res://E.png")
 		
 	elif(Input.is_action_just_pressed("activate") && player_close && (picked_up || !can_pick_up)):
@@ -64,7 +67,7 @@ func _process(delta):
 			Globals.first_interaction = str(object.name)
 		Globals.non_curious_interactions += 1
 		if logable:
-			Globals.logs.append("{" + "'activate_" + str(object.name) + "': " + str(180-timer.time_left)+"}")
+			Globals.logs.append("{" + "'activate_" + str(object.name) + "': " + str(180-timer.time_left)+", pos: (" + str(player_hand.global_position) + ")}")
 		else:
 			pass
 		object.action()
@@ -103,3 +106,19 @@ func respawn():
 func _on_animation_player_animation_finished(anim_name):
 	$poof_effect.visible = false
 	#object.visible = true
+
+
+func _on_texture_button_pressed():
+	if(player_close && picked_up):
+			if logable:
+				Globals.logs.append("{" + "'drop_" + str(object.name) + "': " + str(180-timer.time_left)+", pos: (" + str(player_hand.global_position) + ")}")
+			else:
+				pass
+			object.reparent(get_tree().get_current_scene())
+			object.freeze = false
+			print("dropped")
+			picked_up = false
+			$instructions.texture = load("res://E.png")
+			$exit.visible = false
+	else:
+		pass

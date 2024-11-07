@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c86k5y6p0u0p5"]
+[gd_scene load_steps=12 format=3 uid="uid://c86k5y6p0u0p5"]
 
 [ext_resource type="Script" path="res://robot.gd" id="1_mw4hw"]
 [ext_resource type="PackedScene" uid="uid://bxjlp6s0hpvyx" path="res://distractions/robot/Toy Robot Lowpoly.glb" id="2_2e2ct"]
 [ext_resource type="PackedScene" uid="uid://bkc20x4kcb1av" path="res://talk_system.tscn" id="3_km4ph"]
 [ext_resource type="Texture2D" uid="uid://w7hde61qakkj" path="res://E.png" id="4_itge7"]
+[ext_resource type="AudioStream" uid="uid://dx2u0ifvm0dqo" path="res://beep.mp3" id="5_smojr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d8upe"]
 radius = 5.97572
@@ -34,6 +35,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(-0.0774153, -1.19209e-07, -0.212992)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sketchfab_Scene:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_hveb6"]
 resource_name = "dis3"
@@ -63,10 +76,67 @@ tracks/1/keys = {
 "values": [Vector3(-0.0774153, -1.19209e-07, -0.212992), Vector3(-0.0774153, 2.01732, -0.212992), Vector3(-0.0774153, -1.19209e-07, -0.212992)]
 }
 
+[sub_resource type="Animation" id="Animation_k1is2"]
+resource_name = "dis4"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_Scene:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.369286, 1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_Scene:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.38586, 3.48787e-16, 3.48787e-16), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_31nh2"]
+resource_name = "dis5"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_Scene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0774153, -1.19209e-07, -0.212992), Vector3(-3.75819, -1.19209e-07, -0.212992), Vector3(-3.75819, 2.75194, -0.212992), Vector3(0.0343819, 2.75194, -0.212992), Vector3(3.34883, 2.75194, -0.212992), Vector3(3.34883, -0.0147595, -0.212992), Vector3(2.83232, -0.0147595, -2.49736), Vector3(-2.97089, -0.0147595, -2.49736), Vector3(-2.97089, -0.0147595, 0.309885), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_Scene:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.401363, 0.0415766, -0.31322), Vector3(-0.401363, 0.0415766, 0.922036), Vector3(-0.674662, -0.524276, 1.22056), Vector3(-0.733744, -1.28596, 1.72805), Vector3(-0.733744, -1.28596, 0.992428), Vector3(-0.263787, -0.704004, 0.699928), Vector3(-0.665158, 1.10409, -0.352534), Vector3(0.278296, 0.800076, -0.286443), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lqma4"]
 _data = {
 "RESET": SubResource("Animation_tlw6h"),
-"dis3": SubResource("Animation_hveb6")
+"dis3": SubResource("Animation_hveb6"),
+"dis4": SubResource("Animation_k1is2"),
+"dis5": SubResource("Animation_31nh2")
 }
 
 [node name="robot" type="Node3D"]
@@ -98,6 +168,9 @@ fov = 84.9418
 libraries = {
 "": SubResource("AnimationLibrary_lqma4")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_smojr")
 
 [connection signal="log_interaction" from="talk_system" to="." method="_on_talk_system_log_interaction"]
 [connection signal="play_distraction" from="talk_system" to="." method="_on_talk_system_play_distraction"]

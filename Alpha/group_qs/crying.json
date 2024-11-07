@@ -3,127 +3,127 @@
 		{
 			"q": "מי אתה, איך קוראים לך?",
 			"r": "היי! אני באב וזה יום ההולדת שלי היום",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-18.mp3",
 			"rAud": "res://group_qs/beb_audios/audio21.mp3"
 		},
 		{
 			"q": "היי באב. יום הולדת שמח! מה אתה אוהב לעשות?",
 			"r": "אני אוהב לשחק במשחקים ולרקוד",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-12.mp3",
 			"rAud": "res://group_qs/beb_audios/audio20.mp3"
 		},
 		{
 			"q": "אתה רוקד הרבה?",
 			"r": "אני רוקד כל הזמן. כל פעם שאני שומע מוזיקה אני מתחיל לנענע את כל הגוף",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-20.mp3",
 			"rAud": "res://group_qs/beb_audios/audio19.mp3"
 		},
 		{
 			"q": "למה?",
 			"r": "כשהייתי תינוק אימא שלי השמיעה לי המון מוזיקה. היא אומרת שרקדתי לכל מנגינה אפילו כשהייתי רק בן שנה!",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-14.mp3",
 			"rAud": "res://group_qs/beb_audios/audio18.mp3"
 		},
 		{
 			"q": "מה אתה עושה עכשיו?",
 			"r": "אני משחק במשחק הכי מטורף ביקום",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-15.mp3",
 			"rAud": "res://group_qs/beb_audios/audio17.mp3"
 		},
 		{
 			"q": "זה המשחק האהוב עלייך?",
 			"r": "לא המשחק האהוב עליי זה ״משחק הדימיון",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-01.mp3",
 			"rAud": "res://group_qs/beb_audios/audio16.mp3"
 		},
 		{
 			"q": "מה זה אומר?",
 			"r": "משחק שבו אתה יכול להיות כל מי שאתה רוצה",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-02.mp3",
 			"rAud": "res://group_qs/beb_audios/audio15.mp3"
 		},
 		{
 			"q": "נשמע ממש מעניין, ספר לי עוד",
 			"r": "אני סוגר את העיניים שלי ומדמיין שאני גיבור על, אני אפילו יכול לעוף!",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-17.mp3",
 			"rAud": "res://group_qs/beb_audios/audio14.mp3"
 		},
 		{
-			"q": "אתה משחק לבד לרוב?",
+			"q": "אתה בדרך כלל משחק לבד?",
 			"r": "ממש לא. כולם בכיתה אוהבים לשחק. אני עומד להתחיל משחק חדש ממש עוד מעט ולצרף את כולם!",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-19.mp3",
 			"rAud": "res://group_qs/beb_audios/audio13.mp3"
 		},
 		{
 			"q": "מה זה אומר?",
 			"r": "כולנו עומדים להתחפש לגיבורי על ולשחק בגינה!",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-16.mp3",
 			"rAud": "res://group_qs/beb_audios/audio12.mp3"
 		},
 		{
 			"q": "למה אתה מסתובב?",
 			"r": "נכון לפעמים מרגישים עייפים? אני צריך להסתובב במקום כדי שההרגשה הזאת תעלם!",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-03.mp3",
 			"rAud": "res://group_qs/beb_audios/audio11.mp3"
 		},
 		{
 			"q": "למה אתה קופץ במקום?",
 			"r": "חחח כי זה כיף!",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-04.mp3",
 			"rAud": "res://group_qs/beb_audios/audio10.mp3"
 		},
 		{
 			"q": "אתה עושה את זה הרבה?",
 			"r": "סוג של. לפעמים אני גם שר לעצמי במקום להסתובב",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-05.mp3",
 			"rAud": "res://group_qs/beb_audios/audio9.mp3"
 		},
 		{
 			"q": "למה?",
 			"r": "כי זה גם עוזר לי לא להירדם וזה ממש כיף!",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-06.mp3",
 			"rAud": "res://group_qs/beb_audios/audio8.mp3"
 		},
 		{
 			"q": "מה הדבר האהוב עלייך לעשות?",
 			"r": "אני אוהב להקשיב למוזיקה בבוקר",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-07.mp3",
 			"rAud": "res://group_qs/beb_audios/audio7.mp3"
 		},
 		{
 			"q": "למה?",
 			"r": "מוזיקה זה כיף. זה עוזר לי להתעורר במצב רוח טוב!",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-08.mp3",
 			"rAud": "res://group_qs/beb_audios/audio6.mp3"
 		},
 		{
 			"q": "אתה במצב רוח טוב עכשיו?",
 			"r": "ברור! אני זוהר משמחה!",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-09.mp3",
 			"rAud": "res://group_qs/beb_audios/audio5.mp3"
 		},
 		{
 			"q": "מה אתה לרוב עושה כשאתה במצב רוח טוב?",
 			"r": "המממ... אני ארקוד, אשיר, אחייך ואצחק. וכמובן שאני אשחק ב״משחק הדימיון",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-10.mp3",
 			"rAud": "res://group_qs/beb_audios/audio4.mp3"
 		},
 		{
 			"q": "מה עשית לפני שהמסיבה התחילה?",
 			"r": "עזרתי לארגן את המסיבה. אני תמיד עוזר לארגן דברים",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-11.mp3",
 			"rAud": "res://group_qs/beb_audios/audio3.mp3"
 		},
 		{
 			"q": "למה?",
 			"r": "אני יודע שאם אני אארגן הכל יהיה בדיוק כמו שאני רוצה!",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-13.mp3",
 			"rAud": "res://group_qs/beb_audios/audio2.mp3"
 		},
 		{
 			"q": "המסיבה יצאה בדיוק כמו שרצית?",
 			"r": "כמובן. אני ממש נהנה!",
-			"qAud": "",
+			"qAud": "res://sound_effects/reaction/-21.mp3",
 			"rAud": "res://group_qs/beb_audios/audio1.mp3"
 		},
 	],

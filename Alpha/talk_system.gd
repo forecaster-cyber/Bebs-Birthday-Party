@@ -12,7 +12,7 @@ var other_npc: Node3D
 signal play_mouth_anim_self(talking)
 signal play_mouth_anim_other(talking)
 signal play_distraction()
-signal log_interaction(kind)
+signal log_interaction(kind, time)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(questions)
@@ -31,7 +31,8 @@ func _on_first_pressed():
 	$first.visible = false
 	$second.visible = false
 	Globals.q_asked += 1
-	log_interaction.emit("{" + "'ask_question" + "': ")
+	var interaction_time = 0
+	
 	dataFile = FileAccess.open(str(questions), FileAccess.READ)
 	parsed_json = JSON.parse_string(dataFile.get_as_text())
 	play_mouth_anim_other.emit(true)
@@ -42,6 +43,7 @@ func _on_first_pressed():
 		$dialog_sound.stream = audio1
 		$dialog_sound.play()
 		await get_tree().create_timer($dialog_sound.stream.get_length()).timeout
+		interaction_time += await $dialog_sound.stream.get_length()
 	else:
 	#play sound, await till over
 		await get_tree().create_timer(3.0).timeout
@@ -54,6 +56,8 @@ func _on_first_pressed():
 	$dialog_sound.play()
 	#play sound, await till over
 	await get_tree().create_timer($dialog_sound.stream.get_length()).timeout
+	interaction_time += await $dialog_sound.stream.get_length()
+	log_interaction.emit("{" + "'ask_question" + "': ", interaction_time)
 	play_mouth_anim_self.emit(false)
 	initial_num_q+=1
 	$dialog_sqr/text.text = ""
@@ -96,4 +100,4 @@ func _on_npc_num_of_questions_remaining(num_of_questions):
 
 func _on_second_pressed():
 	play_distraction.emit()
-	log_interaction.emit("{" + "'trigger_distraction" + "': ")
+	log_interaction.emit("{" + "'trigger_distraction" + "': ", 3.0)

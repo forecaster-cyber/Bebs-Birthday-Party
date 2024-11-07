@@ -60,7 +60,7 @@ func _process(delta):
 		#print(q1,q2,q3)
 		$talk_system.visible = true
 		player.visible = false
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		lock_rotation.emit(false)
 		player_is_talking = true
 		#var player_cam_translation = player.get_node("head/cam").position
@@ -85,7 +85,7 @@ func _on_npc_collision_area_shape_exited(area_rid, area, area_shape_index, local
 		$Label3D.visible = false
 		player_close = false 
 		$talk_system.visible = false
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		lock_rotation.emit(true)
 		$npc_cam.set_current(false)
 		player.visible = true
@@ -138,8 +138,13 @@ func _on_talk_system_play_distraction():
 	
 
 
-func _on_talk_system_log_interaction(kind):
-	if logable:
-		Globals.logs.append(kind + str(180-timer.time_left)+"}")
+func _on_talk_system_log_interaction(kind, time):
+	if logable:	
+		Globals.logs.append(kind + str(180-timer.time_left)+ ",interaction_time: " + str(time) +  "}")
+			
 	else:
 		pass
+func stop_stalking():
+	talking_now = false
+func start_stalking():
+	talking_now = true

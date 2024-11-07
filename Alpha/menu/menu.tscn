@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0qsbqm6ej4wm"]
+[gd_scene load_steps=4 format=3 uid="uid://d0qsbqm6ej4wm"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_r4dh5"]
 [ext_resource type="FontFile" uid="uid://bxcnmly2qqkel" path="res://group_qs/OpenSans-VariableFont_wdth,wght.ttf" id="2_e28tb"]
+[ext_resource type="AudioStream" uid="uid://dhhvdhe2wx707" path="res://sound_effects/intro.mp3" id="3_lmk45"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -21,6 +22,7 @@ anchor_right = 0.617188
 anchor_bottom = 0.592593
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.760784, 0.588235, 1)
 theme_override_fonts/font = ExtResource("2_e28tb")
 text = "קדימה למסיבה!"
 metadata/_edit_use_anchors_ = true
@@ -39,16 +41,20 @@ metadata/_edit_use_anchors_ = true
 [node name="TextEdit" type="TextEdit" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.908951
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.384549
+anchor_top = 0.654321
+anchor_right = 0.618924
+anchor_bottom = 0.74537
+offset_top = -1.7643e-05
+offset_bottom = -1.14441e-05
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_e28tb")
-placeholder_text = "בבקשה רשמו קוד זהות. ניתן לדעת מה הוא קוד הזהות שלכם לפי תאריך יום הולדתכם. לדוגמה: אם אדם נולד ב21.1.2008, קוד הזהות שלו יהיה 21012008."
+placeholder_text = "גיל"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 141.0
 offset_top = 134.0
@@ -56,5 +62,26 @@ offset_right = 1162.0
 offset_bottom = 192.0
 theme_override_fonts/font = ExtResource("2_e28tb")
 text = "ברוכים הבאים ליום ההולדת של באב! בעוד מספר רגעים תהיו בכניסה לביתו של באב ואחד מחבריו יפתח לכם את הדלת ותוכלו להתחיל להנות!"
+
+[node name="intro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lmk45")
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46875
+anchor_top = 0.779321
+anchor_right = 0.543403
+anchor_bottom = 0.828704
+offset_top = -1.7643e-05
+offset_right = -14.0
+theme_override_fonts/font = ExtResource("2_e28tb")
+item_count = 2
+selected = 0
+popup/item_0/text = "זכר"
+popup/item_0/id = 0
+popup/item_1/text = "נקבה"
+popup/item_1/id = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
