@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://bj44dvpiorjv0"]
+[gd_scene load_steps=97 format=3 uid="uid://bj44dvpiorjv0"]
 
 [ext_resource type="Script" path="res://npc.gd" id="1_lckfr"]
 [ext_resource type="PackedScene" uid="uid://bkc20x4kcb1av" path="res://talk_system.tscn" id="2_aqxcf"]
@@ -783,13 +783,54 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
+[sub_resource type="Animation" id="Animation_50p15"]
+resource_name = "walking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.449239, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.24, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.48787e-16, 3.48787e-16, 0.261799), Vector3(1.14733e-16, 1.14733e-16, 0.0861182), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.21679, 0.683778, 1.20469), Vector3(1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7k8hx"]
 _data = {
 "RESET": SubResource("Animation_fofvo"),
 "crying": SubResource("Animation_3xlg7"),
 "dis1": SubResource("Animation_s8dpo"),
 "dis2": SubResource("Animation_xfew3"),
-"talking": SubResource("Animation_l2jfl")
+"talking": SubResource("Animation_l2jfl"),
+"walking": SubResource("Animation_50p15")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sbeon"]
@@ -867,3 +908,4 @@ shape = SubResource("CapsuleShape3D_sbeon")
 [connection signal="log_interaction" from="talk_system" to="." method="_on_talk_system_log_interaction"]
 [connection signal="play_distraction" from="talk_system" to="." method="_on_talk_system_play_distraction"]
 [connection signal="play_mouth_anim_self" from="talk_system" to="." method="_on_talk_system_play_mouth_anim_self"]
+[connection signal="walk" from="talk_system" to="." method="_on_talk_system_walk"]

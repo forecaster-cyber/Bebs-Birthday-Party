@@ -31,7 +31,7 @@ func _process(delta):
 			Globals.first_interaction = str(object.name)
 		Globals.non_curious_interactions += 1
 		if logable:
-			Globals.logs.append("{" + "'grab_" + str(object.name) + "': " + str(180-timer.time_left)+", pos: (" + str(player_hand.global_position) + ")}")
+			Globals.logs.append("{" + "'grab_" + str(object.name) + "': " + str(270-timer.time_left)+", pos: (" + str(player_hand.global_position) + ")}")
 		else:
 			pass
 		print("picked up")
@@ -50,7 +50,7 @@ func _process(delta):
 	#drop
 	elif(Input.is_action_just_pressed("interact") && player_close && picked_up):
 		if logable:
-			Globals.logs.append("{" + "'drop_" + str(object.name) + "': " + str(180-timer.time_left)+", pos: (" + str(player_hand.global_position) + ")}")
+			Globals.logs.append("{" + "'drop_" + str(object.name) + "': " + str(270-timer.time_left)+", pos: (" + str(player_hand.global_position) + ")}")
 		else:
 			pass
 		object.reparent(get_tree().get_current_scene())
@@ -67,7 +67,7 @@ func _process(delta):
 			Globals.first_interaction = str(object.name)
 		Globals.non_curious_interactions += 1
 		if logable:
-			Globals.logs.append("{" + "'activate_" + str(object.name) + "': " + str(180-timer.time_left)+", pos: (" + str(player_hand.global_position) + ")}")
+			Globals.logs.append("{" + "'activate_" + str(object.name) + "': " + str(270-timer.time_left)+", pos: (" + str(player_hand.global_position) + ")}")
 		else:
 			pass
 		object.action()
@@ -111,7 +111,7 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_texture_button_pressed():
 	if(player_close && picked_up):
 			if logable:
-				Globals.logs.append("{" + "'drop_" + str(object.name) + "': " + str(180-timer.time_left)+", pos: (" + str(player_hand.global_position) + ")}")
+				Globals.logs.append("{" + "'drop_" + str(object.name) + "': " + str(270-timer.time_left)+", pos: (" + str(player_hand.global_position) + ")}")
 			else:
 				pass
 			object.reparent(get_tree().get_current_scene())

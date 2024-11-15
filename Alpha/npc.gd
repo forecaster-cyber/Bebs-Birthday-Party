@@ -6,6 +6,7 @@ var player_close = false
 @export var npc: Node3D
 @export var timer: Timer
 @export var logable: bool = true
+@export var path: PathFollow3D
 # Called when the node enters the scene tree for the first time.
 var rng = RandomNumberGenerator.new()
 var random_talk_speed = rng.randf_range(0.0,0.2)
@@ -16,7 +17,7 @@ var num_of_q = 0
 var player_is_talking = false
 signal lock_rotation(lock)
 var talking_now = false
-
+var walking = false
 #signal q_choices(q1,q2,q3)
 #signal q_prob(q_prob_arr)
 signal num_of_questions_remaining(num_of_questions)
@@ -46,6 +47,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(walking):
+		path.progress += delta
 	if(!talking_now):
 		$Body/AnimatedSprite3D.stop()
 	else:
@@ -67,7 +70,7 @@ func _process(delta):
 		#$npc_cam.position = player_cam_translation
 		$npc_cam.set_current(true)
 		if(self.name == "CRYING"):
-			Globals.logs.append("{" + "'begin_talk_Beb" + "': " + str(180-timer.time_left)+"}")
+			Globals.logs.append("{" + "'begin_talk_Beb" + "': " + str(270-timer.time_left)+"}")
 		Globals.isTalking = true
 
 
@@ -90,7 +93,7 @@ func _on_npc_collision_area_shape_exited(area_rid, area, area_shape_index, local
 		$npc_cam.set_current(false)
 		player.visible = true
 		if(self.name == "CRYING"):
-			Globals.logs.append("{" + "'exit_talk_Beb" + "': " + str(180-timer.time_left)+"}")
+			Globals.logs.append("{" + "'exit_talk_Beb" + "': " + str(270-timer.time_left)+"}")
 		Globals.isTalking = false
 
 #func weightedRandomIndex(weights: Array) -> int:
@@ -140,7 +143,7 @@ func _on_talk_system_play_distraction():
 
 func _on_talk_system_log_interaction(kind, time):
 	if logable:	
-		Globals.logs.append(kind + str(180-timer.time_left)+ ",interaction_time: " + str(time) +  "}")
+		Globals.logs.append(kind + str(270-timer.time_left)+ ",interaction_time: " + str(time) +  "}")
 			
 	else:
 		pass
@@ -148,3 +151,22 @@ func stop_stalking():
 	talking_now = false
 func start_stalking():
 	talking_now = true
+func walk():
+	$AnimationPlayer.play("walking", -1, 2)
+
+
+func _on_talk_system_walk():
+	walking = true
+	can_talk = false
+	walk()
+	stop_stalking()
+	$Label3D.visible = false
+	player_close = false 
+	$talk_system.visible = false
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	lock_rotation.emit(true)
+	$npc_cam.set_current(false)
+	player.visible = true
+	if(self.name == "CRYING"):
+		Globals.logs.append("{" + "'exit_talk_Beb" + "': " + str(270-timer.time_left)+"}")
+	Globals.isTalking = false

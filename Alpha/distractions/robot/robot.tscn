@@ -172,9 +172,11 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_smojr")
 
+[connection signal="num_of_questions_remaining" from="." to="talk_system" method="_on_robot_num_of_questions_remaining"]
 [connection signal="log_interaction" from="talk_system" to="." method="_on_talk_system_log_interaction"]
 [connection signal="play_distraction" from="talk_system" to="." method="_on_talk_system_play_distraction"]
 [connection signal="play_mouth_anim_other" from="talk_system" to="." method="_on_talk_system_play_mouth_anim_other"]
 [connection signal="play_mouth_anim_self" from="talk_system" to="." method="_on_talk_system_play_mouth_anim_self"]
+[connection signal="walk" from="talk_system" to="." method="_on_talk_system_walk"]
 [connection signal="area_shape_entered" from="Area3D" to="." method="_on_area_3d_area_shape_entered"]
 [connection signal="area_shape_exited" from="Area3D" to="." method="_on_area_3d_area_shape_exited"]

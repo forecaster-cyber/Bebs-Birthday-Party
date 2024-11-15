@@ -13,6 +13,7 @@ signal play_mouth_anim_self(talking)
 signal play_mouth_anim_other(talking)
 signal play_distraction()
 signal log_interaction(kind, time)
+signal walk()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(questions)
@@ -27,6 +28,8 @@ func _process(delta):
 
 
 func _on_first_pressed():
+	print("initial qqqq" + str(initial_num_q))
+	print("q_remaining" + str(q_remaning))
 	$dialog_sqr.visible = true
 	$first.visible = false
 	$second.visible = false
@@ -68,7 +71,8 @@ func _on_first_pressed():
 	#q_prob[q_choices_array[1]] += 5
 	#q_prob[q_choices_array[2]] += 5
 	if( initial_num_q == q_remaning):
-		initial_num_q= 0
+		#initial_num_q= 0
+		walk.emit()
 		#initial_num_q = 0
 	
 	#update_prob.emit(q_prob)
@@ -101,3 +105,7 @@ func _on_npc_num_of_questions_remaining(num_of_questions):
 func _on_second_pressed():
 	play_distraction.emit()
 	log_interaction.emit("{" + "'trigger_distraction" + "': ", 3.0)
+
+
+func _on_robot_num_of_questions_remaining(num_of_questions):
+	q_remaning =num_of_questions

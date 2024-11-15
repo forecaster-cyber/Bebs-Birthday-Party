@@ -12,10 +12,13 @@ signal lock_rotation(lock)
 var npc_talking = false
 var was_talking = false
 var other_npc_talking = false
+var walking = false
 var rng = RandomNumberGenerator.new()
 signal num_of_questions_remaining(num_of_questions)
 signal continute_arg(continute)
 @export var timer: Timer
+@export var path1: PathFollow3D
+@export var path2: PathFollow3D
 func _ready():
 	$talk_system.questions = questions_path
 	$talk_system.npc = npc
@@ -30,6 +33,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(walking):
+		path1.progress+=delta
+		path2.progress+=delta
 	if(!npc_talking):
 		npc.talking_now = false
 	else:
@@ -56,7 +62,7 @@ func _process(delta):
 		$npc_cam.set_current(true)
 		continute_arg.emit(false)
 		was_talking = true
-		Globals.logs.append("{" + "'begin_talk_Arguing" + "': " + str(180-timer.time_left)+"}")
+		Globals.logs.append("{" + "'begin_talk_Arguing" + "': " + str(270-timer.time_left)+"}")
 		Globals.isTalking = true
 
 
@@ -82,7 +88,7 @@ func _on_area_3d_area_shape_exited(area_rid, area, area_shape_index, local_shape
 		$npc_cam.set_current(false)
 		continute_arg.emit(true)
 		was_talking = false
-		Globals.logs.append("{" + "'exit_talk_Arguing" + "': " + str(180-timer.time_left)+"}")
+		Globals.logs.append("{" + "'exit_talk_Arguing" + "': " + str(270-timer.time_left)+"}")
 		Globals.isTalking = false
 	elif(area.name == "looking_at"):
 		$Label3D.visible = false
@@ -119,4 +125,23 @@ func _on_talk_system_play_distraction():
 
 
 func _on_talk_system_log_interaction(kind, time):
-	Globals.logs.append(kind + str(180-timer.time_left)+ ",interaction_time: " + str(time) +  "}")
+	Globals.logs.append(kind + str(270-timer.time_left)+ ",interaction_time: " + str(time) +  "}")
+
+
+func _on_talk_system_walk():
+	$Label3D.visible = false
+	player_close = false 
+	$talk_system.visible = false
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	lock_rotation.emit(true)
+	$npc_cam.set_current(false)
+	continute_arg.emit(true)
+	was_talking = false
+	Globals.logs.append("{" + "'exit_talk_Arguing" + "': " + str(270-timer.time_left)+"}")
+	Globals.isTalking = false
+	can_talk = false
+	npc.walk()
+	other_npc.walk()
+	walking = true
+	$AudioStreamPlayer.stop()
+

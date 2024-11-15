@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dpsknhaiwvaok"]
+[gd_scene load_steps=62 format=3 uid="uid://dpsknhaiwvaok"]
 
 [ext_resource type="PackedScene" uid="uid://b0jmja8u6w1le" path="res://player.tscn" id="1_gw058"]
 [ext_resource type="Script" path="res://main.gd" id="1_nqkhb"]
@@ -50,11 +50,39 @@ material = SubResource("StandardMaterial3D_i578l")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1di0b"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_35fpu"]
-radius = 2.92957
+[sub_resource type="Curve3D" id="Curve3D_84omi"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.418789, 0, 0.0881338, 0, 0, 0, 0, 0, 0, 1.70637, 0, 1.51437, 0, 0, 0, 0, 0, 0, 4.33104, 0, 2.34634, 0, 0, 0, 0, 0, 0, 6.39116, 0, 3.08918, 0, 0, 0, 0, 0, 0, 9.08351, 0, 4.34742, 0, 0, 0, 0, 0, 0, 9.35093, 0, 5.35768),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k42jd"]
 radius = 2.22823
+
+[sub_resource type="Curve3D" id="Curve3D_r8w3m"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.277572, 3.76701e-05, 0.218841, 0, 0, 0, 0, 0, 0, -1.37528, 3.76701e-05, 1.08067, 0, 0, 0, 0, 0, 0, -2.66816, 3.76701e-05, 1.80266, 0, 0, 0, 0, 0, 0, -3.50915, 3.76701e-05, 2.85028, 0, 0, 0, 0, 0, 0, -3.77352, 3.76701e-05, 4.11463, 0, 0, 0, 0, 0, 0, -5.23327, 3.76701e-05, 5.42496, 0, 0, 0, 0, 0, 0, -4.99192, 3.76701e-05, 6.82824, 0, 0, 0, 0, 0, 0, -4.48206, 3.76701e-05, 8.14258),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_a6iuv"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 13.5039, 0, 6.18767, 0, 0, 0, 0, 0, 0, 12.9072, 0, 8.11186, 0, 0, 0, 0, 0, 0, 12.6758, 0, 9.12268, 0, 0, 0, 0, 0, 0, 11.0926, 0, 9.37843, 0, 0, 0, 0, 0, 0, 9.72859, 0, 9.35407, 0, 0, 0, 0, 0, 0, 7.49993, 0, 9.58546, 0, 0, 0, 0, 0, 0, 7.19152, 0, 11.6766, 0, 0, 0, 0, 0, 0, 7.30112, 0, 12.1394),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_b0rd1"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 14.2121, 0, 4.75779, 0, 0, 0, 0, 0, 0, 13.9704, 0, 3.38827, 0, 0, 0, 0, 0, 0, 12.0236, 0, 2.35442, 0, 0, 0, 0, 0, 0, 10.5198, 0, 2.73037, 0, 0, 0, 0, 0, 0, 8.90858, 0, 4.19387, 0, 0, 0, 0, 0, 0, 7.0904, 0, 5.35951, 0, 0, 0, 0, 0, 0, 5.87209, 0, 6.56444, 0, 0, 0, 0, 0, 0, 5.22946, 0, 7.95679, 0, 0, 0, 0, 0, 0, 5.57755, 0, 9.068, 0, 0, 0, 0, 0, 0, 6.72892, 0, 10.1792, 0, 0, 0, 0, 0, 0, 6.91489, 0, 11.7577),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_35fpu"]
+radius = 2.92957
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ku33p"]
 load_path = "res://.godot/imported/rug texture.png-05c9ed10c51477abc9cfded751f520cc.s3tc.ctex"
@@ -113,6 +141,20 @@ size = Vector3(1.04004, 0.996926, 6.52899)
 size = Vector3(1, 0.0434876, 6.74878)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_24wsr"]
+
+[sub_resource type="Curve3D" id="Curve3D_x2gxu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.284129, 0, -0.446346, 0, 0, 0, 0, 0, 0, 0.606416, 0, -2.29117, 0, 0, 0, 0, 0, 0, 1.16962, 0, -3.86959, 0, 0, 0, 0, 0, 0, 1.36383, 0, -5.61702, 0, 0, 0, 0, 0, 0, 1.76807, 0, -7.56947, 0, 0, 0, 0, 0, 0, 2.39261, 0, -9.68596, 0, 0, 0, 0, 0, 0, 1.97968, 0, -11.7063, 0, 0, 0, 0, 0, 0, 0.308886, 0, -12.7256, 0, 0, 0, 0, 0, 0, 0.0625844, 0, -13.8836),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[sub_resource type="Curve3D" id="Curve3D_gfd55"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.087031, 0, -0.403433, 0, 0, 0, 0, 0, 0, -0.17021, 0, -2.2511, 0, 0, 0, 0, 0, 0, -0.231747, 0, -4.09374, 0, 0, 0, 0, 0, 0, -0.451525, 0, -7.10375, 0, 0, 0, 0, 0, 0, -0.73628, 0, -11.143, 0, 0, 0, 0, 0, 0, -2.73589, 0, -12.9588, 0, 0, 0, 0, 0, 0, -2.92506, 0, -13.8036),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_42m3m"]
 radius = 2.58937
@@ -174,33 +216,84 @@ transform = Transform3D(0.475152, -1.11781e-09, -4.47966e-08, -8.12183e-07, -4.3
 mesh = SubResource("BoxMesh_m8v3l")
 skeleton = NodePath("../../..")
 
+[node name="PATH_beb" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.02745, 0.519222, 5.71181)
+curve = SubResource("Curve3D_84omi")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PATH_beb"]
+transform = Transform3D(-0.742268, 0, -0.670103, 0, 1, 0, 0.670103, 0, -0.742268, 0.418789, 0, 0.0881338)
+loop = false
+
+[node name="CRYING" parent="PATH_beb/PathFollow3D" node_paths=PackedStringArray("player", "timer", "path") instance=ExtResource("3_j8hae")]
+transform = Transform3D(0.375272, 0, 0.926914, 0, 1, 0, -0.926914, 0, 0.375272, 0.0219345, 1.04689, 0.0191917)
+player = NodePath("../../../player")
+questions_path = "res://group_qs/crying.json"
+can_talk = true
+timer = NodePath("../../../endgame")
+path = NodePath("..")
+
+[node name="looking_at" parent="PATH_beb/PathFollow3D/CRYING" node_paths=PackedStringArray("player", "bday_music", "others_dot") instance=ExtResource("2_i4msr")]
+transform = Transform3D(1, 0, -3.72312e-10, 0, 1, 0, -3.72312e-10, 0, 1, 0.272348, 0, 0.0860186)
+player = NodePath("../../../../player")
+sound_fx = ExtResource("21_2k0ky")
+bday_music = NodePath("../../../../distractions/Radio/bday_music")
+others_dot = NodePath("../../../../laughing/looking_at")
+
+[node name="crying_listening" type="Area3D" parent="PATH_beb/PathFollow3D/CRYING"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PATH_beb/PathFollow3D/CRYING/crying_listening"]
+transform = Transform3D(1, 0, 2.93498e-08, 0, 1, 0, -2.42156e-08, 0, 1, 0, -0.557404, 0)
+shape = SubResource("SphereShape3D_k42jd")
+
 [node name="laughing" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.53797, 0, 0)
 
-[node name="g0" parent="laughing" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
-transform = Transform3D(0.822323, 0, -0.569021, 0, 1, 0, 0.569021, 0, 0.822323, 12.4789, 1.496, 4.77145)
-player = NodePath("../../player")
-questions_path = "res://group_qs/laughing.json"
-timer = NodePath("../../endgame")
+[node name="PATH_g0" type="Path3D" parent="laughing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1836, 0.990319, 4.65234)
+curve = SubResource("Curve3D_r8w3m")
 
-[node name="g1" parent="laughing" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
-transform = Transform3D(-0.394198, 0, 0.919025, 0, 1, 0, -0.919025, 0, -0.394198, 13.5827, 1.496, 6.10281)
-player = NodePath("../../player")
-questions_path = "res://group_qs/laughing.json"
-timer = NodePath("../../endgame")
+[node name="PathFollow3D" type="PathFollow3D" parent="laughing/PATH_g0"]
+transform = Transform3D(-0.46234, 0, 0.886702, 0, 1, 0, -0.886702, 0, -0.46234, 0.277572, 3.76701e-05, 0.218841)
+loop = false
 
-[node name="g2" parent="laughing" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
-transform = Transform3D(-0.94707, 0, -0.321026, 0, 1, 0, 0.321026, 0, -0.94707, 14.1455, 1.496, 4.86454)
-player = NodePath("../../player")
+[node name="g0" parent="laughing/PATH_g0/PathFollow3D" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
+transform = Transform3D(-0.89677, 0, -0.4425, 0, 1, 0, 0.4425, 0, -0.89677, 0, 0.56736, 0)
+player = NodePath("../../../../player")
 questions_path = "res://group_qs/laughing.json"
-timer = NodePath("../../endgame")
+timer = NodePath("../../../../endgame")
+
+[node name="PATH_g1" type="Path3D" parent="laughing"]
+curve = SubResource("Curve3D_a6iuv")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="laughing/PATH_g1"]
+transform = Transform3D(-0.955115, 0, 0.296207, 0, 1, 0, -0.296207, 0, -0.955115, 13.5039, 0, 6.18767)
+loop = false
+
+[node name="g1" parent="laughing/PATH_g1/PathFollow3D" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
+transform = Transform3D(0.648732, 0, -0.761018, 0, 1, 0, 0.761018, 0, 0.648732, -0.0501099, 1.496, 0.104383)
+player = NodePath("../../../../player")
+questions_path = "res://group_qs/laughing.json"
+timer = NodePath("../../../../endgame")
+
+[node name="PATH_g2" type="Path3D" parent="laughing"]
+curve = SubResource("Curve3D_b0rd1")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="laughing/PATH_g2"]
+transform = Transform3D(0.984782, 0, 0.173785, 0, 1, 0, -0.173785, 0, 0.984782, 14.2121, 0, 4.75779)
+loop = false
+
+[node name="g2" parent="laughing/PATH_g2/PathFollow3D" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
+transform = Transform3D(-0.988449, 0, -0.151554, 0, 1, 0, 0.151554, 0, -0.988449, -0.0841403, 1.496, 0.0935526)
+player = NodePath("../../../../player")
+questions_path = "res://group_qs/laughing.json"
+timer = NodePath("../../../../endgame")
 
 [node name="looking_at" parent="laughing" node_paths=PackedStringArray("player", "bday_music", "others_dot") instance=ExtResource("2_i4msr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3613, 1.29025, 5.09985)
 player = NodePath("../../player")
 sound_fx = ExtResource("3_rgqp7")
 bday_music = NodePath("../../distractions/Radio/bday_music")
-others_dot = NodePath("../../CRYING/looking_at")
+others_dot = NodePath("../../PATH_beb/PathFollow3D/CRYING/looking_at")
 
 [node name="laughter" type="AudioStreamPlayer3D" parent="laughing"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3597, 1.53265, 4.91157)
@@ -218,26 +311,6 @@ shape = SubResource("SphereShape3D_35fpu")
 
 [node name="conv" type="AudioStreamPlayer" parent="laughing"]
 stream = ExtResource("7_0paqd")
-
-[node name="CRYING" parent="." node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
-transform = Transform3D(0.58976, 0, -0.807578, 0, 1, 0, 0.807578, 0, 0.58976, -9.05532, 1.56611, 5.72033)
-player = NodePath("../player")
-questions_path = "res://group_qs/crying.json"
-can_talk = true
-timer = NodePath("../endgame")
-
-[node name="looking_at" parent="CRYING" node_paths=PackedStringArray("player", "bday_music", "others_dot") instance=ExtResource("2_i4msr")]
-transform = Transform3D(1, 0, -3.72312e-10, 0, 1, 0, -3.72312e-10, 0, 1, 0.272348, 0, 0.0860186)
-player = NodePath("../../player")
-sound_fx = ExtResource("21_2k0ky")
-bday_music = NodePath("../../distractions/Radio/bday_music")
-others_dot = NodePath("../../laughing/looking_at")
-
-[node name="crying_listening" type="Area3D" parent="CRYING"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CRYING/crying_listening"]
-transform = Transform3D(1, 0, 2.93498e-08, 0, 1, 0, -2.42156e-08, 0, 1, 0, -0.557404, 0)
-shape = SubResource("SphereShape3D_k42jd")
 
 [node name="party" type="Node3D" parent="."]
 
@@ -506,47 +579,65 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="endgame" type="Timer" parent="."]
-wait_time = 180.0
+wait_time = 270.0
 one_shot = true
 autostart = true
 
 [node name="arguing" type="Node3D" parent="."]
 transform = Transform3D(-0.970072, 0, 0.242819, 0, 1, 0, -0.242819, 0, -0.970071, 2.19801, 0, -4.91366)
 
-[node name="arg1" parent="arguing" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
-transform = Transform3D(0.954407, 0, 0.298507, 0, 1, 0, -0.298507, 0, 0.954407, -2.12629, 1.49527, -2.66974)
-player = NodePath("../../player")
-questions_path = "res://group_qs/crying.json"
-timer = NodePath("../../endgame")
+[node name="PATH_arg1" type="Path3D" parent="arguing"]
+transform = Transform3D(1, 0, -1.09978e-09, 0, 1, 0, 7.02486e-09, 0, 1, -2.4792, 0.526922, -2.55603)
+curve = SubResource("Curve3D_x2gxu")
 
-[node name="arg2" parent="arguing" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
-transform = Transform3D(-0.995987, 0, -0.0895027, 0, 1, 0, 0.0895027, 0, -0.995987, 0.583208, 1.50462, -2.89474)
-player = NodePath("../../player")
+[node name="PathFollow3D" type="PathFollow3D" parent="arguing/PATH_arg1"]
+transform = Transform3D(0.985079, 0, -0.172092, 0, 1, 0, 0.172092, 0, 0.985079, 0.284129, 0, -0.446346)
+loop = false
+
+[node name="arg1" parent="arguing/PATH_arg1/PathFollow3D" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
+transform = Transform3D(0.954407, 0, 0.298507, 0, 1, 0, -0.298507, 0, 0.954407, 0.0804491, 0.968349, -0.0455146)
+player = NodePath("../../../../player")
 questions_path = "res://group_qs/crying.json"
-timer = NodePath("../../endgame")
+timer = NodePath("../../../../endgame")
+
+[node name="PATH_arg2" type="Path3D" parent="arguing"]
+transform = Transform3D(1, 0, -1.09978e-09, 0, 1, 0, 7.02486e-09, 0, 1, 0.288369, 0.52541, -2.79365)
+curve = SubResource("Curve3D_gfd55")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="arguing/PATH_arg2"]
+transform = Transform3D(0.990444, 0, 0.137894, 0, 1, 0, -0.137894, 0, 0.990444, 0.087031, 0, -0.403433)
+loop = false
+
+[node name="arg2" parent="arguing/PATH_arg2/PathFollow3D" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
+transform = Transform3D(-0.995987, 0, -0.0895027, 0, 1, 0, 0.0895027, 0, -0.995987, 0.02238, 0.97921, -0.0328901)
+player = NodePath("../../../../player")
+questions_path = "res://group_qs/crying.json"
+timer = NodePath("../../../../endgame")
+
+[node name="bg_arguing_sound_fx" type="AudioStreamPlayer3D" parent="arguing/PATH_arg2/PathFollow3D/arg2"]
+transform = Transform3D(-0.974132, 0, 0.225989, 0, 1, 0, -0.225989, 0, -0.974133, 1.16003, -0.17481, -0.369134)
+stream = ExtResource("24_oqsoc")
+volume_db = -30.0
+autoplay = true
+max_distance = 10.0
 
 [node name="looking_at" parent="arguing" node_paths=PackedStringArray("player", "bday_music", "others_dot") instance=ExtResource("2_i4msr")]
 transform = Transform3D(1, 0, -1.09978e-09, 0, 1, 0, 7.02486e-09, 0, 1, -0.770259, 1.36569, -3.07722)
 player = NodePath("../../player")
 sound_fx = ExtResource("24_oqsoc")
 bday_music = NodePath("../../distractions/Radio/bday_music")
-others_dot = NodePath("../../CRYING/looking_at")
+others_dot = NodePath("../../PATH_beb/PathFollow3D/CRYING/looking_at")
 
-[node name="robot" parent="arguing" node_paths=PackedStringArray("player", "npc", "other_npc", "timer") instance=ExtResource("25_ch1tq")]
+[node name="robot" parent="arguing" node_paths=PackedStringArray("player", "npc", "other_npc", "timer", "path1", "path2") instance=ExtResource("25_ch1tq")]
 transform = Transform3D(-0.238323, 0, -0.0596548, 0, 0.245676, 0, 0.0596548, 0, -0.238323, -0.93392, 0.892175, -2.86062)
 player = NodePath("../../player")
 questions_path = "res://group_qs/laughing.json"
 can_talk = true
-npc = NodePath("../arg1")
-other_npc = NodePath("../arg2")
+npc = NodePath("../PATH_arg1/PathFollow3D/arg1")
+other_npc = NodePath("../PATH_arg2/PathFollow3D/arg2")
 timer = NodePath("../../endgame")
-
-[node name="bg_arguing_sound_fx" type="AudioStreamPlayer3D" parent="arguing"]
-transform = Transform3D(1, 0, 2.32611e-07, 0, 1, 0, -5.6465e-09, 0, 1, -0.653564, 1.32981, -2.61101)
-stream = ExtResource("24_oqsoc")
-volume_db = -30.0
-autoplay = true
-max_distance = 10.0
+path1 = NodePath("../PATH_arg1/PathFollow3D")
+path2 = NodePath("../PATH_arg2/PathFollow3D")
 
 [node name="arguing_listening" type="Area3D" parent="arguing"]
 
@@ -599,7 +690,7 @@ grow_horizontal = 0
 theme_override_fonts/font = ExtResource("27_4ued5")
 text = "המשחק נגמר. אנא המשך לשאלון האינטרנטי!"
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Door" type="Sprite3D" parent="."]
 transform = Transform3D(0.447543, 0, 0, 0, 0.447543, 0, 0, 0, 0.447543, 0, 1.72071, 9.84062)
 texture = ExtResource("27_tkhpd")
 
@@ -621,11 +712,12 @@ stretch_mode = 0
 wait_time = 5.0
 autostart = true
 
+[connection signal="lock_rotation" from="PATH_beb/PathFollow3D/CRYING" to="player" method="_on_crying_lock_rotation"]
+[connection signal="body_entered" from="PATH_beb/PathFollow3D/CRYING/crying_listening" to="." method="_on_crying_listening_body_entered"]
+[connection signal="body_exited" from="PATH_beb/PathFollow3D/CRYING/crying_listening" to="." method="_on_crying_listening_body_exited"]
 [connection signal="body_entered" from="laughing/laughing_listening" to="." method="_on_laughing_listening_body_entered"]
 [connection signal="body_exited" from="laughing/laughing_listening" to="." method="_on_laughing_listening_body_exited"]
-[connection signal="lock_rotation" from="CRYING" to="player" method="_on_crying_lock_rotation"]
-[connection signal="body_entered" from="CRYING/crying_listening" to="." method="_on_crying_listening_body_entered"]
-[connection signal="body_exited" from="CRYING/crying_listening" to="." method="_on_crying_listening_body_exited"]
+[connection signal="finished" from="laughing/conv" to="." method="_on_conv_finished"]
 [connection signal="timeout" from="endgame" to="." method="_on_endgame_timeout"]
 [connection signal="continute_arg" from="arguing/robot" to="." method="_on_robot_continute_arg"]
 [connection signal="lock_rotation" from="arguing/robot" to="player" method="_on_robot_lock_rotation"]
