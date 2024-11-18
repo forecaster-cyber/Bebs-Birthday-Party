@@ -50,10 +50,14 @@ func _process(delta):
 	if(walking):
 		path.progress += delta
 	if(!talking_now):
+		$AnimationPlayer.play("crying")
 		$Body/AnimatedSprite3D.stop()
 	else:
 		$Body/AnimatedSprite3D.play()
+		$AnimationPlayer.play("talking")
+		
 	if(Input.is_action_just_pressed("interact") && player_close && can_talk):
+		
 		#print(options_prob)
 		#var q1 = weightedRandomIndex(options_prob)
 		#var q2 = weightedRandomIndex(options_prob)
@@ -70,7 +74,7 @@ func _process(delta):
 		#$npc_cam.position = player_cam_translation
 		$npc_cam.set_current(true)
 		if(self.name == "CRYING"):
-			Globals.logs.append("{" + "'begin_talk_Beb" + "': " + str(270-timer.time_left)+"}")
+			Globals.logs.append("{" + "'begin_talk_Beb" + "': " + str(360-timer.time_left)+"}")
 		Globals.isTalking = true
 
 
@@ -93,7 +97,7 @@ func _on_npc_collision_area_shape_exited(area_rid, area, area_shape_index, local
 		$npc_cam.set_current(false)
 		player.visible = true
 		if(self.name == "CRYING"):
-			Globals.logs.append("{" + "'exit_talk_Beb" + "': " + str(270-timer.time_left)+"}")
+			Globals.logs.append("{" + "'exit_talk_Beb" + "': " + str(360-timer.time_left)+"}")
 		Globals.isTalking = false
 
 #func weightedRandomIndex(weights: Array) -> int:
@@ -126,24 +130,33 @@ func _on_npc_collision_area_shape_exited(area_rid, area, area_shape_index, local
 
 
 func _on_talk_system_play_mouth_anim_self(talking):
-	talking_now = talking # Replace with function body.
+	talking_now = talking 
 
 
 func _on_talk_system_play_distraction():
+	print("distraction lalalala")
 	var random = rng.randf_range(0,1.0)
-	if(random > 0.5):
-		$AnimationPlayer.speed_scale = random*2
-		$AnimationPlayer.play("dis1")
+	$Body.hide()
+	$Sprite3D.show()
+	$AnimationPlayer.play("poof")
+	$AudioStreamPlayer.play()
+	await get_tree().create_timer(3.0).timeout
+	$Body.show()
+	$Sprite3D.hide()
+	#if(random > 0.5):
+		#$AnimationPlayer.speed_scale = random*2
+	#	$AnimationPlayer.play("d1")
 		
-	else:
-		$AnimationPlayer.speed_scale = random*4
-		$AnimationPlayer.play("dis2")
+		
+	#else:
+		#$AnimationPlayer.speed_scale = random*4
+	#	$AnimationPlayer.play("d2")
 	
 
 
 func _on_talk_system_log_interaction(kind, time):
 	if logable:	
-		Globals.logs.append(kind + str(270-timer.time_left)+ ",interaction_time: " + str(time) +  "}")
+		Globals.logs.append(kind + str(360-timer.time_left)+ ",interaction_time: " + str(time) +  "}")
 			
 	else:
 		pass
@@ -168,5 +181,5 @@ func _on_talk_system_walk():
 	$npc_cam.set_current(false)
 	player.visible = true
 	if(self.name == "CRYING"):
-		Globals.logs.append("{" + "'exit_talk_Beb" + "': " + str(270-timer.time_left)+"}")
+		Globals.logs.append("{" + "'exit_talk_Beb" + "': " + str(360-timer.time_left)+"}")
 	Globals.isTalking = false

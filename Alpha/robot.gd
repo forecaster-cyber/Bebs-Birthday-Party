@@ -62,7 +62,7 @@ func _process(delta):
 		$npc_cam.set_current(true)
 		continute_arg.emit(false)
 		was_talking = true
-		Globals.logs.append("{" + "'begin_talk_Arguing" + "': " + str(270-timer.time_left)+"}")
+		Globals.logs.append("{" + "'begin_talk_Arguing" + "': " + str(360-timer.time_left)+"}")
 		Globals.isTalking = true
 
 
@@ -88,7 +88,7 @@ func _on_area_3d_area_shape_exited(area_rid, area, area_shape_index, local_shape
 		$npc_cam.set_current(false)
 		continute_arg.emit(true)
 		was_talking = false
-		Globals.logs.append("{" + "'exit_talk_Arguing" + "': " + str(270-timer.time_left)+"}")
+		Globals.logs.append("{" + "'exit_talk_Arguing" + "': " + str(360-timer.time_left)+"}")
 		Globals.isTalking = false
 	elif(area.name == "looking_at"):
 		$Label3D.visible = false
@@ -125,7 +125,7 @@ func _on_talk_system_play_distraction():
 
 
 func _on_talk_system_log_interaction(kind, time):
-	Globals.logs.append(kind + str(270-timer.time_left)+ ",interaction_time: " + str(time) +  "}")
+	Globals.logs.append(kind + str(360-timer.time_left)+ ",interaction_time: " + str(time) +  "}")
 
 
 func _on_talk_system_walk():
@@ -137,7 +137,7 @@ func _on_talk_system_walk():
 	$npc_cam.set_current(false)
 	continute_arg.emit(true)
 	was_talking = false
-	Globals.logs.append("{" + "'exit_talk_Arguing" + "': " + str(270-timer.time_left)+"}")
+	Globals.logs.append("{" + "'exit_talk_Arguing" + "': " + str(360-timer.time_left)+"}")
 	Globals.isTalking = false
 	can_talk = false
 	npc.walk()

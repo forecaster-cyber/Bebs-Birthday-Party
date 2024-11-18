@@ -12,7 +12,7 @@ var laughing_con_seconds = 0
 var girls_done_talking = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$arguing/bg_arguing_sound_fx.play()
+	$arguing/PATH_arg2/PathFollow3D/arg2/bg_arguing_sound_fx.play()
 	
 
 
@@ -79,7 +79,7 @@ func _on_crying_listening_body_entered(body):
 	if(body.name == "player"):
 		print("oh yes crying")
 		is_listening_crying = true 
-		Globals.logs.append("{" + "'begin_listen_Beb" + "': " + str(270-$endgame.time_left)+"}")
+		Globals.logs.append("{" + "'begin_listen_Beb" + "': " + str(360-$endgame.time_left)+"}")
 		$distractions/Radio/bday_music.stream_paused = true
 
 
@@ -89,7 +89,7 @@ func _on_crying_listening_body_exited(body):
 		#Globals.t_listening_crying += crying_temp_listening_time
 		$distractions/Radio/bday_music.stream_paused = false
 		crying_temp_listening_time = 0
-		Globals.logs.append("{" + "'exit_listen_Beb" + "': " + str(270-$endgame.time_left)+"}")
+		Globals.logs.append("{" + "'exit_listen_Beb" + "': " + str(360-$endgame.time_left)+"}")
 #####
 
 
@@ -103,7 +103,7 @@ func _on_laughing_listening_body_entered(body):
 		$laughing/laughter.volume_db = -50
 		$distractions/Radio/bday_music.stream_paused = true
 		$laughing/laughter.stream_paused = true
-		Globals.logs.append("{" + "'begin_listen_Girls" + "': " + str(270-$endgame.time_left)+"}")
+		Globals.logs.append("{" + "'begin_listen_Girls" + "': " + str(360-$endgame.time_left)+"}")
 
 
 func _on_laughing_listening_body_exited(body):
@@ -116,7 +116,7 @@ func _on_laughing_listening_body_exited(body):
 		$laughing/laughter.volume_db = 50
 		$distractions/Radio/bday_music.stream_paused = false
 		$laughing/laughter.stream_paused = false
-		Globals.logs.append("{" + "'exit_listen_Girls" + "': " + str(270-$endgame.time_left)+"}") 
+		Globals.logs.append("{" + "'exit_listen_Girls" + "': " + str(360-$endgame.time_left)+"}") 
 ####
 
 
@@ -125,26 +125,26 @@ func _on_endgame_timeout():
 	$Ending.visible = true
 	$distractions/Radio/bday_music.stream_paused = true
 	$laughing/laughter.stream_paused = true
-	$arguing/bg_arguing_sound_fx.stream_paused = true
+	$arguing/PATH_arg2/PathFollow3D/arg2/bg_arguing_sound_fx.stream_paused = true
 	$laughing/conv.stream_paused = true
 	$Ending/Button.uri = "https://tauindeng.eu.qualtrics.com/jfe/form/SV_6m6rYfSPWzZkfPg" + "?PlayerID=" + str(Globals.id)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func _on_robot_continute_arg(continute):
-	$arguing/bg_arguing_sound_fx.playing = continute
+	$arguing/PATH_arg2/PathFollow3D/arg2/bg_arguing_sound_fx.playing = continute
 
 
 func _on_arguing_listening_body_entered(body):
 	if(body.name == "player"):
-		Globals.logs.append("{" + "'begin_listen_Arguing" + "': " + str(270-$endgame.time_left)+"}")
+		Globals.logs.append("{" + "'begin_listen_Arguing" + "': " + str(360-$endgame.time_left)+"}")
 		$distractions/Radio/bday_music.stream_paused = true
 		$laughing/laughter.stream_paused = true
 
 
 func _on_arguing_listening_body_exited(body):
 	if(body.name == "player"):
-		Globals.logs.append("{" + "'exit_listen_Arguing" + "': " + str(270-$endgame.time_left)+"}")
+		Globals.logs.append("{" + "'exit_listen_Arguing" + "': " + str(360-$endgame.time_left)+"}")
 		$distractions/Radio/bday_music.stream_paused = false
 		$laughing/laughter.stream_paused = false
 

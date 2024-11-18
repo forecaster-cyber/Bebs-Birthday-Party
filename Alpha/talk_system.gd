@@ -103,8 +103,14 @@ func _on_npc_num_of_questions_remaining(num_of_questions):
 
 
 func _on_second_pressed():
+	$first.visible = false
+	$second.visible = false
+	
 	play_distraction.emit()
+	await get_tree().create_timer(3.0).timeout
 	log_interaction.emit("{" + "'trigger_distraction" + "': ", 3.0)
+	$first.visible = true
+	$second.visible = true
 
 
 func _on_robot_num_of_questions_remaining(num_of_questions):

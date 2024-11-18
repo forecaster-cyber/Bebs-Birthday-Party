@@ -221,11 +221,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.02745, 0.519222, 5.71181)
 curve = SubResource("Curve3D_84omi")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PATH_beb"]
-transform = Transform3D(-0.742268, 0, -0.670103, 0, 1, 0, 0.670103, 0, -0.742268, 0.418789, 0, 0.0881338)
+transform = Transform3D(-0.742266, 0, -0.670105, 0, 1, 0, 0.670105, 0, -0.742266, 0.418789, 0, 0.0881338)
 loop = false
 
 [node name="CRYING" parent="PATH_beb/PathFollow3D" node_paths=PackedStringArray("player", "timer", "path") instance=ExtResource("3_j8hae")]
-transform = Transform3D(0.375272, 0, 0.926914, 0, 1, 0, -0.926914, 0, 0.375272, 0.0219345, 1.04689, 0.0191917)
+transform = Transform3D(0.375272, 0, 0.926914, 0, 1, 0, -0.926914, 0, 0.375272, 0.0219336, 1.04689, 0.0191916)
 player = NodePath("../../../player")
 questions_path = "res://group_qs/crying.json"
 can_talk = true
@@ -253,7 +253,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1836, 0.990319, 4.65234)
 curve = SubResource("Curve3D_r8w3m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="laughing/PATH_g0"]
-transform = Transform3D(-0.46234, 0, 0.886702, 0, 1, 0, -0.886702, 0, -0.46234, 0.277572, 3.76701e-05, 0.218841)
+transform = Transform3D(-0.462343, 0, 0.8867, 0, 1, 0, -0.8867, 0, -0.462343, 0.277572, 3.76701e-05, 0.218841)
 loop = false
 
 [node name="g0" parent="laughing/PATH_g0/PathFollow3D" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
@@ -266,7 +266,7 @@ timer = NodePath("../../../../endgame")
 curve = SubResource("Curve3D_a6iuv")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="laughing/PATH_g1"]
-transform = Transform3D(-0.955115, 0, 0.296207, 0, 1, 0, -0.296207, 0, -0.955115, 13.5039, 0, 6.18767)
+transform = Transform3D(-0.955121, 0, 0.296187, 0, 1, 0, -0.296187, 0, -0.955121, 13.5039, 0, 6.18767)
 loop = false
 
 [node name="g1" parent="laughing/PATH_g1/PathFollow3D" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
@@ -279,7 +279,7 @@ timer = NodePath("../../../../endgame")
 curve = SubResource("Curve3D_b0rd1")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="laughing/PATH_g2"]
-transform = Transform3D(0.984782, 0, 0.173785, 0, 1, 0, -0.173785, 0, 0.984782, 14.2121, 0, 4.75779)
+transform = Transform3D(0.984779, 0, 0.173799, 0, 1, 0, -0.173799, 0, 0.984779, 14.2121, 0, 4.75779)
 loop = false
 
 [node name="g2" parent="laughing/PATH_g2/PathFollow3D" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]
@@ -579,7 +579,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="endgame" type="Timer" parent="."]
-wait_time = 270.0
+wait_time = 360.0
 one_shot = true
 autostart = true
 
@@ -591,7 +591,7 @@ transform = Transform3D(1, 0, -1.09978e-09, 0, 1, 0, 7.02486e-09, 0, 1, -2.4792,
 curve = SubResource("Curve3D_x2gxu")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="arguing/PATH_arg1"]
-transform = Transform3D(0.985079, 0, -0.172092, 0, 1, 0, 0.172092, 0, 0.985079, 0.284129, 0, -0.446346)
+transform = Transform3D(0.985079, 0, -0.172091, 0, 1, 0, 0.172091, 0, 0.985079, 0.284129, 0, -0.446346)
 loop = false
 
 [node name="arg1" parent="arguing/PATH_arg1/PathFollow3D" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_j8hae")]

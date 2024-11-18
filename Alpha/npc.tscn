@@ -1,10 +1,12 @@
-[gd_scene load_steps=97 format=3 uid="uid://bj44dvpiorjv0"]
+[gd_scene load_steps=102 format=3 uid="uid://bj44dvpiorjv0"]
 
 [ext_resource type="Script" path="res://npc.gd" id="1_lckfr"]
 [ext_resource type="PackedScene" uid="uid://bkc20x4kcb1av" path="res://talk_system.tscn" id="2_aqxcf"]
 [ext_resource type="Texture2D" uid="uid://beyspk22f18gr" path="res://eye texture Background Removed.png" id="2_fwk1u"]
 [ext_resource type="Texture2D" uid="uid://bm6gsmon8pi2r" path="res://art/Cartoon Mouth Face.png" id="3_c1nle"]
 [ext_resource type="PackedScene" uid="uid://dy3xaa2c516lq" path="res://distractions/Party Cone.glb" id="5_45e0c"]
+[ext_resource type="Texture2D" uid="uid://bkji2lnbqx7du" path="res://distractions/interactable/poof.png" id="6_do20c"]
+[ext_resource type="AudioStream" uid="uid://c753p15do5hgq" path="res://distractions/interactable/poof.mp3" id="7_giudg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8b8l1"]
 albedo_color = Color(0.631373, 0.415686, 0.168627, 1)
@@ -647,6 +649,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite3D:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_3xlg7"]
 resource_name = "crying"
@@ -823,12 +837,73 @@ tracks/2/keys = {
 "values": [Vector3(1, 1, 1), Vector3(1.21679, 0.683778, 1.20469), Vector3(1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_bsny3"]
+resource_name = "d1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 0.366021),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.44564, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.52108, 0.342361, 1.97183), Vector3(1.25845, 0.746994, 1.30197), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cstps"]
+resource_name = "d2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -3.03035, 0), Vector3(3.48787e-16, -6.28319, 3.48787e-16)]
+}
+
+[sub_resource type="Animation" id="Animation_kfjjq"]
+resource_name = "poof"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.327771, 0.327771, 0.327771), Vector3(1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7k8hx"]
 _data = {
 "RESET": SubResource("Animation_fofvo"),
 "crying": SubResource("Animation_3xlg7"),
+"d1": SubResource("Animation_bsny3"),
+"d2": SubResource("Animation_cstps"),
 "dis1": SubResource("Animation_s8dpo"),
 "dis2": SubResource("Animation_xfew3"),
+"poof": SubResource("Animation_kfjjq"),
 "talking": SubResource("Animation_l2jfl"),
 "walking": SubResource("Animation_50p15")
 }
@@ -901,6 +976,14 @@ libraries = {
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="body_collider"]
 shape = SubResource("CapsuleShape3D_sbeon")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+visible = false
+billboard = 1
+texture = ExtResource("6_do20c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_giudg")
 
 [connection signal="num_of_questions_remaining" from="." to="talk_system" method="_on_npc_num_of_questions_remaining"]
 [connection signal="area_shape_entered" from="npc_collision" to="." method="_on_npc_collision_area_shape_entered"]
