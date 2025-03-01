@@ -13,10 +13,80 @@ var girls_done_talking = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$arguing/PATH_arg2/PathFollow3D/arg2/bg_arguing_sound_fx.play()
+	Globals.highlights = get_node("highlights")
+	Globals.highlights_distractions = get_node("highlights/highlights_distractions")
+	Globals.highlights_npc = get_node("highlights/highlights_npc")
+	Globals.connect("highlight_actions_now", _on_highlight_objects)
+	Globals.connect("hide_arrows", _on_hide_arrows)
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+func _on_hide_arrows():
+	var arrows = get_node("highlights").get_children()
+	for arrow in arrows:
+		arrow.visible = false
+	Globals.highlight_question = false
+	Globals.highlight_trick = false
+	
+func _on_highlight_objects(actions):
+	Globals.p_logs.append("{" + str(Globals.p_is_curious) + "': " + str(360-$endgame.time_left)+"}")
+	$highlights.visible = true
+	match actions[0]:
+		"ask_question_beb":
+			var arrow_node = get_node("highlights/enter_listen_bubble_beb")
+			arrow_node.visible = true
+			Globals.highlight_question_signal.emit(true)
+			print("question beb " + str(Globals.highlight_question))
+		"ask_question_arguing":
+			var arrow_node = get_node("highlights" + str("/") + "enter_listen_bubble_arguing")
+			arrow_node.visible = true
+			Globals.highlight_question_signal.emit(true)
+			print("question arguing")
+		"trick_beb":
+			var arrow_node = get_node("highlights" + str("/") + "enter_listen_bubble_beb")
+			arrow_node.visible = true
+			Globals.highlight_trick = true
+			print("trick beb")
+		"trick_arguing":
+			var arrow_node = get_node("highlights" + str("/") + "enter_listen_bubble_arguing")
+			arrow_node.visible = true
+			Globals.highlight_trick = true
+			print("trick arguing")
+		var arrow:
+			var arrow_node = get_node("highlights" + str("/") + arrow)
+			Globals.highlight_question_signal.emit(false)
+			Globals.highlight_trick_signal.emit(false)
+			arrow_node.visible = true
+	match actions[1]:
+		"ask_question_beb":
+			var arrow_node = get_node("highlights" + str("/") + "enter_listen_bubble_beb")
+			arrow_node.visible = true
+			Globals.highlight_question_signal.emit(true)
+			print("question beb")
+		"ask_question_arguing":
+			var arrow_node = get_node("highlights" + str("/") + "enter_listen_bubble_arguing")
+			arrow_node.visible = true
+			Globals.highlight_question_signal.emit(true)
+			print("question arguing")
+		"trick_beb":
+			var arrow_node = get_node("highlights" + str("/") + "enter_listen_bubble_beb")
+			arrow_node.visible = true
+			Globals.highlight_trick_signal.emit(true)
+			print("trick beb")
+		"trick_arguing":
+			var arrow_node = get_node("highlights" + str("/") + "enter_listen_bubble_arguing")
+			arrow_node.visible = true
+			Globals.highlight_trick_signal.emit(true)
+			print("trick arguing")
+		var arrow:
+			var arrow_node = get_node("highlights" + str("/") + arrow)
+			Globals.highlight_question_signal.emit(false)
+			Globals.highlight_trick_signal.emit(false)
+			arrow_node.visible = true
+			
+	print("GOGO " + str(actions[0] +" "+ str(actions[1])))
+	
 func _process(delta):
 	
 	if(girls_done_talking):
@@ -54,7 +124,7 @@ func _process(delta):
 		
 
 func insert_data():
-	var collection: FirestoreCollection = Firebase.Firestore.collection("t2")
+	var collection: FirestoreCollection = Firebase.Firestore.collection("t3")
 	var data: Dictionary = {
 	"logs": Globals.logs,
 	"q_asked": Globals.q_asked,
@@ -68,7 +138,9 @@ func insert_data():
 	"first_interaction": Globals.first_interaction,
 	"t_talking_crying": Globals.t_talking_crying,
 	"age": Globals.age,
-	"gender": Globals.gender
+	"gender": Globals.gender,
+	"is_dynamic": Globals.is_dynamic_game,
+	"p_logs": Globals.p_logs
 	}
 	await collection.add(str(Globals.id), data)
 	print("added")
@@ -81,6 +153,8 @@ func _on_crying_listening_body_entered(body):
 		is_listening_crying = true 
 		Globals.logs.append("{" + "'begin_listen_Beb" + "': " + str(360-$endgame.time_left)+"}")
 		$distractions/Radio/bday_music.stream_paused = true
+		Globals.perform_action("enter_listen_bubble_beb")
+		_on_hide_arrows()
 
 
 func _on_crying_listening_body_exited(body):
@@ -90,6 +164,7 @@ func _on_crying_listening_body_exited(body):
 		$distractions/Radio/bday_music.stream_paused = false
 		crying_temp_listening_time = 0
 		Globals.logs.append("{" + "'exit_listen_Beb" + "': " + str(360-$endgame.time_left)+"}")
+		Globals.highlight_actions()
 #####
 
 
@@ -104,6 +179,8 @@ func _on_laughing_listening_body_entered(body):
 		$distractions/Radio/bday_music.stream_paused = true
 		$laughing/laughter.stream_paused = true
 		Globals.logs.append("{" + "'begin_listen_Girls" + "': " + str(360-$endgame.time_left)+"}")
+		Globals.perform_action("enter_listen_bubble_girls")
+		_on_hide_arrows()
 
 
 func _on_laughing_listening_body_exited(body):
@@ -116,7 +193,8 @@ func _on_laughing_listening_body_exited(body):
 		$laughing/laughter.volume_db = 50
 		$distractions/Radio/bday_music.stream_paused = false
 		$laughing/laughter.stream_paused = false
-		Globals.logs.append("{" + "'exit_listen_Girls" + "': " + str(360-$endgame.time_left)+"}") 
+		Globals.logs.append("{" + "'exit_listen_Girls" + "': " + str(360-$endgame.time_left)+"}")
+		Globals.highlight_actions() 
 ####
 
 
@@ -140,6 +218,8 @@ func _on_arguing_listening_body_entered(body):
 		Globals.logs.append("{" + "'begin_listen_Arguing" + "': " + str(360-$endgame.time_left)+"}")
 		$distractions/Radio/bday_music.stream_paused = true
 		$laughing/laughter.stream_paused = true
+		Globals.perform_action("enter_listen_bubble_arguing")
+		_on_hide_arrows()
 
 
 func _on_arguing_listening_body_exited(body):
@@ -147,6 +227,7 @@ func _on_arguing_listening_body_exited(body):
 		Globals.logs.append("{" + "'exit_listen_Arguing" + "': " + str(360-$endgame.time_left)+"}")
 		$distractions/Radio/bday_music.stream_paused = false
 		$laughing/laughter.stream_paused = false
+		Globals.highlight_actions()
 
 
 func _on_texture_button_pressed():
@@ -191,3 +272,12 @@ func _on_conv_finished():
 	$laughing/laughter.stop()
 	girls_done_talking = true
 	
+	
+	
+	
+	
+	
+	
+
+
+

@@ -18,13 +18,16 @@ signal walk()
 func _ready():
 	print(questions)
 	print()
+	Globals.connect("highlight_question_signal", _on_highlight_question)
+	Globals.connect("highlight_trick_signal", _on_highlight_trick)
+	
+	
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
 
 
 func _on_first_pressed():
@@ -74,7 +77,10 @@ func _on_first_pressed():
 		#initial_num_q= 0
 		walk.emit()
 		#initial_num_q = 0
-	
+	if(other_npc.name == "arg2"):
+		Globals.perform_action("ask_question_arguing")
+	elif(other_npc.name == "player"):
+		Globals.perform_action("ask_question_beb")
 	#update_prob.emit(q_prob)
 	
 
@@ -111,7 +117,15 @@ func _on_second_pressed():
 	log_interaction.emit("{" + "'trigger_distraction" + "': ", 3.0)
 	$first.visible = true
 	$second.visible = true
+	if(other_npc.name == "arg2"):
+		Globals.perform_action("trick_arguing")
+	elif(other_npc.name == "player"):
+		Globals.perform_action("trick_beb")
 
 
 func _on_robot_num_of_questions_remaining(num_of_questions):
 	q_remaning =num_of_questions
+func _on_highlight_question(show):
+	$first/Arrow.visible = show
+func _on_highlight_trick(show):
+	$second/Arrow.visible = show

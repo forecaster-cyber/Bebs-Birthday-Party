@@ -76,6 +76,7 @@ func _process(delta):
 		if(self.name == "CRYING"):
 			Globals.logs.append("{" + "'begin_talk_Beb" + "': " + str(360-timer.time_left)+"}")
 		Globals.isTalking = true
+		#Globals.perform_action("start_talk")
 
 
 
@@ -143,6 +144,7 @@ func _on_talk_system_play_distraction():
 	await get_tree().create_timer(3.0).timeout
 	$Body.show()
 	$Sprite3D.hide()
+	
 	#if(random > 0.5):
 		#$AnimationPlayer.speed_scale = random*2
 	#	$AnimationPlayer.play("d1")

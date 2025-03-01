@@ -23,7 +23,10 @@ func _on_button_pressed():
 	$Label.text = "שלום! ברוכים הבאים ליום ההולדת של באב! על מנת להסתכל ימינה או שמאלה, לחצו על החיצים ימינה או שמאלה. על מנת לזוז קדימה או אחורה לחצו על החיצים למעלה או למטה! על מנת לבצע אינטראקציה עם הדברים במסיבה, לחצו על E!"
 	Globals.age = int($TextEdit.text)
 	Globals.gender = $OptionButton.get_selected_id()
+	if randf() < 0.5:
+		Globals.is_dynamic_game = true
 	print(Globals.gender)
+	print("game is dynamic" + str(Globals.is_dynamic_game))
 	await get_tree().create_timer($intro.stream.get_length()).timeout
 	Firebase.Auth.login_with_email_and_password(email, password)
 	

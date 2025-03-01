@@ -64,6 +64,7 @@ func _process(delta):
 		was_talking = true
 		Globals.logs.append("{" + "'begin_talk_Arguing" + "': " + str(360-timer.time_left)+"}")
 		Globals.isTalking = true
+		
 
 
 

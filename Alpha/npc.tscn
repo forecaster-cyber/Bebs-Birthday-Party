@@ -714,6 +714,48 @@ tracks/3/keys = {
 "values": [Vector3(0.00982929, 0.0220463, -0.419329)]
 }
 
+[sub_resource type="Animation" id="Animation_bsny3"]
+resource_name = "d1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 0.366021),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.44564, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.52108, 0.342361, 1.97183), Vector3(1.25845, 0.746994, 1.30197), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cstps"]
+resource_name = "d2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -3.03035, 0), Vector3(3.48787e-16, -6.28319, 3.48787e-16)]
+}
+
 [sub_resource type="Animation" id="Animation_s8dpo"]
 resource_name = "dis1"
 tracks/0/type = "value"
@@ -754,6 +796,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -3.03035, 0), Vector3(3.48787e-16, -6.28319, 3.48787e-16)]
+}
+
+[sub_resource type="Animation" id="Animation_kfjjq"]
+resource_name = "poof"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.327771, 0.327771, 0.327771), Vector3(1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_l2jfl"]
@@ -835,64 +893,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(1, 1, 1), Vector3(1.21679, 0.683778, 1.20469), Vector3(1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_bsny3"]
-resource_name = "d1"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 0.366021),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.44564, 0), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(1.52108, 0.342361, 1.97183), Vector3(1.25845, 0.746994, 1.30197), Vector3(1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_cstps"]
-resource_name = "d2"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -3.03035, 0), Vector3(3.48787e-16, -6.28319, 3.48787e-16)]
-}
-
-[sub_resource type="Animation" id="Animation_kfjjq"]
-resource_name = "poof"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(0.327771, 0.327771, 0.327771), Vector3(1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7k8hx"]

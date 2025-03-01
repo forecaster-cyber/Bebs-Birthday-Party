@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dpsknhaiwvaok"]
+[gd_scene load_steps=63 format=3 uid="uid://dpsknhaiwvaok"]
 
 [ext_resource type="PackedScene" uid="uid://b0jmja8u6w1le" path="res://player.tscn" id="1_gw058"]
 [ext_resource type="Script" path="res://main.gd" id="1_nqkhb"]
@@ -29,6 +29,7 @@
 [ext_resource type="FontFile" uid="uid://bxcnmly2qqkel" path="res://group_qs/OpenSans-VariableFont_wdth,wght.ttf" id="27_4ued5"]
 [ext_resource type="Texture2D" uid="uid://c3c8xlceunlwe" path="res://tutorial/Red Door Cartoon Illustration Background Removed.png" id="27_tkhpd"]
 [ext_resource type="Texture2D" uid="uid://cbg137sipluvp" path="res://group_qs/exit.png" id="29_sfbf8"]
+[ext_resource type="Texture2D" uid="uid://ceistnva6v0xr" path="res://group_qs/arrow.png" id="30_jyof4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dpdt8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -711,6 +712,43 @@ stretch_mode = 0
 [node name="progress_talker" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="highlights" type="Node3D" parent="."]
+
+[node name="distraction_gun" type="Sprite3D" parent="highlights"]
+transform = Transform3D(-1.479e-08, 0.338356, 1.18014e-16, -0.338356, -1.479e-08, -1.18014e-16, -1.18014e-16, -1.18014e-16, 0.338356, -3.26715, 4.12169, 2.16475)
+visible = false
+texture = ExtResource("30_jyof4")
+
+[node name="activate_radio" type="Sprite3D" parent="highlights"]
+transform = Transform3D(-1.479e-08, 0.338356, 1.18014e-16, -0.338356, -1.479e-08, -1.18014e-16, -1.18014e-16, -1.18014e-16, 0.338356, -8.45147, 4.12169, 2.16475)
+visible = false
+texture = ExtResource("30_jyof4")
+
+[node name="distraction_present" type="Sprite3D" parent="highlights"]
+transform = Transform3D(8.86417e-10, -0.0202789, 0.337748, -0.338356, -1.479e-08, -1.18014e-16, 1.47634e-08, -0.337748, -0.0202789, -10.371, 4.22328, 8.80904)
+visible = false
+texture = ExtResource("30_jyof4")
+
+[node name="activate_balloon" type="Sprite3D" parent="highlights"]
+transform = Transform3D(8.86417e-10, -0.0202789, 0.337748, -0.338356, -1.479e-08, -1.18014e-16, 1.47634e-08, -0.337748, -0.0202789, 4.99904, 4.18091, 7.91363)
+visible = false
+texture = ExtResource("30_jyof4")
+
+[node name="enter_listen_bubble_arguing" type="Sprite3D" parent="highlights"]
+transform = Transform3D(-1.479e-08, 0.338356, 1.18014e-16, -0.338356, -1.479e-08, -1.18014e-16, -1.18014e-16, -1.18014e-16, 0.338356, 2.18153, 3.68299, -1.48035)
+visible = false
+texture = ExtResource("30_jyof4")
+
+[node name="enter_listen_bubble_girls" type="Sprite3D" parent="highlights"]
+transform = Transform3D(-5.58277e-09, 0.127719, -0.313325, -0.338356, -1.479e-08, -1.18014e-16, -1.36959e-08, 0.313325, 0.127719, 7.00595, 3.68299, 5.1852)
+visible = false
+texture = ExtResource("30_jyof4")
+
+[node name="enter_listen_bubble_beb" type="Sprite3D" parent="highlights"]
+transform = Transform3D(8.17671e-09, -0.187061, -0.281945, -0.338356, -1.479e-08, 7.38497e-17, -1.23242e-08, 0.281945, -0.187061, -8.55069, 4.81793, 5.80094)
+visible = false
+texture = ExtResource("30_jyof4")
 
 [connection signal="lock_rotation" from="PATH_beb/PathFollow3D/CRYING" to="player" method="_on_crying_lock_rotation"]
 [connection signal="body_entered" from="PATH_beb/PathFollow3D/CRYING/crying_listening" to="." method="_on_crying_listening_body_entered"]
